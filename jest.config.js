@@ -1,6 +1,19 @@
 module.exports = {
   roots: ['<rootDir>/src'],
-  collectCoverageFrom: ['<rootDir>/src/**/*.ts', '!<rootDir>/src/main.ts'],
+  collectCoverageFrom: [
+    '<rootDir>/src/**/*.ts',
+    '!<rootDir>/src/main.ts',
+    '!<rootDir>/src/app.module.ts',
+    '!<rootDir>/src/**/*module.ts',
+    '!<rootDir>/src/shared/config/**',
+    '!<rootDir>/src/shared/docs/**',
+    '!<rootDir>/src/shared/http/**',
+    '!<rootDir>/src/shared/ioc/**',
+    '!<rootDir>/src/shared/middleware/**',
+    '!<rootDir>/src/shared/guards/**',
+    '!<rootDir>/src/shared/types/**',
+    '!<rootDir>/src/shared/utils/**',
+  ],
   coverageDirectory: 'coverage',
   testEnvironment: 'node',
   transform: {
