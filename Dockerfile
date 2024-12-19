@@ -1,0 +1,15 @@
+FROM node:22.12.0-alpine3.21
+
+WORKDIR /app
+
+RUN mkdir -p /app
+
+COPY package.json /app
+
+RUN rm -rf node_modules \
+    && npm install
+
+COPY . /app
+
+EXPOSE 3000
+

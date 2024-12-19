@@ -1,0 +1,41 @@
+version: '3.8'
+services:
+  web-api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: web-api
+    depends_on:
+      - postgres
+    entrypoint: sh -c 'npm i && npm run start:dev'
+    env_file:
+      - .env
+    volumes:
+      - .:/app
+      - /app/node_modules
+    ports:
+      - ${PORT}:${PORT}
+    networks:
+      - web-api-network
+
+  postgres:
+    image: postgis/postgis:16-3.4-alpine
+    container_name: postgres
+    ports:
+      - '5432:5432'
+    environment:
+      POSTGRES_USER: ${DATABASE_USER}
+      POSTGRES_PASSWORD: ${DATABASE_PASSWORD}
+      POSTGRES_DB: ${DATABASE_NAME}
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    restart: unless-stopped
+    networks:
+      - web-api-network
+
+networks:
+  web-api-network:
+    driver: bridge
+
+volumes:
+  postgres_data:
