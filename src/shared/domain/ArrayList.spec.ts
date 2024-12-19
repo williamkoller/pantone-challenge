@@ -10,7 +10,7 @@ describe('ArrayList', () => {
   let ArrayList: NumberArrayList;
 
   beforeEach(() => {
-    ArrayList = new NumberArrayList([]);
+    ArrayList = new NumberArrayList([1, 2, 3]);
   });
 
   test('should initialize with given items', () => {
