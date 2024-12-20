@@ -1,5 +1,3 @@
 # Challenge Brain Agriculture
 
-
-## Architecture
-
+![Brain Agriculture](./architecture.md)
