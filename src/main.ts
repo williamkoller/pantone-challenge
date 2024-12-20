@@ -9,6 +9,7 @@ import { HttpAllExceptionsFilter } from './shared/http/filters/http-all-exceptio
 import { Response } from 'express';
 import { initSequelizeCLS } from 'sequelize-transactional-decorator';
 import { umzug } from '../migrations/umzugClient';
+import { EventsDispatcherInterceptor } from './shared/http/interceptors/EventsDispatcherInterceptor';
 
 async function bootstrap() {
   initSequelizeCLS();
@@ -30,6 +31,7 @@ async function bootstrap() {
     }),
   );
   app.useGlobalFilters(new HttpAllExceptionsFilter());
+  app.useGlobalInterceptors(new EventsDispatcherInterceptor());
 
   app.getHttpAdapter().get('/', (_, res: Response) => {
     res.redirect('/api/health-check');
