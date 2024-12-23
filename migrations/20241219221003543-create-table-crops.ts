@@ -8,8 +8,21 @@ export const up: Migration = async ({ context: queryInterface }) => {
       allowNull: false,
       defaultValue: DataTypes.UUIDV4,
     },
-    name: {
+    farm_id: {
+      type: DataTypes.UUID,
+      allowNull: false,
+      references: {
+        model: 'farms',
+        key: 'id',
+      },
+      onDelete: 'CASCADE',
+    },
+    crop_type: {
       type: DataTypes.STRING,
+      allowNull: false,
+    },
+    year: {
+      type: DataTypes.INTEGER,
       allowNull: false,
     },
     created_at: {
@@ -23,6 +36,8 @@ export const up: Migration = async ({ context: queryInterface }) => {
       defaultValue: DataTypes.NOW,
     },
   });
+
+  await queryInterface.addIndex('crops', ['farm_id']);
 };
 
 export const down: Migration = async ({ context: queryInterface }) => {

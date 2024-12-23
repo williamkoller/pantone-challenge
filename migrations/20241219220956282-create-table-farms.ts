@@ -8,33 +8,34 @@ export const up: Migration = async ({ context: queryInterface }) => {
       allowNull: false,
       defaultValue: DataTypes.UUIDV4,
     },
-    procuder_id: {
+    producer_id: {
       type: DataTypes.UUID,
       allowNull: false,
       references: {
         model: 'producers',
         key: 'id',
       },
+      onDelete: 'CASCADE',
     },
     name: {
       type: DataTypes.STRING,
       allowNull: false,
     },
+    arable_area: {
+      type: DataTypes.DECIMAL,
+      allowNull: true,
+    },
     state: {
-      type: DataTypes.STRING(2),
-      allowNull: false,
+      type: DataTypes.STRING,
+      allowNull: true,
     },
     total_area: {
-      type: DataTypes.DECIMAL(10, 2),
-      allowNull: false,
-    },
-    arable_area: {
-      type: DataTypes.DECIMAL(10, 2),
-      allowNull: false,
+      type: DataTypes.DECIMAL,
+      allowNull: true,
     },
     vegetation_area: {
-      type: DataTypes.DECIMAL(10, 2),
-      allowNull: false,
+      type: DataTypes.DECIMAL,
+      allowNull: true,
     },
     created_at: {
       type: DataTypes.DATE,
@@ -46,13 +47,9 @@ export const up: Migration = async ({ context: queryInterface }) => {
       allowNull: false,
       defaultValue: DataTypes.NOW,
     },
-    deleted_at: {
-      type: DataTypes.DATE,
-      allowNull: true,
-    },
   });
 
-  await queryInterface.addIndex('farms', ['state'], { unique: true });
+  await queryInterface.addIndex('farms', ['producer_id']);
 };
 
 export const down: Migration = async ({ context: queryInterface }) => {
