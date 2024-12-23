@@ -26,7 +26,7 @@ function isValidCPF(cpf: string): boolean {
 }
 
 function isValidCNPJ(cnpj: string): boolean {
-  cnpj = cnpj.replace(/\D/g, ''); 
+  cnpj = cnpj.replace(/\D/g, '');
   if (cnpj.length !== 14 || /^(\d)\1+$/.test(cnpj)) return false;
 
   let length = cnpj.length - 2;
@@ -60,7 +60,7 @@ export class IsCPFOrCNPJConstraint implements ValidatorConstraintInterface {
   validate(value: any): boolean {
     if (typeof value !== 'string') return false;
 
-    const onlyNumbers = value.replace(/\D/g, ''); // Remove caracteres não numéricos
+    const onlyNumbers = value.replace(/\D/g, '');
     return isValidCPF(onlyNumbers) || isValidCNPJ(onlyNumbers);
   }
 
