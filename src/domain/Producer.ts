@@ -55,6 +55,14 @@ export class Producer extends AggregateRoot<ProducerProps> {
     if (guardResult.isFailure)
       throw new DomainValidationException(guardResult.getErrorValue());
 
+    if (
+      ![ProducerDocumentType.CPF, ProducerDocumentType.CNPJ].includes(
+        props.documentType,
+      )
+    ) {
+      throw new DomainValidationException('Invalid document type');
+    }
+
     return new Producer(props, id);
   }
 }
