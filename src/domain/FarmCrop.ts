@@ -53,6 +53,12 @@ export class FarmCrop extends AggregateRoot<FarmCropProps> {
     if (guardResult.isFailure)
       throw new DomainValidationException(guardResult.getErrorValue());
 
+    if (props.plantedArea <= 0) {
+      throw new DomainValidationException(
+        'Planted area must be greater than zero',
+      );
+    }
+
     return new FarmCrop(props, id);
   }
 }
