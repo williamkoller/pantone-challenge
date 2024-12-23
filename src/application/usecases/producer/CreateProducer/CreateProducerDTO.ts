@@ -1,9 +1,9 @@
 import { ApiProperty } from '@nestjs/swagger';
 import { IsEnum, IsNotEmpty, IsString } from 'class-validator';
-import { IsCPFOrCNPJ } from '../../../shared/decorators/IsCPFOrCNPJConstraint';
-import { ProducerDocumentType } from '../../../domain/Producer';
+import { IsCPFOrCNPJ } from '../../../../shared/decorators/IsCPFOrCNPJConstraint';
+import { ProducerDocumentType } from '../../../../domain/Producer';
 
-export class CreateProducerDTO {
+export class CreateProducerBodyDTO {
   @ApiProperty({ example: 'Agro São Pedro' })
   @IsNotEmpty()
   @IsString()
