@@ -1,7 +1,12 @@
-import { Farm } from '../../domain/Farm';
-import { FarmAttributes } from '../../infrastructure/database/models/FarmModel';
+import { Farm } from '../../domain/farm/Farm';
+import { Producer } from '../../domain/producer/Producer';
+import {
+  FarmAttributes,
+  FarmModel,
+} from '../../infrastructure/database/models/FarmModel';
 import { UniqueEntityId } from '../../shared/domain/UniqueEntityId';
 import { Mapper } from '../../shared/types/Mapper';
+import { ProducerMapper } from './ProducerMapper';
 
 export class FarmMapper extends Mapper<Farm, FarmAttributes>() {
   static toPersistence(domain: Farm): FarmAttributes {
@@ -20,6 +25,7 @@ export class FarmMapper extends Mapper<Farm, FarmAttributes>() {
     return Farm.create(
       {
         producerId: raw.producerId,
+        producer: raw.producer ? ProducerMapper.toDomain(raw.producer) : null,
         name: raw.name,
         arableArea: raw.arableArea,
         state: raw.state,
@@ -34,6 +40,7 @@ export class FarmMapper extends Mapper<Farm, FarmAttributes>() {
     return {
       id: domain.id.toString(),
       producerId: domain.producerId.toString(),
+      producer: domain.producer ? ProducerMapper.toFarm(domain.producer) : null,
       name: domain.name,
       arableArea: domain.arableArea,
       state: domain.state,
