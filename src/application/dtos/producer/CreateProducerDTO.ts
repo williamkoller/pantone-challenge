@@ -9,7 +9,13 @@ export class CreateProducerDTO {
   @IsString()
   name: string;
 
-  @ApiProperty({ example: '123.456.789-00' })
+  @ApiProperty({
+    description: 'Document number which can be a CPF or CNPJ',
+    examples: {
+      CPF: '123.456.789-00',
+      CNPJ: '12.345.678/0001-99',
+    },
+  })
   @IsNotEmpty()
   @IsString()
   @IsCPFOrCNPJ()
@@ -21,5 +27,5 @@ export class CreateProducerDTO {
   })
   @IsNotEmpty()
   @IsEnum(ProducerDocumentType)
-  type: ProducerDocumentType;
+  documentType: ProducerDocumentType;
 }

@@ -1,7 +1,5 @@
 import { Optional } from 'sequelize';
 import { ProducerDocumentType } from '../../../domain/Producer';
-import { CNPJ } from '../../../shared/domain/CNPJ';
-import { CPF } from '../../../shared/domain/CPF';
 import {
   AllowNull,
   Column,
@@ -15,7 +13,7 @@ import {
 export interface ProducerAttributes {
   id: string;
   name: string;
-  document: CPF | CNPJ;
+  document: string;
   documentType: ProducerDocumentType;
 }
 
@@ -39,7 +37,7 @@ export class ProducerModel extends Model<
 
   @AllowNull(false)
   @Column(DataType.STRING)
-  document: CPF | CNPJ;
+  document: string;
 
   @AllowNull(false)
   @Column(DataType.ENUM(ProducerDocumentType.CPF, ProducerDocumentType.CNPJ))

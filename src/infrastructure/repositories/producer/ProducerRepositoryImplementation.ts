@@ -33,9 +33,7 @@ export class ProducerRepositoryImplementation
   async update(producer: Producer): Promise<void> {
     const producerPersistence = ProducerMapper.toPersistence(producer);
     await this.producerModel.update(producerPersistence, {
-      where: {
-        id: producerPersistence.id,
-      },
+      where: { id: producerPersistence.id },
     });
   }
 
@@ -45,5 +43,22 @@ export class ProducerRepositoryImplementation
         id: producerId,
       },
     });
+  }
+
+  async findAll(): Promise<Producer[]> {
+    const producers = await this.producerModel.findAll();
+    return producers.map(ProducerMapper.toDomain);
+  }
+
+  async findByDocument(document: string): Promise<Producer | null> {
+    const producer = await this.producerModel.findOne({
+      where: {
+        document,
+      },
+    });
+
+    if (!producer) return null;
+
+    return ProducerMapper.toDomain(producer);
   }
 }
