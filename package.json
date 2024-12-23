@@ -21,7 +21,8 @@
     "docker:start": "docker-compose down && docker-compose up",
     "migration:create": "tsc migrations/**/*.ts --outDir build/migrations node build/migrations/migrationsUp.js",
     "migration:up": "npx ts-node migrations/migrationsUp.ts",
-    "migration:down": "npx ts-node migrations/migrationsDown.ts"
+    "migration:down": "npx ts-node migrations/migrationsDown.ts",
+    "prepare": "husky install"
   },
   "dependencies": {
     "@nestjs/common": "^10.0.0",
@@ -45,6 +46,8 @@
     "umzug": "^3.7.0"
   },
   "devDependencies": {
+    "@commitlint/cli": "^19.6.1",
+    "@commitlint/config-conventional": "^19.6.0",
     "@nestjs/cli": "^10.0.0",
     "@nestjs/schematics": "^10.0.0",
     "@nestjs/testing": "^10.0.0",
@@ -58,6 +61,7 @@
     "eslint": "^8.0.0",
     "eslint-config-prettier": "^9.0.0",
     "eslint-plugin-prettier": "^5.0.0",
+    "husky": "^9.1.7",
     "jest": "^29.5.0",
     "prettier": "^3.0.0",
     "source-map-support": "^0.5.21",
