@@ -1,5 +1,7 @@
-import { Producer } from '../../domain/Producer';
+import { Producer, ProducerDocumentType } from '../../domain/Producer';
 import { ProducerAttributes } from '../../infrastructure/database/models/ProducerModel';
+import { CNPJ } from '../../shared/domain/CNPJ';
+import { CPF } from '../../shared/domain/CPF';
 import { UniqueEntityId } from '../../shared/domain/UniqueEntityId';
 import { Mapper } from '../../shared/types/Mapper';
 
@@ -8,7 +10,10 @@ export class ProducerMapper extends Mapper<Producer, ProducerAttributes>() {
     return {
       id: domain.id.toString(),
       name: domain.name,
-      document: domain.document,
+      document:
+        domain.document instanceof CPF
+          ? domain.document.props.number
+          : (domain.document as CNPJ).props.number,
       documentType: domain.documentType,
     };
   }
@@ -17,7 +22,10 @@ export class ProducerMapper extends Mapper<Producer, ProducerAttributes>() {
     return Producer.create(
       {
         name: raw.name,
-        document: raw.document,
+        document:
+          raw.documentType === ProducerDocumentType.CPF
+            ? CPF.create({ number: raw.document })
+            : CNPJ.create(raw.document),
         documentType: raw.documentType,
       },
       new UniqueEntityId(raw.id),
@@ -28,7 +36,7 @@ export class ProducerMapper extends Mapper<Producer, ProducerAttributes>() {
     return {
       id: domain.id.toString(),
       name: domain.name,
-      document: domain.document,
+      document: domain.document.formatted,
       documentType: domain.documentType,
       createdAt: domain.createdAt,
       updatedAt: domain.updatedAt,
