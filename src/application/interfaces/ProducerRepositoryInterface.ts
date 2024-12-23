@@ -5,6 +5,8 @@ export interface ProducerRepositoryInterface {
   findById(producerId: string): Promise<Producer | null>;
   update(producer: Producer): Promise<void>;
   remove(producerId: string): Promise<void>;
+  findAll(): Promise<Producer[]>;
+  findByDocument(document: string): Promise<Producer | null>;
 }
 
 export const ProducerRepositoryInterface = Symbol(
