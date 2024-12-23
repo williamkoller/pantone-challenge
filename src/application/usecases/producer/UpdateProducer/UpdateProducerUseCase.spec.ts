@@ -1,10 +1,13 @@
 import { BadRequestException } from '@nestjs/common';
 import { Test, TestingModule } from '@nestjs/testing';
-import { Producer, ProducerDocumentType } from '../../../../domain/Producer';
+import {
+  Producer,
+  ProducerDocumentType,
+} from '../../../../domain/producer/Producer';
 import { CNPJ } from '../../../../shared/domain/CNPJ';
 import { CPF } from '../../../../shared/domain/CPF';
 import { ProducerNotFoundException } from '../../../exceptions/producer/ProducerNotFoundException';
-import { ProducerRepositoryInterface } from '../../../interfaces/ProducerRepositoryInterface';
+import { ProducerRepository } from '../../../interfaces/producer/ProducerRepository';
 import { ProducerMapper } from '../../../mappers/ProducerMapper';
 import { UpdateProducerUseCase } from './UpdateProducerUseCase';
 import { UniqueEntityId } from '../../../../shared/domain/UniqueEntityId';
@@ -15,7 +18,7 @@ jest.mock('sequelize-transactional-decorator', () => ({
 
 describe('UpdateProducerUseCase', () => {
   let updateProducerUseCase: UpdateProducerUseCase;
-  let producerRepository: ProducerRepositoryInterface;
+  let producerRepository: ProducerRepository;
 
   const mockProducerRepository = {
     findById: jest.fn(),
@@ -36,7 +39,7 @@ describe('UpdateProducerUseCase', () => {
       providers: [
         UpdateProducerUseCase,
         {
-          provide: ProducerRepositoryInterface,
+          provide: ProducerRepository,
           useValue: mockProducerRepository,
         },
       ],
@@ -45,9 +48,7 @@ describe('UpdateProducerUseCase', () => {
     updateProducerUseCase = module.get<UpdateProducerUseCase>(
       UpdateProducerUseCase,
     );
-    producerRepository = module.get<ProducerRepositoryInterface>(
-      ProducerRepositoryInterface,
-    );
+    producerRepository = module.get<ProducerRepository>(ProducerRepository);
   });
 
   it('should be defined', () => {

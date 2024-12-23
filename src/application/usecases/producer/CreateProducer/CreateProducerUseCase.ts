@@ -9,21 +9,24 @@ import {
   Input,
   Output,
 } from './ICreateProducerUseCase';
-import { ProducerRepositoryInterface } from '../../../interfaces/ProducerRepositoryInterface';
-import { Producer, ProducerDocumentType } from '../../../../domain/Producer';
 import { CPF } from '../../../../shared/domain/CPF';
 import { CNPJ } from '../../../../shared/domain/CNPJ';
 import { ProducerMapper } from '../../../mappers/ProducerMapper';
 import { ProducerConflictException } from '../../../exceptions/producer/ProducerAlreadyExistsException';
 import { Transactional } from 'sequelize-transactional-decorator';
+import { ProducerRepository } from '../../../interfaces/producer/ProducerRepository';
+import {
+  Producer,
+  ProducerDocumentType,
+} from '../../../../domain/producer/Producer';
 
 @Injectable()
 export class CreateProducerUseCase implements ICreateProducerUseCase {
   private readonly logger = new Logger(CreateProducerUseCase.name);
   private readonly producerConflictException = new ProducerConflictException();
   constructor(
-    @Inject(ProducerRepositoryInterface)
-    private readonly producerRepository: ProducerRepositoryInterface,
+    @Inject(ProducerRepository)
+    private readonly producerRepository: ProducerRepository,
   ) {}
 
   @Transactional()

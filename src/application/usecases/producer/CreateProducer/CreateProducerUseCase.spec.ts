@@ -1,12 +1,15 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { CreateProducerUseCase } from './CreateProducerUseCase';
-import { ProducerRepositoryInterface } from '../../../interfaces/ProducerRepositoryInterface';
 import { ProducerConflictException } from '../../../exceptions/producer/ProducerAlreadyExistsException';
-import { Producer, ProducerDocumentType } from '../../../../domain/Producer';
 import { BadRequestException } from '@nestjs/common';
 import { CPF } from '../../../../shared/domain/CPF';
 import { ProducerMapper } from '../../../mappers/ProducerMapper';
 import { UniqueEntityId } from '../../../../shared/domain/UniqueEntityId';
+import { ProducerRepository } from '../../../interfaces/producer/ProducerRepository';
+import {
+  Producer,
+  ProducerDocumentType,
+} from '../../../../domain/producer/Producer';
 
 jest.mock('sequelize-transactional-decorator', () => ({
   Transactional: () => () => ({}),
@@ -14,7 +17,7 @@ jest.mock('sequelize-transactional-decorator', () => ({
 
 describe(CreateProducerUseCase.name, () => {
   let createProducerUseCase: CreateProducerUseCase;
-  let producerRepository: ProducerRepositoryInterface;
+  let producerRepository: ProducerRepository;
 
   const mockProducerRepository = {
     findByDocument: jest.fn(),
@@ -26,7 +29,7 @@ describe(CreateProducerUseCase.name, () => {
       providers: [
         CreateProducerUseCase,
         {
-          provide: ProducerRepositoryInterface,
+          provide: ProducerRepository,
           useValue: mockProducerRepository,
         },
       ],
@@ -35,9 +38,7 @@ describe(CreateProducerUseCase.name, () => {
     createProducerUseCase = module.get<CreateProducerUseCase>(
       CreateProducerUseCase,
     );
-    producerRepository = module.get<ProducerRepositoryInterface>(
-      ProducerRepositoryInterface,
-    );
+    producerRepository = module.get<ProducerRepository>(ProducerRepository);
   });
 
   it('should be defined', () => {

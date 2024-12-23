@@ -1,14 +1,13 @@
 import { InjectModel } from '@nestjs/sequelize';
-import { ProducerRepositoryInterface } from '../../../application/interfaces/ProducerRepositoryInterface';
 import { ProducerModel } from '../../database/models/ProducerModel';
-import { Producer } from '../../../domain/Producer';
 import { ProducerMapper } from '../../../application/mappers/ProducerMapper';
 import { Injectable } from '@nestjs/common';
+import { ProducerRepository } from '../../../application/interfaces/producer/ProducerRepository';
+import { Producer } from '../../../domain/producer/Producer';
+import { FarmModel } from '../../database/models/FarmModel';
 
 @Injectable()
-export class ProducerRepositoryImplementation
-  implements ProducerRepositoryInterface
-{
+export class ProducerRepositoryImplementation implements ProducerRepository {
   constructor(
     @InjectModel(ProducerModel)
     private producerModel: typeof ProducerModel,
@@ -56,6 +55,21 @@ export class ProducerRepositoryImplementation
   async findAll(): Promise<Producer[]> {
     const producers = await this.producerModel.findAll({
       order: [['name', 'ASC']],
+      include: [
+        {
+          association: this.producerModel.associations.farms,
+          include: [
+            {
+              association: FarmModel.associations.producer,
+              include: [
+                {
+                  association: this.producerModel.associations.farms,
+                },
+              ],
+            },
+          ],
+        },
+      ],
     });
     return producers.map(ProducerMapper.toDomain);
   }

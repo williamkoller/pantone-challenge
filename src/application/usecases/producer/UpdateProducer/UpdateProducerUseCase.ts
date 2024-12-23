@@ -9,8 +9,8 @@ import {
   IUpdateProducerUseCase,
   Output,
 } from './IUpdateProducerUseCase';
-import { ProducerRepositoryInterface } from '../../../interfaces/ProducerRepositoryInterface';
-import { Producer, ProducerDocumentType } from '../../../../domain/Producer';
+import { ProducerRepository } from '../../../interfaces/producer/ProducerRepository';
+import { ProducerDocumentType } from '../../../../domain/producer/Producer';
 import { Transactional } from 'sequelize-transactional-decorator';
 import { ProducerNotFoundException } from '../../../exceptions/producer/ProducerNotFoundException';
 import { CPF } from '../../../../shared/domain/CPF';
@@ -22,8 +22,8 @@ export class UpdateProducerUseCase implements IUpdateProducerUseCase {
   private readonly logger = new Logger(UpdateProducerUseCase.name);
 
   constructor(
-    @Inject(ProducerRepositoryInterface)
-    private readonly producerRepository: ProducerRepositoryInterface,
+    @Inject(ProducerRepository)
+    private readonly producerRepository: ProducerRepository,
   ) {}
 
   @Transactional()

@@ -1,6 +1,6 @@
 import { ApiProperty } from '@nestjs/swagger';
 import { IsOptional, IsString, IsUUID } from 'class-validator';
-import { ProducerDocumentType } from '../../../../domain/Producer';
+import { ProducerDocumentType } from '../../../../domain/producer/Producer';
 
 export class UpdateProducerBodyDTO {
   @ApiProperty({ example: 'Producer Name' })

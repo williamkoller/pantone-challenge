@@ -1,4 +1,4 @@
-import { ProducerDocumentType } from '../../../../domain/Producer';
+import { ProducerDocumentType } from '../../../../domain/producer/Producer';
 import { UseCase } from '../../../../shared/types/UseCase';
 import { ProducerMapper } from '../../../mappers/ProducerMapper';
 

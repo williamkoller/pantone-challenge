@@ -1,13 +1,13 @@
 import { Inject, Injectable } from '@nestjs/common';
 import { IGetProducersUseCase, Output } from './IGetProducersUseCase';
-import { ProducerRepositoryInterface } from '../../../interfaces/ProducerRepositoryInterface';
+import { ProducerRepository } from '../../../interfaces/producer/ProducerRepository';
 import { ProducerMapper } from '../../../mappers/ProducerMapper';
 
 @Injectable()
 export class GetProducersUseCase implements IGetProducersUseCase {
   constructor(
-    @Inject(ProducerRepositoryInterface)
-    private readonly producerRepository: ProducerRepositoryInterface,
+    @Inject(ProducerRepository)
+    private readonly producerRepository: ProducerRepository,
   ) {}
 
   async execute(): Promise<Output[]> {

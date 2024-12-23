@@ -1,10 +1,10 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { GetProducersUseCase } from './GetProducersUseCase';
-import { ProducerRepositoryInterface } from '../../../interfaces/ProducerRepositoryInterface';
+import { ProducerRepository } from '../../../interfaces/producer/ProducerRepository';
 
 describe(GetProducersUseCase.name, () => {
   let getProducersUseCase: GetProducersUseCase;
-  let producerRepositoryMock: Partial<ProducerRepositoryInterface>;
+  let producerRepositoryMock: Partial<ProducerRepository>;
 
   beforeEach(async () => {
     producerRepositoryMock = {
@@ -32,7 +32,7 @@ describe(GetProducersUseCase.name, () => {
       providers: [
         GetProducersUseCase,
         {
-          provide: ProducerRepositoryInterface,
+          provide: ProducerRepository,
           useValue: producerRepositoryMock,
         },
       ],
