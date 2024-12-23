@@ -1,6 +1,7 @@
 import { Association, Optional } from 'sequelize';
 import {
   AllowNull,
+  BelongsTo,
   Column,
   DataType,
   ForeignKey,
@@ -9,11 +10,12 @@ import {
   Table,
   Unique,
 } from 'sequelize-typescript';
-import { ProducerModel } from './ProducerModel';
+import { ProducerAttributes, ProducerModel } from './ProducerModel';
 
 export interface FarmAttributes {
   id: string;
   producerId: string;
+  producer?: ProducerAttributes | null;
   name: string;
   state: string;
   totalArea: number;
@@ -35,6 +37,9 @@ export class FarmModel extends Model<FarmAttributes, FarmCreationAttributes> {
   @ForeignKey(() => ProducerModel)
   @Column(DataType.UUID)
   producerId: string;
+
+  @BelongsTo(() => ProducerModel)
+  producer: ProducerModel;
 
   @AllowNull(false)
   @Column(DataType.STRING)

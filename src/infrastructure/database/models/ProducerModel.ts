@@ -1,20 +1,23 @@
-import { Optional } from 'sequelize';
-import { ProducerDocumentType } from '../../../domain/Producer';
+import { Association, Optional } from 'sequelize';
+import { ProducerDocumentType } from '../../../domain/producer/Producer';
 import {
   AllowNull,
   Column,
   DataType,
+  HasMany,
   Model,
   PrimaryKey,
   Table,
   Unique,
 } from 'sequelize-typescript';
+import { FarmAttributes, FarmModel } from './FarmModel';
 
 export interface ProducerAttributes {
   id: string;
   name: string;
   document: string;
   documentType: ProducerDocumentType;
+  farms?: FarmAttributes[];
 }
 
 interface ProducerCreationAttributes
@@ -48,4 +51,11 @@ export class ProducerModel extends Model<
 
   @Column(DataType.DATE)
   updatedAt: Date;
+
+  @HasMany(() => FarmModel)
+  farms: FarmModel[];
+
+  static associations: {
+    farms: Association<ProducerModel, FarmModel>;
+  };
 }

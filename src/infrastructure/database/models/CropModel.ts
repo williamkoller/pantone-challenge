@@ -10,7 +10,7 @@ import {
 } from 'sequelize-typescript';
 
 export interface CropAttributes {
-  id: number;
+  id: string;
   name: string;
 }
 
