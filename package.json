@@ -22,7 +22,7 @@
     "migration:create": "tsc migrations/**/*.ts --outDir build/migrations node build/migrations/migrationsUp.js",
     "migration:up": "npx ts-node migrations/migrationsUp.ts",
     "migration:down": "npx ts-node migrations/migrationsDown.ts",
-    "prepare": "husky install"
+    "prepare": "npx husky"
   },
   "dependencies": {
     "@nestjs/common": "^10.0.0",
