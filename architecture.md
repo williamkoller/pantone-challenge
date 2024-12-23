@@ -10,7 +10,7 @@
 │   │   │   └── producer
 │   │   │       └── CreateProducerDTO.ts
 │   │   ├── interfaces
-│   │   │   └── ProducerRepositoryInterface.ts
+│   │   │   └── ProducerRepository.ts
 │   │   ├── mappers
 │   │   │   ├── FarmMapper.ts
 │   │   │   └── ProducerMapper.ts
