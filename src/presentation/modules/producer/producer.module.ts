@@ -8,6 +8,8 @@ import { ProducerRepositoryInterface } from '../../../application/interfaces/Pro
 import { ProducerRepositoryImplementation } from '../../../infrastructure/repositories/producer/ProducerRepositoryImplementation';
 import { IGetProducersUseCase } from '../../../application/usecases/producer/GetProducers/IGetProducersUseCase';
 import { GetProducersUseCase } from '../../../application/usecases/producer/GetProducers/GetProducersUseCase';
+import { IUpdateProducerUseCase } from '../../../application/usecases/producer/UpdateProducer/IUpdateProducerUseCase';
+import { UpdateProducerUseCase } from '../../../application/usecases/producer/UpdateProducer/UpdateProducerUseCase';
 
 @Module({
   imports: [SequelizeModule.forFeature([ProducerModel])],
@@ -24,6 +26,10 @@ import { GetProducersUseCase } from '../../../application/usecases/producer/GetP
     {
       provide: IGetProducersUseCase,
       useClass: GetProducersUseCase,
+    },
+    {
+      provide: IUpdateProducerUseCase,
+      useClass: UpdateProducerUseCase,
     },
   ],
 })

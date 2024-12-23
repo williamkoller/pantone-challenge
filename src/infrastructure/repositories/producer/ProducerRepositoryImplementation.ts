@@ -30,11 +30,19 @@ export class ProducerRepositoryImplementation
     return ProducerMapper.toDomain(producer);
   }
 
-  async update(producer: Producer): Promise<void> {
+  async update(producer: Producer): Promise<Producer> {
     const producerPersistence = ProducerMapper.toPersistence(producer);
     await this.producerModel.update(producerPersistence, {
       where: { id: producerPersistence.id },
     });
+
+    const producerFindOne = await this.producerModel.findOne({
+      where: {
+        id: producerPersistence.id,
+      },
+    });
+
+    return ProducerMapper.toDomain(producerFindOne);
   }
 
   async remove(producerId: string): Promise<void> {
@@ -46,7 +54,9 @@ export class ProducerRepositoryImplementation
   }
 
   async findAll(): Promise<Producer[]> {
-    const producers = await this.producerModel.findAll();
+    const producers = await this.producerModel.findAll({
+      order: [['name', 'ASC']],
+    });
     return producers.map(ProducerMapper.toDomain);
   }
 

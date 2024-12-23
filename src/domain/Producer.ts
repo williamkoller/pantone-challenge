@@ -65,4 +65,15 @@ export class Producer extends AggregateRoot<ProducerProps> {
 
     return new Producer(props, id);
   }
+
+  public toUpdate(props: Partial<ProducerProps>): Producer {
+    return Producer.create(
+      {
+        ...this.props,
+        ...props,
+        updatedAt: new Date(),
+      },
+      this._id,
+    );
+  }
 }
