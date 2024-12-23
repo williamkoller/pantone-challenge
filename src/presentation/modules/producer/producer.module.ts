@@ -10,6 +10,8 @@ import { IGetProducersUseCase } from '../../../application/usecases/producer/Get
 import { GetProducersUseCase } from '../../../application/usecases/producer/GetProducers/GetProducersUseCase';
 import { IUpdateProducerUseCase } from '../../../application/usecases/producer/UpdateProducer/IUpdateProducerUseCase';
 import { UpdateProducerUseCase } from '../../../application/usecases/producer/UpdateProducer/UpdateProducerUseCase';
+import { IDeleteProducerUseCase } from '../../../application/usecases/producer/DeleteProducer/IDeleteProducerUseCase';
+import { DeleteProducerUseCase } from '../../../application/usecases/producer/DeleteProducer/DeleteProducerUseCase';
 
 @Module({
   imports: [SequelizeModule.forFeature([ProducerModel])],
@@ -30,6 +32,10 @@ import { UpdateProducerUseCase } from '../../../application/usecases/producer/Up
     {
       provide: IUpdateProducerUseCase,
       useClass: UpdateProducerUseCase,
+    },
+    {
+      provide: IDeleteProducerUseCase,
+      useClass: DeleteProducerUseCase,
     },
   ],
 })

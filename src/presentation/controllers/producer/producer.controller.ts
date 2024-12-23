@@ -1,6 +1,7 @@
 import {
   Body,
   Controller,
+  Delete,
   Get,
   HttpCode,
   HttpStatus,
@@ -18,6 +19,8 @@ import {
   UpdateProducerParamsDTO,
 } from '../../../application/usecases/producer/UpdateProducer/UpdateProducerDTO';
 import { CreateProducerBodyDTO } from '../../../application/usecases/producer/CreateProducer/CreateProducerDTO';
+import { IDeleteProducerUseCase } from '../../../application/usecases/producer/DeleteProducer/IDeleteProducerUseCase';
+import { DeleteProducerParamsDTO } from '../../../application/usecases/producer/DeleteProducer/DeleteProducerDTO';
 
 @ApiTags('producers')
 @Controller('producers')
@@ -29,6 +32,8 @@ export class ProducerController {
     private readonly getProducersUseCase: IGetProducersUseCase,
     @Inject(IUpdateProducerUseCase)
     private readonly updateProducerUseCase: IUpdateProducerUseCase,
+    @Inject(IDeleteProducerUseCase)
+    private readonly deleteProducerUseCase: IDeleteProducerUseCase,
   ) {}
 
   @Post()
@@ -58,6 +63,14 @@ export class ProducerController {
       name: body.name,
       document: body.document,
       documentType: body.documentType,
+    });
+  }
+
+  @Delete(':producerId')
+  @HttpCode(HttpStatus.NO_CONTENT)
+  async deleteProducer(@Param() param: DeleteProducerParamsDTO) {
+    await this.deleteProducerUseCase.execute({
+      producerId: param.producerId,
     });
   }
 }

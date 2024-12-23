@@ -9,12 +9,15 @@ import {
   UpdateProducerParamsDTO,
 } from '../../../application/usecases/producer/UpdateProducer/UpdateProducerDTO';
 import { IUpdateProducerUseCase } from '../../../application/usecases/producer/UpdateProducer/IUpdateProducerUseCase';
+import { DeleteProducerParamsDTO } from '../../../application/usecases/producer/DeleteProducer/DeleteProducerDTO';
+import { IDeleteProducerUseCase } from '../../../application/usecases/producer/DeleteProducer/IDeleteProducerUseCase';
 
 describe(ProducerController.name, () => {
   let producerController: ProducerController;
   let createProducerUseCase: ICreateProducerUseCase;
   let getProducersUseCase: IGetProducersUseCase;
   let updateProducerUseCase: IUpdateProducerUseCase;
+  let deleteProducerUseCase: IDeleteProducerUseCase;
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
@@ -44,6 +47,12 @@ describe(ProducerController.name, () => {
               .mockResolvedValue({ id: '1', name: 'Producer 1' }),
           },
         },
+        {
+          provide: IDeleteProducerUseCase,
+          useValue: {
+            execute: jest.fn(),
+          },
+        },
       ],
     }).compile();
 
@@ -55,6 +64,9 @@ describe(ProducerController.name, () => {
       module.get<IGetProducersUseCase>(IGetProducersUseCase);
     updateProducerUseCase = module.get<IUpdateProducerUseCase>(
       IUpdateProducerUseCase,
+    );
+    deleteProducerUseCase = module.get<IDeleteProducerUseCase>(
+      IDeleteProducerUseCase,
     );
   });
 
@@ -106,6 +118,20 @@ describe(ProducerController.name, () => {
       );
 
       expect(result).toEqual({ id: '1', name: 'Producer 1' });
+      expect(updateProducerUseCase.execute).toHaveBeenCalled();
+    });
+  });
+
+  describe('deleteProducer', () => {
+    it('should delete producer', () => {
+      const deleteProducerParamsDto: DeleteProducerParamsDTO = {
+        producerId: '1',
+      };
+
+      expect(
+        producerController.deleteProducer(deleteProducerParamsDto),
+      ).resolves.not.toThrow();
+      expect(deleteProducerUseCase.execute).toHaveBeenCalled();
     });
   });
 });

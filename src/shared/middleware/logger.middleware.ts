@@ -21,12 +21,21 @@ export class LoggerMiddleware implements NestMiddleware {
     res.send = (body: any): Response<any> => {
       const duration = Date.now() - startTime;
 
+      let responseBody = {};
+      if (body) {
+        try {
+          responseBody = this.filterSensitiveData(JSON.parse(body));
+        } catch (e) {
+          responseBody = body;
+        }
+      }
+
       const log = {
         method: req.method,
         path: req.path,
         query: req.query,
         body: this.filterSensitiveData(req.body),
-        responseBody: this.filterSensitiveData(JSON.parse(body)),
+        responseBody,
         statusCode: res.statusCode,
         statusMessage: res.statusMessage,
         responseTime: `${duration}ms`,

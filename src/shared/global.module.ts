@@ -14,7 +14,7 @@ import { MetadataScanner } from '@nestjs/core';
     }),
     SequelizeModule.forRoot(configuration().database),
     SequelizeTransactionalModule.register(),
-    MetadataScanner,
   ],
+  providers: [MetadataScanner],
 })
 export class GlobalModule {}
