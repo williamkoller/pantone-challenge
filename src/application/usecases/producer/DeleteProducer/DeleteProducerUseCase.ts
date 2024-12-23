@@ -5,7 +5,7 @@ import {
   Logger,
 } from '@nestjs/common';
 import { IDeleteProducerUseCase, Input } from './IDeleteProducerUseCase';
-import { ProducerRepositoryInterface } from '../../../interfaces/ProducerRepositoryInterface';
+import { ProducerRepository } from '../../../interfaces/producer/ProducerRepository';
 import { ProducerNotFoundException } from '../../../exceptions/producer/ProducerNotFoundException';
 import { Transactional } from 'sequelize-transactional-decorator';
 
@@ -13,8 +13,8 @@ import { Transactional } from 'sequelize-transactional-decorator';
 export class DeleteProducerUseCase implements IDeleteProducerUseCase {
   private readonly logger = new Logger(DeleteProducerUseCase.name);
   constructor(
-    @Inject(ProducerRepositoryInterface)
-    private producerRepository: ProducerRepositoryInterface,
+    @Inject(ProducerRepository)
+    private producerRepository: ProducerRepository,
   ) {}
 
   @Transactional()
