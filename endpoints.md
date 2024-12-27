@@ -4,7 +4,7 @@
 
 ### Request
 
-`POST /api/v1/producers`
+`POST /api/producers`
 
 ```json
 {
@@ -29,7 +29,7 @@
 
 ### Response
 
-`GET /api/v1/producers`
+`GET /api/producers`
 
 ```json
 [
@@ -46,7 +46,7 @@
 
 ### Request
 
-`PUT /api/v1/producers/{id}`
+`PUT /api/producers/{id}`
 
 ```json
 {
@@ -71,7 +71,7 @@
 
 ### Request
 
-`DELETE /api/v1/producers/{id}`
+`DELETE /api/producers/{id}`
 
 ### Response
 
@@ -83,7 +83,7 @@
 
 ### Request
 
-`POST /api/v1/farms/producer/{producerId}`
+`POST /api/farms/producer/{producerId}`
 
 ```json
 {
@@ -114,7 +114,7 @@
 
 ### Response
 
-`GET /api/v1/farms`
+`GET /api/farms`
 
 ```json
 [
@@ -136,7 +136,7 @@
 
 ### Request
 
-`PUT /api/v1/farms/{id}`
+`PUT /api/farms/{id}`
 
 ```json
 {
