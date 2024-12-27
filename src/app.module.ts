@@ -5,12 +5,12 @@ import {
   RequestMethod,
 } from '@nestjs/common';
 import { GlobalModule } from './shared/global.module';
-import { LoggerMiddleware } from './shared/middleware/logger.middleware';
+import { LoggerMiddleware } from './shared/middleware/LoggerMiddleware';
 import { HealthCheckModule } from './presentation/modules/health-check/health-check.module';
 import { DomainEvents } from './shared/domain/events/DomainEvents';
 import { EventEmitterModule } from '@nestjs/event-emitter';
 import { ProducerModule } from './presentation/modules/producer/producer.module';
-import { FarmModule } from './presentation/modules/farm/FarmModule';
+import { FarmModule } from './presentation/modules/farm/farm.module';
 
 @Module({
   imports: [

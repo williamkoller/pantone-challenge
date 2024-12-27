@@ -25,28 +25,38 @@ export class CreateFarmUseCase implements ICreateFarmUseCase {
 
   @Transactional()
   async execute(input: Input): Promise<Output> {
-    const producer = await this.producerRepository.findById(input.producerId);
+    try {
+      const producer = await this.producerRepository.findById(input.producerId);
 
-    if (!producer) throw new ProducerNotFoundException();
+      if (!producer) throw new ProducerNotFoundException();
 
-    const farmExists = await this.farmRepository.findByName(input.name);
+      const farmExists = await this.farmRepository.findByName(input.name);
 
-    if (farmExists) throw new FarmConflictException();
+      if (farmExists) throw new FarmConflictException();
 
-    const farm = Farm.create({
-      producerId: producer.id.toString(),
-      name: input.name,
-      state: input.state,
-      arableArea: input.arableArea,
-      vegetationArea: input.vegetationArea,
-      totalArea: Farm.calculateTotalArea(
-        input.arableArea,
-        input.vegetationArea,
-      ),
-    });
+      const farm = Farm.create({
+        producerId: producer.id.toString(),
+        name: input.name,
+        state: input.state,
+        arableArea: input.arableArea,
+        vegetationArea: input.vegetationArea,
+        totalArea: Farm.calculateTotalArea(
+          input.arableArea,
+          input.vegetationArea,
+        ),
+      });
 
-    const farmSaved = await this.farmRepository.save(farm);
+      const farmSaved = await this.farmRepository.save(farm);
 
-    return FarmMapper.toDTO(farmSaved);
+      return FarmMapper.toDTO(farmSaved);
+    } catch (error) {
+      this.logger.error(error.message);
+
+      if (error instanceof ProducerNotFoundException) throw error;
+
+      if (error instanceof FarmConflictException) throw error;
+
+      throw new BadRequestException(error.message);
+    }
   }
 }

@@ -5,7 +5,7 @@ import { CreateFarmUseCase } from '../../../application/usecases/farm/CreateFarm
 import { ICreateFarmUseCase } from '../../../application/usecases/farm/CreateFarm/ICreateFarmUseCase';
 import { FarmModel } from '../../../infrastructure/database/models/FarmModel';
 import { FarmRepositoryImplementation } from '../../../infrastructure/database/repositories/farm/FarmRepositoryImplementation';
-import { FarmController } from '../../controllers/farm/FarmController';
+import { FarmController } from '../../controllers/farm/farm.controller';
 import { ProducerModule } from '../producer/producer.module';
 import { IGetFarmsUseCase } from '../../../application/usecases/farm/GetFarms/IGetFarmsUseCase';
 import { GetFarmsUseCase } from '../../../application/usecases/farm/GetFarms/GetFarmsUseCase';
