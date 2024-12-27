@@ -7,6 +7,7 @@ export interface FarmRepository {
   remove(farmId: string): Promise<void>;
   findAll(): Promise<Farm[]>;
   findByProducerId(producerId: string): Promise<Farm[]>;
+  findByName(name: string): Promise<Farm | null>;
 }
 
 export const FarmRepository = Symbol('FarmRepository');
