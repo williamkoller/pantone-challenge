@@ -4,7 +4,7 @@ import { CreateProducerUseCase } from '../../../application/usecases/producer/Cr
 import { ICreateProducerUseCase } from '../../../application/usecases/producer/CreateProducer/ICreateProducerUseCase';
 import { ProducerModel } from '../../../infrastructure/database/models/ProducerModel';
 import { ProducerController } from '../../controllers/producer/producer.controller';
-import { ProducerRepositoryImplementation } from '../../../infrastructure/repositories/producer/ProducerRepositoryImplementation';
+import { ProducerRepositoryImplementation } from '../../../infrastructure/database/repositories/producer/ProducerRepositoryImplementation';
 import { IGetProducersUseCase } from '../../../application/usecases/producer/GetProducers/IGetProducersUseCase';
 import { GetProducersUseCase } from '../../../application/usecases/producer/GetProducers/GetProducersUseCase';
 import { IUpdateProducerUseCase } from '../../../application/usecases/producer/UpdateProducer/IUpdateProducerUseCase';
