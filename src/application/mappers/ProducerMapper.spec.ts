@@ -1,10 +1,9 @@
 import { ProducerMapper } from './ProducerMapper';
-import { Producer } from '../../domain/Producer';
 import { CPF } from '../../shared/domain/CPF';
 import { CNPJ } from '../../shared/domain/CNPJ';
 import { UniqueEntityId } from '../../shared/domain/UniqueEntityId';
-import { ProducerDocumentType } from '../../domain/Producer';
 import { ProducerAttributes } from '../../infrastructure/database/models/ProducerModel';
+import { Producer, ProducerDocumentType } from '../../domain/producer/Producer';
 
 describe('ProducerMapper', () => {
   const uniqueId = new UniqueEntityId('123');

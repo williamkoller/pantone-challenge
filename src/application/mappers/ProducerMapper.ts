@@ -42,7 +42,6 @@ export class ProducerMapper extends Mapper<Producer, ProducerAttributes>() {
       documentType: domain.documentType,
       createdAt: domain.createdAt,
       updatedAt: domain.updatedAt,
-      farms: domain.farms.map(FarmMapper.toDTO),
     };
   }
 
