@@ -1,5 +1,5 @@
 import { FarmMapper } from './FarmMapper';
-import { Farm } from '../../domain/Farm';
+import { Farm } from '../../domain/farm/Farm';
 import { UniqueEntityId } from '../../shared/domain/UniqueEntityId';
 import { FarmAttributes } from '../../infrastructure/database/models/FarmModel';
 
@@ -58,6 +58,7 @@ describe('FarmMapper', () => {
     expect(dto).toEqual({
       id: uniqueId.toString(),
       producerId: farmProps.producerId,
+      producer: null,
       name: farmProps.name,
       arableArea: farmProps.arableArea,
       state: farmProps.state,

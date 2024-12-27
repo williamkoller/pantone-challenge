@@ -1,9 +1,5 @@
 import { Farm } from '../../domain/farm/Farm';
-import { Producer } from '../../domain/producer/Producer';
-import {
-  FarmAttributes,
-  FarmModel,
-} from '../../infrastructure/database/models/FarmModel';
+import { FarmAttributes } from '../../infrastructure/database/models/FarmModel';
 import { UniqueEntityId } from '../../shared/domain/UniqueEntityId';
 import { Mapper } from '../../shared/types/Mapper';
 import { ProducerMapper } from './ProducerMapper';
@@ -31,6 +27,8 @@ export class FarmMapper extends Mapper<Farm, FarmAttributes>() {
         state: raw.state,
         totalArea: raw.totalArea,
         vegetationArea: raw.vegetationArea,
+        createdAt: raw.createdAt,
+        updatedAt: raw.updatedAt,
       },
       new UniqueEntityId(raw.id),
     );
@@ -41,6 +39,20 @@ export class FarmMapper extends Mapper<Farm, FarmAttributes>() {
       id: domain.id.toString(),
       producerId: domain.producerId.toString(),
       producer: domain.producer ? ProducerMapper.toFarm(domain.producer) : null,
+      name: domain.name,
+      state: domain.state,
+      arableArea: Number(domain.arableArea),
+      vegetationArea: Number(domain.vegetationArea),
+      totalArea: Number(domain.totalArea),
+      createdAt: domain.createdAt,
+      updatedAt: domain.updatedAt,
+    };
+  }
+
+  static toProducer(domain: Farm) {
+    return {
+      id: domain.id.toString(),
+      producerId: domain.producerId.toString(),
       name: domain.name,
       arableArea: domain.arableArea,
       state: domain.state,
