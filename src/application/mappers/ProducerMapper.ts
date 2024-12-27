@@ -55,4 +55,16 @@ export class ProducerMapper extends Mapper<Producer, ProducerAttributes>() {
       updatedAt: domain.updatedAt,
     };
   }
+
+  static toFarmsDTO(domain: Producer) {
+    return {
+      id: domain.id.toString(),
+      name: domain.name,
+      document: domain.document.formatted,
+      documentType: domain.documentType,
+      farms: domain.farms ? domain.farms.map(FarmMapper.toProducer) : [],
+      createdAt: domain.createdAt,
+      updatedAt: domain.updatedAt,
+    };
+  }
 }

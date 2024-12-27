@@ -12,6 +12,6 @@ export class GetProducersUseCase implements IGetProducersUseCase {
 
   async execute(): Promise<Output[]> {
     const producers = await this.producerRepository.findAll();
-    return producers.map((producer) => ProducerMapper.toDTO(producer));
+    return producers.map((producer) => ProducerMapper.toFarmsDTO(producer));
   }
 }

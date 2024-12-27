@@ -1,5 +1,8 @@
 import { Farm } from '../../domain/farm/Farm';
+import { Producer, ProducerDocumentType } from '../../domain/producer/Producer';
 import { FarmAttributes } from '../../infrastructure/database/models/FarmModel';
+import { CNPJ } from '../../shared/domain/CNPJ';
+import { CPF } from '../../shared/domain/CPF';
 import { UniqueEntityId } from '../../shared/domain/UniqueEntityId';
 import { Mapper } from '../../shared/types/Mapper';
 import { ProducerMapper } from './ProducerMapper';

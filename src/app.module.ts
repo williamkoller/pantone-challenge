@@ -5,7 +5,7 @@ import {
   RequestMethod,
 } from '@nestjs/common';
 import { GlobalModule } from './shared/global.module';
-import { LoggerMiddleware } from './shared/middleware/LoggerMiddleware';
+import { LoggerMiddleware } from './shared/middleware/logger.middleware';
 import { HealthCheckModule } from './presentation/modules/health-check/health-check.module';
 import { DomainEvents } from './shared/domain/events/DomainEvents';
 import { EventEmitterModule } from '@nestjs/event-emitter';

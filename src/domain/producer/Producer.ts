@@ -4,7 +4,6 @@ import { CPF } from '../../shared/domain/CPF';
 import { DomainValidationException } from '../../shared/domain/DomainValidationException';
 import { UniqueEntityId } from '../../shared/domain/UniqueEntityId';
 import { Guard, IGuardArgument } from '../../shared/guards/Guard';
-import { Result } from '../../shared/types/Result';
 import { ProducerCreatedEvent } from '../events/producer/ProducerCreatedEvent';
 import { Farm } from '../farm/Farm';
 
