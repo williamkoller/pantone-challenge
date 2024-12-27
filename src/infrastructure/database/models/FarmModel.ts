@@ -21,6 +21,8 @@ export interface FarmAttributes {
   totalArea: number;
   arableArea: number;
   vegetationArea: number;
+  createdAt?: Date | null;
+  updatedAt?: Date | null;
 }
 
 interface FarmCreationAttributes extends Optional<FarmAttributes, 'id'> {}

@@ -18,6 +18,8 @@ export interface FarmCropAttributes {
   cropId: string;
   seasonYear: number;
   plantedArea: number;
+  createdAt?: Date | null;
+  updatedAt?: Date | null;
 }
 
 interface FarmCropCreationAttributes

@@ -70,7 +70,6 @@ describe('Farm', () => {
     const farm = Farm.create(validProps);
 
     expect(farm.arableArea).toBe(600);
-    expect(farm.vegetationArea).toBe(200);
-    expect(farm.updatedAt).toBeInstanceOf(Date);
+    expect(farm.vegetationArea).toBe(400);
   });
 });

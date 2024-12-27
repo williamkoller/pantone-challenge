@@ -2,6 +2,7 @@ import { AggregateRoot } from '../../shared/domain/AggregateRoot';
 import { DomainValidationException } from '../../shared/domain/DomainValidationException';
 import { UniqueEntityId } from '../../shared/domain/UniqueEntityId';
 import { Guard, IGuardArgument } from '../../shared/guards/Guard';
+import { FarmCreatedEvent } from '../events/Farm/FarmCreatedEvent';
 import { Producer } from '../producer/Producer';
 import { FarmAreaValidationService } from '../services/farm/FarmAreaValidationService';
 
@@ -83,7 +84,13 @@ export class Farm extends AggregateRoot<FarmProps> {
       props.totalArea,
     );
 
-    return new Farm(props, id);
+    const isNewFarm = !!id === false;
+
+    const farm = new Farm(props, id);
+
+    if (isNewFarm) farm.addDomainEvent(new FarmCreatedEvent(farm));
+
+    return farm;
   }
 
   public static calculateTotalArea(
@@ -94,5 +101,24 @@ export class Farm extends AggregateRoot<FarmProps> {
       arableArea,
       vegetationArea,
     );
+  }
+
+  public updateFarm(props: Partial<FarmProps>): Farm {
+    if (props.name) this.props.name = props.name;
+    if (props.state) this.props.state = props.state;
+    if (props.totalArea) this.props.totalArea = props.totalArea;
+    if (props.arableArea) this.props.arableArea = props.arableArea;
+    if (props.vegetationArea) this.props.vegetationArea = props.vegetationArea;
+    if (props.producerId) this.props.producerId = props.producerId;
+    this.props.createdAt;
+    this.props.updatedAt = new Date();
+
+    FarmAreaValidationService.validate(
+      this.props.arableArea,
+      this.props.vegetationArea,
+      this.props.totalArea,
+    );
+
+    return this;
   }
 }
