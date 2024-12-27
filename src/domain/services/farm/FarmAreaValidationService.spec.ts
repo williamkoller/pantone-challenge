@@ -1,5 +1,5 @@
-import { FarmAreaValidationService } from './FarmAreaValidationService'; 
-import { DomainValidationException } from '../../shared/domain/DomainValidationException';
+import { DomainValidationException } from '../../../shared/domain/DomainValidationException';
+import { FarmAreaValidationService } from './FarmAreaValidationService';
 
 describe('FarmAreaValidationService', () => {
   it('should throw a DomainValidationException if arableArea or vegetationArea is negative', () => {
@@ -25,7 +25,7 @@ describe('FarmAreaValidationService', () => {
       FarmAreaValidationService.validate(arableArea, vegetationArea, totalArea),
     ).toThrow(
       new DomainValidationException(
-        `The sum of the arable area (${arableArea}) and vegetation area (${vegetationArea}) cannot exceed the total area (${totalArea}).`,
+        `The sum of the arable area (${arableArea}) and vegetation area (${vegetationArea}) cannot exceed the total area (${totalArea}). The total used area is ${arableArea + vegetationArea}.`,
       ),
     );
   });
