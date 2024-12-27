@@ -78,7 +78,7 @@ export class Farm extends AggregateRoot<FarmProps> {
     if (guardResult.isFailure)
       throw new DomainValidationException(guardResult.getErrorValue());
 
-    FarmAreaValidationService.validate(
+    FarmAreaValidationService.validateTotalUsedArea(
       props.arableArea,
       props.vegetationArea,
       props.totalArea,
@@ -93,16 +93,6 @@ export class Farm extends AggregateRoot<FarmProps> {
     return farm;
   }
 
-  public static calculateTotalArea(
-    arableArea: number,
-    vegetationArea: number,
-  ): number {
-    return FarmAreaValidationService.calculateTotalUsedArea(
-      arableArea,
-      vegetationArea,
-    );
-  }
-
   public updateFarm(props: Partial<FarmProps>): Farm {
     if (props.name) this.props.name = props.name;
     if (props.state) this.props.state = props.state;
@@ -110,15 +100,20 @@ export class Farm extends AggregateRoot<FarmProps> {
     if (props.arableArea) this.props.arableArea = props.arableArea;
     if (props.vegetationArea) this.props.vegetationArea = props.vegetationArea;
     if (props.producerId) this.props.producerId = props.producerId;
+    if (props.producer) this.props.producer = props.producer;
     this.props.createdAt;
     this.props.updatedAt = new Date();
 
-    FarmAreaValidationService.validate(
+    FarmAreaValidationService.validateTotalUsedArea(
       this.props.arableArea,
       this.props.vegetationArea,
       this.props.totalArea,
     );
 
     return this;
+  }
+
+  public static toHectares(areaInSquareMeters: number): number {
+    return areaInSquareMeters / 10000;
   }
 }

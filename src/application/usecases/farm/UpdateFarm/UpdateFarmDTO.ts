@@ -34,6 +34,11 @@ export class UpdateFarmBodyDTO {
   @IsOptional()
   @IsNumber()
   vegetationArea: number;
+
+  @ApiProperty({ example: 100 })
+  @IsOptional()
+  @IsNumber()
+  totalArea: number;
 }
 
 export class UpdateFarmParamsDTO {

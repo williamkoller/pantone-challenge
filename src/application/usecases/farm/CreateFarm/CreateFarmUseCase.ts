@@ -34,16 +34,23 @@ export class CreateFarmUseCase implements ICreateFarmUseCase {
 
       if (farmExists) throw new FarmConflictException();
 
+      const arableAreaInHectares = Farm.toHectares(input.arableArea);
+      const vegetationAreaInHectares = Farm.toHectares(input.vegetationArea);
+      const totalAreaInHectares = Farm.toHectares(input.totalArea);
+
+      console.log({
+        arableAreaInHectares,
+        vegetationAreaInHectares,
+        totalAreaInHectares,
+      });
+
       const farm = Farm.create({
         producerId: producer.id.toString(),
         name: input.name,
         state: input.state,
-        arableArea: input.arableArea,
-        vegetationArea: input.vegetationArea,
-        totalArea: Farm.calculateTotalArea(
-          input.arableArea,
-          input.vegetationArea,
-        ),
+        arableArea: arableAreaInHectares,
+        vegetationArea: vegetationAreaInHectares,
+        totalArea: totalAreaInHectares,
       });
 
       const farmSaved = await this.farmRepository.save(farm);

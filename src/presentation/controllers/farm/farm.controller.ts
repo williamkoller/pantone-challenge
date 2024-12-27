@@ -46,6 +46,7 @@ export class FarmController {
       state: body.state,
       arableArea: body.arableArea,
       vegetationArea: body.vegetationArea,
+      totalArea: body.totalArea,
     });
   }
 
@@ -68,6 +69,7 @@ export class FarmController {
       state: body.state,
       arableArea: body.arableArea,
       vegetationArea: body.vegetationArea,
+      totalArea: body.totalArea,
     });
   }
 }

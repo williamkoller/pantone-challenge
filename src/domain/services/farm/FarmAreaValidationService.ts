@@ -8,30 +8,15 @@ export class FarmAreaValidationService {
    * @param vegetationArea - Vegetation area.
    * @param totalArea - Total area of the farm.
    */
-  public static validate(
+  public static validateTotalUsedArea(
     arableArea: number,
     vegetationArea: number,
     totalArea: number,
   ): void {
-    if (arableArea < 0 || vegetationArea < 0) {
+    if (arableArea < 0 || vegetationArea < 0 || totalArea < 0) {
       throw new DomainValidationException(
-        'The arable and vegetation areas must be positive values.',
+        'The arable, vegetation and totalArea must be positive values.',
       );
     }
-
-    const totalUsedArea = arableArea + vegetationArea;
-
-    if (totalUsedArea > totalArea) {
-      throw new DomainValidationException(
-        `The sum of the arable area (${arableArea}) and vegetation area (${vegetationArea}) cannot exceed the total area (${totalArea}). The total used area is ${totalUsedArea}.`,
-      );
-    }
-  }
-
-  public static calculateTotalUsedArea(
-    arableArea: number,
-    vegetationArea: number,
-  ): number {
-    return arableArea + vegetationArea;
   }
 }

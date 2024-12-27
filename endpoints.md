@@ -37,7 +37,8 @@
     "id": "73249cc7-3e98-4452-9b73-045f13821261",
     "name": "Inovações Tecnológicas Ltda",
     "document": "47.381.479/0001-17",
-    "documentType": "CNPJ"
+    "documentType": "CNPJ",
+    "farms": []
   }
 ]
 ```
@@ -99,7 +100,13 @@
 ```json
 {
   "id": "ee7e1ed0-6b59-4222-97e8-13d3ba8ba721",
-  "producerId": "a717c485-cd82-4da0-ac6a-b3d7b2553867",
+  "producerId": "73249cc7-3e98-4452-9b73-045f13821261",
+  "producer": {
+    "id": "73249cc7-3e98-4452-9b73-045f13821261",
+    "name": "Inovações Tecnológicas Ltda",
+    "document": "47.381.479/0001-17",
+    "documentType": "CNPJ"
+  },
   "name": "Sítio Vida MG 2",
   "state": "MG",
   "arableArea": 400,
