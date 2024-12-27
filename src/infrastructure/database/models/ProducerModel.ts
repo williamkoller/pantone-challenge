@@ -18,6 +18,8 @@ export interface ProducerAttributes {
   document: string;
   documentType: ProducerDocumentType;
   farms?: FarmAttributes[];
+  createdAt?: Date | null;
+  updatedAt?: Date | null;
 }
 
 interface ProducerCreationAttributes

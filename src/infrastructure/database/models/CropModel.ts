@@ -12,6 +12,8 @@ import {
 export interface CropAttributes {
   id: string;
   name: string;
+  createdAt?: Date | null;
+  updatedAt?: Date | null;
 }
 
 interface CropCreationAttributes extends Optional<CropAttributes, 'id'> {}

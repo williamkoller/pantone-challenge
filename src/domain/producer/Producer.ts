@@ -4,6 +4,8 @@ import { CPF } from '../../shared/domain/CPF';
 import { DomainValidationException } from '../../shared/domain/DomainValidationException';
 import { UniqueEntityId } from '../../shared/domain/UniqueEntityId';
 import { Guard, IGuardArgument } from '../../shared/guards/Guard';
+import { Result } from '../../shared/types/Result';
+import { ProducerCreatedEvent } from '../events/producer/ProducerCreatedEvent';
 import { Farm } from '../farm/Farm';
 
 export enum ProducerDocumentType {
@@ -73,7 +75,14 @@ export class Producer extends AggregateRoot<ProducerProps> {
       throw new DomainValidationException('Invalid document type');
     }
 
-    return new Producer(props, id);
+    const isNewPruducer = !!id === false;
+
+    const producer = new Producer(props, id);
+
+    if (isNewPruducer)
+      producer.addDomainEvent(new ProducerCreatedEvent(producer));
+
+    return producer;
   }
 
   public toUpdate(props: Partial<ProducerProps>): Producer {
