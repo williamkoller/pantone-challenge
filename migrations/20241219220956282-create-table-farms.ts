@@ -16,6 +16,7 @@ export const up: Migration = async ({ context: queryInterface }) => {
         key: 'id',
       },
       onDelete: 'CASCADE',
+      onUpdate: 'CASCADE',
     },
     name: {
       type: DataTypes.STRING,
@@ -28,6 +29,7 @@ export const up: Migration = async ({ context: queryInterface }) => {
     state: {
       type: DataTypes.STRING,
       allowNull: true,
+      unique: false,
     },
     total_area: {
       type: DataTypes.DECIMAL,
@@ -48,8 +50,6 @@ export const up: Migration = async ({ context: queryInterface }) => {
       defaultValue: DataTypes.NOW,
     },
   });
-
-  await queryInterface.addIndex('farms', ['producer_id']);
 };
 
 export const down: Migration = async ({ context: queryInterface }) => {

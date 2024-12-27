@@ -48,9 +48,7 @@ export const up: Migration = async ({ context: queryInterface }) => {
     },
   });
 
-  await queryInterface.addIndex('farms_crops', ['farm_id', 'crop_id'], {
-    unique: true,
-  });
+  await queryInterface.addIndex('farms_crops', ['farm_id', 'crop_id']);
 };
 
 export const down: Migration = async ({ context: queryInterface }) => {

@@ -16,6 +16,7 @@ export const up: Migration = async ({ context: queryInterface }) => {
         key: 'id',
       },
       onDelete: 'CASCADE',
+      onUpdate: 'CASCADE',
     },
     crop_type: {
       type: DataTypes.STRING,
@@ -37,7 +38,6 @@ export const up: Migration = async ({ context: queryInterface }) => {
     },
   });
 
-  await queryInterface.addIndex('crops', ['farm_id']);
 };
 
 export const down: Migration = async ({ context: queryInterface }) => {
