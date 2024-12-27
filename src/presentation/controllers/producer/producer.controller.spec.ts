@@ -2,7 +2,6 @@ import { Test, TestingModule } from '@nestjs/testing';
 import { ProducerController } from './producer.controller';
 import { ICreateProducerUseCase } from '../../../application/usecases/producer/CreateProducer/ICreateProducerUseCase';
 import { IGetProducersUseCase } from '../../../application/usecases/producer/GetProducers/IGetProducersUseCase';
-import { ProducerDocumentType } from '../../../domain/Producer';
 import { CreateProducerBodyDTO } from '../../../application/usecases/producer/CreateProducer/CreateProducerDTO';
 import {
   UpdateProducerBodyDTO,
@@ -11,6 +10,7 @@ import {
 import { IUpdateProducerUseCase } from '../../../application/usecases/producer/UpdateProducer/IUpdateProducerUseCase';
 import { DeleteProducerParamsDTO } from '../../../application/usecases/producer/DeleteProducer/DeleteProducerDTO';
 import { IDeleteProducerUseCase } from '../../../application/usecases/producer/DeleteProducer/IDeleteProducerUseCase';
+import { ProducerDocumentType } from '../../../domain/producer/Producer';
 
 describe(ProducerController.name, () => {
   let producerController: ProducerController;
