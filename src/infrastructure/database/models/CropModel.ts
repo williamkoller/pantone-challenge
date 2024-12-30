@@ -3,15 +3,19 @@ import {
   AllowNull,
   Column,
   DataType,
+  ForeignKey,
   Model,
   PrimaryKey,
   Table,
   Unique,
 } from 'sequelize-typescript';
+import { FarmModel } from './FarmModel';
 
 export interface CropAttributes {
   id: string;
-  name: string;
+  farmId: string;
+  cropType: string;
+  year: number;
   createdAt?: Date | null;
   updatedAt?: Date | null;
 }
@@ -27,8 +31,17 @@ export class CropModel extends Model<CropAttributes, CropCreationAttributes> {
   id: string;
 
   @AllowNull(false)
+  @ForeignKey(() => FarmModel)
+  @Column(DataType.UUID)
+  farmId: string;
+
+  @AllowNull(false)
   @Column(DataType.STRING)
-  name: string;
+  cropType: string;
+
+  @AllowNull(false)
+  @Column(DataType.INTEGER)
+  year: number;
 
   @Column(DataType.DATE)
   createdAt: Date;

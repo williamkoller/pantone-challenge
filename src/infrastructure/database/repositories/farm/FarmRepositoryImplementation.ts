@@ -1,10 +1,10 @@
 import { Injectable } from '@nestjs/common';
-import { FarmRepository } from '../../../../application/interfaces/farm/FarmRepository';
-import { Farm } from '../../../../domain/farm/Farm';
-import { FarmMapper } from '../../../../application/mappers/FarmMapper';
+import { FarmRepository } from '@app/application/interfaces/farm/FarmRepository';
+import { Farm } from '@app/domain/farm/Farm';
+import { FarmMapper } from '@app/application/mappers/farm/FarmMapper';
 import { InjectModel } from '@nestjs/sequelize';
-import { FarmModel } from '../../models/FarmModel';
-import { ProducerModel } from '../../models/ProducerModel';
+import { FarmModel } from '@app/infrastructure/database/models/FarmModel';
+import { ProducerModel } from '@app/infrastructure/database/models/ProducerModel';
 
 @Injectable()
 export class FarmRepositoryImplementation implements FarmRepository {
