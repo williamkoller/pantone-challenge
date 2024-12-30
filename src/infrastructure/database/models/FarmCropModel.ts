@@ -25,7 +25,7 @@ export interface FarmCropAttributes {
 interface FarmCropCreationAttributes
   extends Optional<FarmCropAttributes, 'id'> {}
 
-@Table({ tableName: 'farm_crops', timestamps: true, underscored: true })
+@Table({ tableName: 'farms_crops', timestamps: true, underscored: true })
 export class FarmCropModel extends Model<
   FarmCropAttributes,
   FarmCropCreationAttributes
