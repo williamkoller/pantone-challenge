@@ -2,7 +2,7 @@ import { cnpj } from 'cpf-cnpj-validator';
 import { DomainValidationException } from '@app/shared/domain/domain-validation-exception';
 import { ValueObject } from '@app/shared/domain/value-object';
 import { Guard } from '@app/shared/guards/guard';
-import { CommonUtils } from '@app/shared/utils/common-utils';
+import { CommonValidation } from '@app/shared/validation/common-validation';
 
 interface CNPJProps {
   number: string;
@@ -32,7 +32,7 @@ export class CNPJ extends ValueObject<CNPJProps> {
       throw new DomainValidationException(nullGuard.getErrorValue());
 
     const rawCNPJ = CNPJ.removeFormat(number);
-    const isValid = CommonUtils.isValidCNPJ(rawCNPJ);
+    const isValid = CommonValidation.isValidCNPJ(rawCNPJ);
     return new CNPJ({ number, isValid });
   }
 }

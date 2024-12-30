@@ -2,7 +2,7 @@ import { cpf } from 'cpf-cnpj-validator';
 import { ValueObject } from './value-object';
 import { Guard } from '../guards/guard';
 import { DomainValidationException } from './domain-validation-exception';
-import { CommonUtils } from '../utils/common-utils';
+import { CommonValidation } from '../validation/common-validation';
 
 export type CPFProps = {
   number: string;
@@ -28,7 +28,7 @@ export class CPF extends ValueObject<CPFProps> {
       throw new DomainValidationException(nullGuard.getErrorValue());
 
     const rawCPF = props.number.replace(/[^\d]+/g, '');
-    if (!CommonUtils.isValidCPF(rawCPF)) {
+    if (!CommonValidation.isValidCPF(rawCPF)) {
       throw new DomainValidationException(`CPF ${rawCPF} is not valid.`);
     }
     return new CPF(props);

@@ -2,7 +2,7 @@ import validator from 'validator';
 import { cnpj, cpf } from 'cpf-cnpj-validator';
 import { BadRequestException } from '@nestjs/common';
 
-export class CommonUtils {
+export class CommonValidation {
   public static validateWebURL(url: string): boolean {
     return validator.isURL(url);
   }

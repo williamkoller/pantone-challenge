@@ -1,6 +1,6 @@
 import { CPF, CPFProps } from './cpf';
 import { DomainValidationException } from './domain-validation-exception';
-import { CommonUtils } from '../utils/CommonUtils';
+import { CommonUtils } from '../validation/CommonUtils';
 
 jest.mock('../utils/CommonUtils', () => ({
   CommonUtils: {
