@@ -10,17 +10,17 @@ import {
   Post,
   Put,
 } from '@nestjs/common';
-import { ICreateProducerUseCase } from '../../../application/usecases/producer/CreateProducer/ICreateProducerUseCase';
+import { ICreateProducerUseCase } from '@app/application/usecases/producer/create-producer/icreate-producer-usecase';
 import { ApiTags } from '@nestjs/swagger';
-import { IGetProducersUseCase } from '../../../application/usecases/producer/GetProducers/IGetProducersUseCase';
-import { IUpdateProducerUseCase } from '../../../application/usecases/producer/UpdateProducer/IUpdateProducerUseCase';
+import { IGetProducersUseCase } from '@app/application/usecases/producer/get-producers/iget-producers-usecase';
+import { IUpdateProducerUseCase } from '@app/application/usecases/producer/update-producer/iupdate-producer-usecase';
 import {
   UpdateProducerBodyDTO,
   UpdateProducerParamsDTO,
-} from '../../../application/usecases/producer/UpdateProducer/UpdateProducerDTO';
-import { CreateProducerBodyDTO } from '../../../application/usecases/producer/CreateProducer/CreateProducerDTO';
-import { IDeleteProducerUseCase } from '../../../application/usecases/producer/DeleteProducer/IDeleteProducerUseCase';
-import { DeleteProducerParamsDTO } from '../../../application/usecases/producer/DeleteProducer/DeleteProducerDTO';
+} from '@app/application/usecases/producer/update-producer/update-producer-dto';
+import { CreateProducerBodyDTO } from '@app/application/usecases/producer/create-producer/create-producer-dto';
+import { IDeleteProducerUseCase } from '@app/application/usecases/producer/delete-producer/idelete-producer-usecase';
+import { DeleteProducerParamsDTO } from '@app/application/usecases/producer/delete-producer/delete-producer-dto';
 
 @ApiTags('producers')
 @Controller('producers')

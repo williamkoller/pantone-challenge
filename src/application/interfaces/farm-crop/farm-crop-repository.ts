@@ -1,4 +1,4 @@
-import { FarmCrop } from '@app/domain/farm-crop/FarmCrop';
+import { FarmCrop } from '@app/domain/farm-crop/farm-crop';
 
 export interface FarmCropRepository {
   save(farmCrop: FarmCrop): Promise<FarmCrop>;

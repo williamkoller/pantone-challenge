@@ -1,4 +1,4 @@
-import { Crop } from '../../../domain/crop/Crop';
+import { Crop } from '@app/domain/crop/crop';
 
 export interface CropRepository {
   save(crop: Crop): Promise<Crop>;

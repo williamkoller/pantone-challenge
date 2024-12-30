@@ -9,13 +9,13 @@ import {
   Input,
   Output,
 } from './icreate-farm-crop-usecase';
-import { FarmRepository } from '@app/application/interfaces/farm/FarmRepository';
+import { FarmRepository } from '@app/application/interfaces/farm/farm-repository';
 import { CropRepository } from '@app/application/interfaces/crop/crop-repository';
 import { FarmCropRepository } from '@app/application/interfaces/farm-crop/farm-crop-repository';
-import { FarmNotFoundException } from '@app/application/exceptions/farm/FarmNotFoundException';
+import { FarmNotFoundException } from '@app/application/exceptions/farm/farm-not-found-exception';
 import { CropNotFoundException } from '@app/application/exceptions/crop/crop-not-found-exception';
 import { FarmCropConflictException } from '@app/application/exceptions/farm-crop/farm-crop-conflict-exception';
-import { FarmCrop } from '@app/application/../domain/farm-crop/FarmCrop';
+import { FarmCrop } from '@app/application/../domain/farm-crop/farm-crop';
 import { FarmCropMapper } from '@app/application/mappers/farm-crop/farm-crop-mapper';
 
 @Injectable()

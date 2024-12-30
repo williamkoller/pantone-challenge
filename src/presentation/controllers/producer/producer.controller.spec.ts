@@ -1,15 +1,15 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { ProducerController } from './producer.controller';
-import { ICreateProducerUseCase } from '../../../application/usecases/producer/CreateProducer/ICreateProducerUseCase';
-import { IGetProducersUseCase } from '../../../application/usecases/producer/GetProducers/IGetProducersUseCase';
-import { CreateProducerBodyDTO } from '../../../application/usecases/producer/CreateProducer/CreateProducerDTO';
+import { ICreateProducerUseCase } from '../../../application/usecases/producer/create-producer/ICreateProducerUseCase';
+import { IGetProducersUseCase } from '../../../application/usecases/producer/get-producers/IGetProducersUseCase';
+import { CreateProducerBodyDTO } from '../../../application/usecases/producer/create-producer/CreateProducerDTO';
 import {
   UpdateProducerBodyDTO,
   UpdateProducerParamsDTO,
-} from '../../../application/usecases/producer/UpdateProducer/UpdateProducerDTO';
-import { IUpdateProducerUseCase } from '../../../application/usecases/producer/UpdateProducer/IUpdateProducerUseCase';
-import { DeleteProducerParamsDTO } from '../../../application/usecases/producer/DeleteProducer/DeleteProducerDTO';
-import { IDeleteProducerUseCase } from '../../../application/usecases/producer/DeleteProducer/IDeleteProducerUseCase';
+} from '../../../application/usecases/producer/update-producer/UpdateProducerDTO';
+import { IUpdateProducerUseCase } from '../../../application/usecases/producer/update-producer/IUpdateProducerUseCase';
+import { DeleteProducerParamsDTO } from '../../../application/usecases/producer/delete-producer/DeleteProducerDTO';
+import { IDeleteProducerUseCase } from '../../../application/usecases/producer/delete-producer/IDeleteProducerUseCase';
 import { ProducerDocumentType } from '../../../domain/producer/Producer';
 
 describe(ProducerController.name, () => {

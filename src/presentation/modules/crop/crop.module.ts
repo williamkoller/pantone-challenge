@@ -1,11 +1,11 @@
 import { Module } from '@nestjs/common';
 import { SequelizeModule } from '@nestjs/sequelize';
-import { CropModel } from '@app/infrastructure/database/models/CropModel';
+import { CropModel } from '@app/infrastructure/database/models/crop-model';
 import { CropRepositoryImplementation } from '@app/infrastructure/database/repositories/crop/crop-repository-implementation';
 import { CropRepository } from '@app/application/interfaces/crop/crop-repository';
 import { ICreateCropUseCase } from '@app/application/usecases/crop/create-crop/icreate-crop-usecase';
 import { CreateCropUseCase } from '@app/application/usecases/crop/create-crop/create-crop-usecase';
-import { CropController } from '../../controllers/crop/crop.controller';
+import { CropController } from '@app/presentation/controllers/crop/crop.controller';
 import { FarmModule } from '../farm/farm.module';
 
 @Module({

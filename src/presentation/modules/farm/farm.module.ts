@@ -1,18 +1,18 @@
 import { Module } from '@nestjs/common';
 import { SequelizeModule } from '@nestjs/sequelize';
-import { FarmRepository } from '../../../application/interfaces/farm/FarmRepository';
-import { CreateFarmUseCase } from '../../../application/usecases/farm/CreateFarm/CreateFarmUseCase';
-import { ICreateFarmUseCase } from '../../../application/usecases/farm/CreateFarm/ICreateFarmUseCase';
-import { FarmModel } from '../../../infrastructure/database/models/FarmModel';
-import { FarmRepositoryImplementation } from '../../../infrastructure/database/repositories/farm/FarmRepositoryImplementation';
+import { FarmRepository } from '@app/application/interfaces/farm/farm-repository';
+import { CreateFarmUseCase } from '@app/application/usecases/farm/create-farm/create-farm-usecase';
+import { ICreateFarmUseCase } from '@app/application/usecases/farm/create-farm/icreate-farm-usecase';
+import { FarmModel } from '@app/infrastructure/database/models/farm-model';
+import { FarmRepositoryImplementation } from '@app/infrastructure/database/repositories/farm/farm-repository-implementation';
 import { FarmController } from '../../controllers/farm/farm.controller';
 import { ProducerModule } from '../producer/producer.module';
-import { IGetFarmsUseCase } from '../../../application/usecases/farm/GetFarms/IGetFarmsUseCase';
-import { GetFarmsUseCase } from '../../../application/usecases/farm/GetFarms/GetFarmsUseCase';
-import { FarmCropModel } from '../../../infrastructure/database/models/FarmCropModel';
-import { CropModel } from '../../../infrastructure/database/models/CropModel';
-import { IUpdateFarmUseCase } from '../../../application/usecases/farm/UpdateFarm/IUpdateFarmUseCase';
-import { UpdateFarmUseCase } from '../../../application/usecases/farm/UpdateFarm/UpdateFarmUseCase';
+import { IGetFarmsUseCase } from '@app/application/usecases/farm/get-farms/iget-farms-usecase';
+import { GetFarmsUseCase } from '@app/application/usecases/farm/get-farms/get-farms-usecase';
+import { FarmCropModel } from '@app/infrastructure/database/models/farm-crop-model';
+import { CropModel } from '@app/infrastructure/database/models/crop-model';
+import { IUpdateFarmUseCase } from '@app/application/usecases/farm/update-farm/iupdate-farm-usecase';
+import { UpdateFarmUseCase } from '@app/application/usecases/farm/update-farm/update-farm-usecase';
 
 @Module({
   imports: [

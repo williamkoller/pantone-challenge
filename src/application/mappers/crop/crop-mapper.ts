@@ -1,7 +1,7 @@
-import { Crop } from '../../../domain/crop/Crop';
-import { CropAttributes } from '../../../infrastructure/database/models/CropModel';
-import { UniqueEntityId } from '../../../shared/domain/UniqueEntityId';
-import { Mapper } from '../../../shared/types/Mapper';
+import { Crop } from '@app/domain/crop/crop';
+import { CropAttributes } from '@app/infrastructure/database/models/crop-model';
+import { UniqueEntityId } from '@app/shared/domain/UniqueEntityId';
+import { Mapper } from '@app/shared/types/Mapper';
 
 export class CropMapper extends Mapper<Crop, CropAttributes>() {
   static toPersistence(domain: Crop): CropAttributes {

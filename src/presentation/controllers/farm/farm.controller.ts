@@ -10,17 +10,17 @@ import {
   Put,
 } from '@nestjs/common';
 import { ApiTags } from '@nestjs/swagger';
-import { ICreateFarmUseCase } from '../../../application/usecases/farm/CreateFarm/ICreateFarmUseCase';
+import { ICreateFarmUseCase } from '@app/application/usecases/farm/create-farm/icreate-farm-usecase';
 import {
   CreateFarmBodyDTO,
   CreateFarmParamsDTO,
-} from '../../../application/usecases/farm/CreateFarm/CreateFarmDTO';
-import { IGetFarmsUseCase } from '../../../application/usecases/farm/GetFarms/IGetFarmsUseCase';
-import { IUpdateFarmUseCase } from '../../../application/usecases/farm/UpdateFarm/IUpdateFarmUseCase';
+} from '@app/application/usecases/farm/create-farm/create-farm-dto';
+import { IGetFarmsUseCase } from '@app/application/usecases/farm/get-farms/iget-farms-usecase';
+import { IUpdateFarmUseCase } from '@app/application/usecases/farm/update-farm/iupdate-farm-usecase';
 import {
   UpdateFarmBodyDTO,
   UpdateFarmParamsDTO,
-} from '../../../application/usecases/farm/UpdateFarm/UpdateFarmDTO';
+} from '@app/application/usecases/farm/update-farm/update-farm-dto';
 
 @ApiTags('farms')
 @Controller('farms')

@@ -5,13 +5,13 @@ import {
   Logger,
 } from '@nestjs/common';
 import { Transactional } from 'sequelize-transactional-decorator';
-import { Crop } from '@app/domain/crop/Crop';
+import { Crop } from '@app/domain/crop/crop';
 import { CropConflictException } from '@app/application/exceptions/crop/crop-conflict-exception';
 import { ICreateCropUseCase, Input, Output } from './icreate-crop-usecase';
 import { CropMapper } from '@app/application/mappers/crop/crop-mapper';
 import { CropRepository } from '@app/application/interfaces/crop/crop-repository';
-import { FarmRepository } from '@app/application/interfaces/farm/FarmRepository';
-import { FarmNotFoundException } from '@app/application/exceptions/farm/FarmNotFoundException';
+import { FarmRepository } from '@app/application/interfaces/farm/farm-repository';
+import { FarmNotFoundException } from '@app/application/exceptions/farm/farm-not-found-exception';
 
 @Injectable()
 export class CreateCropUseCase implements ICreateCropUseCase {

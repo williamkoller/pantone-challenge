@@ -1,17 +1,17 @@
 import { Module } from '@nestjs/common';
 import { SequelizeModule } from '@nestjs/sequelize';
-import { CreateProducerUseCase } from '../../../application/usecases/producer/CreateProducer/CreateProducerUseCase';
-import { ICreateProducerUseCase } from '../../../application/usecases/producer/CreateProducer/ICreateProducerUseCase';
-import { ProducerModel } from '../../../infrastructure/database/models/ProducerModel';
+import { CreateProducerUseCase } from '@app/application/usecases/producer/create-producer/create-producer-usecase';
+import { ICreateProducerUseCase } from '@app/application/usecases/producer/create-producer/icreate-producer-usecase';
+import { ProducerModel } from '@app/infrastructure/database/models/producer-model';
 import { ProducerController } from '../../controllers/producer/producer.controller';
-import { ProducerRepositoryImplementation } from '../../../infrastructure/database/repositories/producer/ProducerRepositoryImplementation';
-import { IGetProducersUseCase } from '../../../application/usecases/producer/GetProducers/IGetProducersUseCase';
-import { GetProducersUseCase } from '../../../application/usecases/producer/GetProducers/GetProducersUseCase';
-import { IUpdateProducerUseCase } from '../../../application/usecases/producer/UpdateProducer/IUpdateProducerUseCase';
-import { UpdateProducerUseCase } from '../../../application/usecases/producer/UpdateProducer/UpdateProducerUseCase';
-import { IDeleteProducerUseCase } from '../../../application/usecases/producer/DeleteProducer/IDeleteProducerUseCase';
-import { DeleteProducerUseCase } from '../../../application/usecases/producer/DeleteProducer/DeleteProducerUseCase';
-import { ProducerRepository } from '../../../application/interfaces/producer/ProducerRepository';
+import { ProducerRepositoryImplementation } from '@app/infrastructure/database/repositories/producer/producer-repository-implementation';
+import { IGetProducersUseCase } from '@app/application/usecases/producer/get-producers/iget-producers-usecase';
+import { GetProducersUseCase } from '@app/application/usecases/producer/get-producers/get-producers-usecase';
+import { IUpdateProducerUseCase } from '@app/application/usecases/producer/update-producer/iupdate-producer-usecase';
+import { UpdateProducerUseCase } from '@app/application/usecases/producer/update-producer/update-producer-usecase';
+import { IDeleteProducerUseCase } from '@app/application/usecases/producer/delete-producer/idelete-producer-usecase';
+import { DeleteProducerUseCase } from '@app/application/usecases/producer/delete-producer/delete-producer-usecase';
+import { ProducerRepository } from '@app/application/interfaces/producer/producer-repository';
 
 @Module({
   imports: [SequelizeModule.forFeature([ProducerModel])],

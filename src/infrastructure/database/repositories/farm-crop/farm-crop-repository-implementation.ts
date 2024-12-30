@@ -1,8 +1,8 @@
 import { Injectable } from '@nestjs/common';
 import { FarmCropRepository } from '@app/application/interfaces/farm-crop/farm-crop-repository';
 import { InjectModel } from '@nestjs/sequelize';
-import { FarmCropModel } from '@app/infrastructure/database/models/FarmCropModel';
-import { FarmCrop } from '@app/domain/farm-crop/FarmCrop';
+import { FarmCropModel } from '@app/infrastructure/database/models/farm-crop-model';
+import { FarmCrop } from '@app/domain/farm-crop/farm-crop';
 import { FarmCropMapper } from '@app/application/mappers/farm-crop/farm-crop-mapper';
 
 @Injectable()

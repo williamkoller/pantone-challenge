@@ -1,5 +1,5 @@
-import { FarmCrop } from '@app/domain/farm-crop/FarmCrop';
-import { FarmCropAttributes } from '@app/infrastructure/database/models/FarmCropModel';
+import { FarmCrop } from '@app/domain/farm-crop/farm-crop';
+import { FarmCropAttributes } from '@app/infrastructure/database/models/farm-crop-model';
 import { UniqueEntityId } from '@app/shared/domain/UniqueEntityId';
 import { Mapper } from '@app/shared/types/Mapper';
 

@@ -1,8 +1,8 @@
 import { Injectable } from '@nestjs/common';
 import { CropRepository } from '../../../../application/interfaces/crop/crop-repository';
 import { InjectModel } from '@nestjs/sequelize';
-import { Crop } from '../../../../domain/crop/Crop';
-import { CropModel } from '../../models/CropModel';
+import { Crop } from '../../../../domain/crop/crop';
+import { CropModel } from '../../models/crop-model';
 import { CropMapper } from '../../../../application/mappers/crop/crop-mapper';
 
 @Injectable()

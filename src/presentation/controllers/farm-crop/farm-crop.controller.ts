@@ -7,8 +7,8 @@ import {
   Post,
 } from '@nestjs/common';
 import { ApiTags } from '@nestjs/swagger';
-import { ICreateFarmCropUseCase } from '../../../application/usecases/farm-crop/create-farm-crop/icreate-farm-crop-usecase';
-import { CreateFarmCropBodyDTO } from '../../../application/usecases/farm-crop/create-farm-crop/create-farm-crop-dto';
+import { ICreateFarmCropUseCase } from '@app/application/usecases/farm-crop/create-farm-crop/icreate-farm-crop-usecase';
+import { CreateFarmCropBodyDTO } from '@app/application/usecases/farm-crop/create-farm-crop/create-farm-crop-dto';
 
 @ApiTags('farm-crops')
 @Controller('farm-crops')
