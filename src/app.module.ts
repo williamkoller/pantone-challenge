@@ -11,6 +11,8 @@ import { DomainEvents } from './shared/domain/events/DomainEvents';
 import { EventEmitterModule } from '@nestjs/event-emitter';
 import { ProducerModule } from './presentation/modules/producer/producer.module';
 import { FarmModule } from './presentation/modules/farm/farm.module';
+import { CropModule } from './presentation/modules/crop/crop.module';
+import { FarmCropModule } from './presentation/modules/farm-crop/farm-crop.module';
 
 @Module({
   imports: [
@@ -19,6 +21,8 @@ import { FarmModule } from './presentation/modules/farm/farm.module';
     HealthCheckModule,
     ProducerModule,
     FarmModule,
+    CropModule,
+    FarmCropModule,
   ],
   controllers: [],
   providers: [DomainEvents],

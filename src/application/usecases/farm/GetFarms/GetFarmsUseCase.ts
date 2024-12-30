@@ -1,7 +1,7 @@
 import { Inject, Injectable } from '@nestjs/common';
 import { IGetFarmsUseCase, Output } from './IGetFarmsUseCase';
-import { FarmRepository } from '../../../interfaces/farm/FarmRepository';
-import { FarmMapper } from '../../../mappers/FarmMapper';
+import { FarmRepository } from '@app/application/interfaces/farm/FarmRepository';
+import { FarmMapper } from '@app/application/mappers/farm/FarmMapper';
 
 @Injectable()
 export class GetFarmsUseCase implements IGetFarmsUseCase {

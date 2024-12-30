@@ -1,12 +1,12 @@
 import { BadRequestException, Inject, Injectable } from '@nestjs/common';
 import { Input, IUpdateFarmUseCase, Output } from './IUpdateFarmUseCase';
-import { FarmRepository } from '../../../interfaces/farm/FarmRepository';
-import { FarmNotFoundException } from '../../../exceptions/farm/FarmNotFoundException';
-import { FarmMapper } from '../../../mappers/FarmMapper';
-import { Farm } from '../../../../domain/farm/Farm';
-import { ProducerRepository } from '../../../interfaces/producer/ProducerRepository';
-import { ProducerNotFoundException } from '../../../exceptions/producer/ProducerNotFoundException';
-import { Producer } from '../../../../domain/producer/Producer';
+import { FarmRepository } from '@app/application/interfaces/farm/FarmRepository';
+import { FarmNotFoundException } from '@app/application/exceptions/farm/FarmNotFoundException';
+import { FarmMapper } from '@app/application/mappers/farm/FarmMapper';
+import { Farm } from '@app/domain/farm/Farm';
+import { ProducerRepository } from '@app/application/interfaces/producer/ProducerRepository';
+import { ProducerNotFoundException } from '@app/application/exceptions/producer/ProducerNotFoundException';
+import { Producer } from '@app/domain/producer/Producer';
 
 @Injectable()
 export class UpdateFarmUseCase implements IUpdateFarmUseCase {

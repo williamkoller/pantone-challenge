@@ -1,10 +1,9 @@
 import { InjectModel } from '@nestjs/sequelize';
-import { ProducerModel } from '../../models/ProducerModel';
-import { ProducerMapper } from '../../../../application/mappers/ProducerMapper';
+import { ProducerModel } from '@app/infrastructure/database/models/ProducerModel';
+import { ProducerMapper } from '@app/application/mappers/producer/ProducerMapper';
 import { Injectable } from '@nestjs/common';
-import { ProducerRepository } from '../../../../application/interfaces/producer/ProducerRepository';
-import { Producer } from '../../../../domain/producer/Producer';
-import { FarmModel } from '../../models/FarmModel';
+import { ProducerRepository } from '@app/application/interfaces/producer/ProducerRepository';
+import { Producer } from '@app/domain/producer/Producer';
 
 @Injectable()
 export class ProducerRepositoryImplementation implements ProducerRepository {

@@ -1,7 +1,7 @@
 import { Inject, Injectable } from '@nestjs/common';
 import { IGetProducersUseCase, Output } from './IGetProducersUseCase';
-import { ProducerRepository } from '../../../interfaces/producer/ProducerRepository';
-import { ProducerMapper } from '../../../mappers/ProducerMapper';
+import { ProducerRepository } from '@app/application/interfaces/producer/ProducerRepository';
+import { ProducerMapper } from '@app/application/mappers/producer/ProducerMapper';
 
 @Injectable()
 export class GetProducersUseCase implements IGetProducersUseCase {

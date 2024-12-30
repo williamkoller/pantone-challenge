@@ -1,6 +1,6 @@
-import { ProducerDocumentType } from '../../../../domain/producer/Producer';
-import { UseCase } from '../../../../shared/types/UseCase';
-import { ProducerMapper } from '../../../mappers/ProducerMapper';
+import { ProducerDocumentType } from '@app/domain/producer/Producer';
+import { UseCase } from '@app/shared/types/UseCase';
+import { ProducerMapper } from '@app/application/mappers/producer/ProducerMapper';
 
 export type Input = {
   name: string;

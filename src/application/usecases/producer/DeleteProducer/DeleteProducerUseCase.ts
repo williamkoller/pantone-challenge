@@ -5,8 +5,8 @@ import {
   Logger,
 } from '@nestjs/common';
 import { IDeleteProducerUseCase, Input } from './IDeleteProducerUseCase';
-import { ProducerRepository } from '../../../interfaces/producer/ProducerRepository';
-import { ProducerNotFoundException } from '../../../exceptions/producer/ProducerNotFoundException';
+import { ProducerRepository } from '@app/application/interfaces/producer/ProducerRepository';
+import { ProducerNotFoundException } from '@app/application/exceptions/producer/ProducerNotFoundException';
 import { Transactional } from 'sequelize-transactional-decorator';
 
 @Injectable()

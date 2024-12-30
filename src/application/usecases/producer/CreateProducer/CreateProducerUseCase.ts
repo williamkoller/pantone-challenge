@@ -9,16 +9,13 @@ import {
   Input,
   Output,
 } from './ICreateProducerUseCase';
-import { CPF } from '../../../../shared/domain/CPF';
-import { CNPJ } from '../../../../shared/domain/CNPJ';
-import { ProducerMapper } from '../../../mappers/ProducerMapper';
-import { ProducerConflictException } from '../../../exceptions/producer/ProducerAlreadyExistsException';
+import { CPF } from '@app/shared/domain/CPF';
+import { CNPJ } from '@app/shared/domain/CNPJ';
+import { ProducerMapper } from '@app/application/mappers/producer/ProducerMapper';
+import { ProducerConflictException } from '@app/application/exceptions/producer/ProducerAlreadyExistsException';
 import { Transactional } from 'sequelize-transactional-decorator';
-import { ProducerRepository } from '../../../interfaces/producer/ProducerRepository';
-import {
-  Producer,
-  ProducerDocumentType,
-} from '../../../../domain/producer/Producer';
+import { ProducerRepository } from '@app/application/interfaces/producer/ProducerRepository';
+import { Producer, ProducerDocumentType } from '@app/domain/producer/Producer';
 
 @Injectable()
 export class CreateProducerUseCase implements ICreateProducerUseCase {

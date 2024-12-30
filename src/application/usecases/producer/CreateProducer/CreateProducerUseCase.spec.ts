@@ -3,7 +3,7 @@ import { CreateProducerUseCase } from './CreateProducerUseCase';
 import { ProducerConflictException } from '../../../exceptions/producer/ProducerAlreadyExistsException';
 import { BadRequestException } from '@nestjs/common';
 import { CPF } from '../../../../shared/domain/CPF';
-import { ProducerMapper } from '../../../mappers/ProducerMapper';
+import { ProducerMapper } from '@app/application/mappers/producer/ProducerMapper';
 import { UniqueEntityId } from '../../../../shared/domain/UniqueEntityId';
 import { ProducerRepository } from '../../../interfaces/producer/ProducerRepository';
 import {

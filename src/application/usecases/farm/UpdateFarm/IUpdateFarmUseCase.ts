@@ -1,5 +1,5 @@
-import { UseCase } from '../../../../shared/types/UseCase';
-import { FarmMapper } from '../../../mappers/FarmMapper';
+import { UseCase } from '@app/shared/types/UseCase';
+import { FarmMapper } from '@app/application/mappers/farm/FarmMapper';
 
 export type Input = {
   farmId: string;

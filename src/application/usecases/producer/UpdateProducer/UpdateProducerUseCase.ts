@@ -9,13 +9,13 @@ import {
   IUpdateProducerUseCase,
   Output,
 } from './IUpdateProducerUseCase';
-import { ProducerRepository } from '../../../interfaces/producer/ProducerRepository';
-import { ProducerDocumentType } from '../../../../domain/producer/Producer';
+import { ProducerRepository } from '@app/application/interfaces/producer/ProducerRepository';
+import { ProducerDocumentType } from '@app/domain/producer/Producer';
 import { Transactional } from 'sequelize-transactional-decorator';
-import { ProducerNotFoundException } from '../../../exceptions/producer/ProducerNotFoundException';
-import { CPF } from '../../../../shared/domain/CPF';
-import { CNPJ } from '../../../../shared/domain/CNPJ';
-import { ProducerMapper } from '../../../mappers/ProducerMapper';
+import { ProducerNotFoundException } from '@app/application/exceptions/producer/ProducerNotFoundException';
+import { CPF } from '@app/shared/domain/CPF';
+import { CNPJ } from '@app/shared/domain/CNPJ';
+import { ProducerMapper } from '@app/application/mappers/producer/ProducerMapper';
 
 @Injectable()
 export class UpdateProducerUseCase implements IUpdateProducerUseCase {

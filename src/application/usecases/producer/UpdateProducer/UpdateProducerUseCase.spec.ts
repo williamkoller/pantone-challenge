@@ -8,7 +8,7 @@ import { CNPJ } from '../../../../shared/domain/CNPJ';
 import { CPF } from '../../../../shared/domain/CPF';
 import { ProducerNotFoundException } from '../../../exceptions/producer/ProducerNotFoundException';
 import { ProducerRepository } from '../../../interfaces/producer/ProducerRepository';
-import { ProducerMapper } from '../../../mappers/ProducerMapper';
+import { ProducerMapper } from '@app/application/mappers/producer/ProducerMapper';
 import { UpdateProducerUseCase } from './UpdateProducerUseCase';
 import { UniqueEntityId } from '../../../../shared/domain/UniqueEntityId';
 
