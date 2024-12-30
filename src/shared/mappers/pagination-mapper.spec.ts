@@ -1,5 +1,5 @@
-import { PaginatedResult } from '../types/PaginatedResult';
-import { PaginationMapper } from './PaginationMapper';
+import { PaginatedResult } from '../types/paginated-result';
+import { PaginationMapper } from './pagination-mapper';
 
 describe(PaginationMapper.name, () => {
   describe(PaginationMapper.getOffset.name, () => {

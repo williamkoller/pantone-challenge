@@ -1,5 +1,5 @@
-import { Entity } from './Entity';
-import { UniqueEntityId } from './UniqueEntityId';
+import { Entity } from './entity';
+import { UniqueEntityId } from './unique-entity-id';
 
 class TestEntity extends Entity<{ name: string }> {
   constructor(props: { name: string }, id?: UniqueEntityId) {
@@ -15,13 +15,13 @@ describe('Entity', () => {
 
   beforeEach(() => {
     entity1 = new TestEntity({ name: 'Entity 1' }, new UniqueEntityId('1'));
-    entity2 = new TestEntity({ name: 'Entity 2' }, new UniqueEntityId()); 
-    entity3 = new TestEntity({ name: 'Entity 1' }, new UniqueEntityId('1')); 
+    entity2 = new TestEntity({ name: 'Entity 2' }, new UniqueEntityId());
+    entity3 = new TestEntity({ name: 'Entity 1' }, new UniqueEntityId('1'));
     entity4 = new TestEntity({ name: 'Entity 4' }, new UniqueEntityId());
   });
 
   it('should return true for equal entities with the same ID', () => {
-    expect(entity1.equals(entity3)).toBe(true); 
+    expect(entity1.equals(entity3)).toBe(true);
   });
 
   it('should return false for different entities with different IDs', () => {

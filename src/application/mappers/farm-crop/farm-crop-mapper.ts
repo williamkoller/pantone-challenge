@@ -1,7 +1,7 @@
 import { FarmCrop } from '@app/domain/farm-crop/farm-crop';
 import { FarmCropAttributes } from '@app/infrastructure/database/models/farm-crop-model';
-import { UniqueEntityId } from '@app/shared/domain/UniqueEntityId';
-import { Mapper } from '@app/shared/types/Mapper';
+import { UniqueEntityId } from '@app/shared/domain/unique-entity-id';
+import { Mapper } from '@app/shared/types/mapper';
 
 export class FarmCropMapper extends Mapper<FarmCrop, FarmCropAttributes>() {
   static toPersistence(domain: FarmCrop): FarmCropAttributes {

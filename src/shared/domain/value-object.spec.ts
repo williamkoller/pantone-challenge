@@ -1,4 +1,4 @@
-import { ValueObject } from './ValueObject';
+import { ValueObject } from './value-object';
 class ConcreteValueObject extends ValueObject<{ name: string; age: number }> {
   constructor(props: { name: string; age: number }) {
     super(props);

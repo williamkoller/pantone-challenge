@@ -1,4 +1,4 @@
-import { UseCase } from '@app/shared/types/UseCase';
+import { UseCase } from '@app/shared/types/usecase';
 import { FarmCropMapper } from '@app/application/mappers/farm-crop/farm-crop-mapper';
 
 export interface Input {
@@ -10,6 +10,6 @@ export interface Input {
 
 export type Output = ReturnType<typeof FarmCropMapper.toDTO>;
 
-export interface ICreateFarmCropUseCase extends UseCase<Input, Output> { }
+export interface ICreateFarmCropUseCase extends UseCase<Input, Output> {}
 
 export const ICreateFarmCropUseCase = Symbol('ICreateFarmCropUseCase');

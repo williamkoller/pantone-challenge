@@ -1,4 +1,4 @@
-import { DomainValidationException } from './DomainValidationException';
+import { DomainValidationException } from './domain-validation-exception';
 import { HttpStatus } from '@nestjs/common';
 
 describe('DomainValidationException', () => {

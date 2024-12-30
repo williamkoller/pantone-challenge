@@ -1,4 +1,4 @@
-import { UseCase } from '@app/shared/types/UseCase';
+import { UseCase } from '@app/shared/types/usecase';
 import { FarmMapper } from '@app/application/mappers/farm/farm-mapper';
 
 export type Input = {

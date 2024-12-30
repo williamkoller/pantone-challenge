@@ -1,4 +1,4 @@
-import { UseCase } from '@app/shared/types/UseCase';
+import { UseCase } from '@app/shared/types/usecase';
 
 export type Input = {
   producerId: string;

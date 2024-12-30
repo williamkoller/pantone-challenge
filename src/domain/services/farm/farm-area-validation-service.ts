@@ -1,4 +1,4 @@
-import { DomainValidationException } from '@app/shared/domain/DomainValidationException';
+import { DomainValidationException } from '@app/shared/domain/domain-validation-exception';
 
 export class FarmAreaValidationService {
   /**

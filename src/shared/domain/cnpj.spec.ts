@@ -1,6 +1,6 @@
 import { CommonUtils } from '@app/shared/utils/CommonUtils';
-import { CNPJ } from './CNPJ';
-import { DomainValidationException } from './DomainValidationException';
+import { CNPJ } from './cnpj';
+import { DomainValidationException } from './domain-validation-exception';
 
 describe('CNPJ', () => {
   describe('formatted method', () => {

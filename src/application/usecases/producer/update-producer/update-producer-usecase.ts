@@ -13,8 +13,8 @@ import { ProducerRepository } from '@app/application/interfaces/producer/produce
 import { ProducerDocumentType } from '@app/domain/producer/producer';
 import { Transactional } from 'sequelize-transactional-decorator';
 import { ProducerNotFoundException } from '@app/application/exceptions/producer/producer-not-found-exception';
-import { CPF } from '@app/shared/domain/CPF';
-import { CNPJ } from '@app/shared/domain/CNPJ';
+import { CPF } from '@app/shared/domain/cpf';
+import { CNPJ } from '@app/shared/domain/cnpj';
 import { ProducerMapper } from '@app/application/mappers/producer/producer-mapper';
 
 @Injectable()

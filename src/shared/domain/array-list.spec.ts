@@ -1,4 +1,4 @@
-import { ArrayList } from './ArrayList';
+import { ArrayList } from './array-list';
 
 class NumberArrayList extends ArrayList<number> {
   compareItems(a: number, b: number): boolean {

@@ -1,9 +1,9 @@
-import { AggregateRoot } from '@app/shared/domain/AggregateRoot';
-import { CNPJ } from '@app/shared/domain/CNPJ';
-import { CPF } from '@app/shared/domain/CPF';
-import { DomainValidationException } from '@app/shared/domain/DomainValidationException';
-import { UniqueEntityId } from '@app/shared/domain/UniqueEntityId';
-import { Guard, IGuardArgument } from '@app/shared/guards/Guard';
+import { CNPJ } from '@app/shared/domain/cnpj';
+import { CPF } from '@app/shared/domain/cpf';
+import { AggregateRoot } from '@app/shared/domain/aggregate-root';
+import { DomainValidationException } from '@app/shared/domain/domain-validation-exception';
+import { UniqueEntityId } from '@app/shared/domain/unique-entity-id';
+import { Guard, IGuardArgument } from '@app/shared/guards/guard';
 import { ProducerCreatedEvent } from '../events/producer/producer-created-event';
 import { Farm } from '../farm/farm';
 

@@ -1,8 +1,8 @@
-import { Mapper } from '@app/shared/types/Mapper';
 import { Farm } from '@app/domain/farm/farm';
 import { FarmAttributes } from '@app/infrastructure/database/models/farm-model';
 import { ProducerMapper } from '@app/application/mappers/producer/producer-mapper';
-import { UniqueEntityId } from '@app/shared/domain/UniqueEntityId';
+import { UniqueEntityId } from '@app/shared/domain/unique-entity-id';
+import { Mapper } from '@app/shared/types/mapper';
 
 export class FarmMapper extends Mapper<Farm, FarmAttributes>() {
   static toPersistence(domain: Farm): FarmAttributes {

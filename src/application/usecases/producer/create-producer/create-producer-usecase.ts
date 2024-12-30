@@ -9,8 +9,8 @@ import {
   Input,
   Output,
 } from './icreate-producer-usecase';
-import { CPF } from '@app/shared/domain/CPF';
-import { CNPJ } from '@app/shared/domain/CNPJ';
+import { CPF } from '@app/shared/domain/cpf';
+import { CNPJ } from '@app/shared/domain/cnpj';
 import { ProducerMapper } from '@app/application/mappers/producer/producer-mapper';
 import { ProducerConflictException } from '@app/application/exceptions/producer/producer-conflict-exception';
 import { Transactional } from 'sequelize-transactional-decorator';

@@ -1,4 +1,4 @@
-import { PaginatedResult } from '../types/PaginatedResult';
+import { PaginatedResult } from '../types/paginated-result';
 
 export class PaginationMapper {
   static getOffset({ page, limit }: { page: number; limit: number }) {

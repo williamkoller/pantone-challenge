@@ -1,8 +1,8 @@
 import { cnpj } from 'cpf-cnpj-validator';
-import { DomainValidationException } from '@app/shared/domain/DomainValidationException';
-import { ValueObject } from '@app/shared/domain/ValueObject';
-import { Guard } from '@app/shared/guards/Guard';
-import { CommonUtils } from '@app/shared/utils/CommonUtils';
+import { DomainValidationException } from '@app/shared/domain/domain-validation-exception';
+import { ValueObject } from '@app/shared/domain/value-object';
+import { Guard } from '@app/shared/guards/guard';
+import { CommonUtils } from '@app/shared/utils/common-utils';
 
 interface CNPJProps {
   number: string;

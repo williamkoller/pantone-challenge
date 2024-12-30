@@ -1,8 +1,8 @@
 import { cpf } from 'cpf-cnpj-validator';
-import { ValueObject } from './ValueObject';
-import { Guard } from '../guards/Guard';
-import { DomainValidationException } from './DomainValidationException';
-import { CommonUtils } from '../utils/CommonUtils';
+import { ValueObject } from './value-object';
+import { Guard } from '../guards/guard';
+import { DomainValidationException } from './domain-validation-exception';
+import { CommonUtils } from '../utils/common-utils';
 
 export type CPFProps = {
   number: string;

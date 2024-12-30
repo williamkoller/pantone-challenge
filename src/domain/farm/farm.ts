@@ -1,7 +1,7 @@
-import { AggregateRoot } from '@app/shared/domain/AggregateRoot';
-import { DomainValidationException } from '@app/shared/domain/DomainValidationException';
-import { UniqueEntityId } from '@app/shared/domain/UniqueEntityId';
-import { Guard, IGuardArgument } from '@app/shared/guards/Guard';
+import { AggregateRoot } from '@app/shared/domain/aggregate-root';
+import { DomainValidationException } from '@app/shared/domain/domain-validation-exception';
+import { UniqueEntityId } from '@app/shared/domain/unique-entity-id';
+import { Guard, IGuardArgument } from '@app/shared/guards/guard';
 import { FarmCreatedEvent } from '../events/farm/farm-created-event';
 import { Producer } from '../producer/producer';
 import { FarmAreaValidationService } from '../services/farm/farm-area-validation-service';

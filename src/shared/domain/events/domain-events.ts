@@ -1,8 +1,8 @@
 import { Injectable } from '@nestjs/common';
 import { EventEmitter2 } from '@nestjs/event-emitter';
-import { AggregateRoot } from '../AggregateRoot';
-import { UniqueEntityId } from '../UniqueEntityId';
-import { IDomainEvent } from './DomainEvents.interface';
+import { AggregateRoot } from '../aggregate-root';
+import { UniqueEntityId } from '../unique-entity-id';
+import { IDomainEvent } from './idomain-events';
 
 @Injectable()
 export class DomainEvents {

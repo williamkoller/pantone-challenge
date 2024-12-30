@@ -1,5 +1,5 @@
-import { IDomainEvent } from '@app/shared/domain/events/DomainEvents.interface';
-import { UniqueEntityId } from '@app/shared/domain/UniqueEntityId';
+import { IDomainEvent } from '@app/shared/domain/events/idomain-events';
+import { UniqueEntityId } from '@app/shared/domain/unique-entity-id';
 import { Producer } from '../../producer/producer';
 
 export class ProducerCreatedEvent implements IDomainEvent {

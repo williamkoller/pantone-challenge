@@ -1,4 +1,4 @@
-import { UseCase } from '@app/shared/types/UseCase';
+import { UseCase } from '@app/shared/types/usecase';
 import { CropMapper } from '@app/application/mappers/crop/crop-mapper';
 
 export type Input = {

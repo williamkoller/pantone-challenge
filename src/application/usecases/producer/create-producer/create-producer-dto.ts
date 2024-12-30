@@ -1,6 +1,6 @@
 import { ApiProperty } from '@nestjs/swagger';
 import { IsEnum, IsNotEmpty, IsString } from 'class-validator';
-import { IsCPFOrCNPJ } from '@app/shared/decorators/IsCPFOrCNPJConstraint';
+import { IsCPFOrCNPJ } from '@app/shared/decorators/is-cpf-or-cnpj-constraint';
 import { ProducerDocumentType } from '@app/domain/producer/producer';
 
 export class CreateProducerBodyDTO {

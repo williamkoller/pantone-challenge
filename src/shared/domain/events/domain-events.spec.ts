@@ -1,8 +1,8 @@
-import { DomainEvents } from './DomainEvents';
-import { AggregateRoot } from '../AggregateRoot';
+import { DomainEvents } from './domain-events';
+import { AggregateRoot } from '../aggregate-root';
 import { UniqueEntityId } from '../UniqueEntityId';
 import { EventEmitter2 } from '@nestjs/event-emitter';
-import { IDomainEvent } from './DomainEvents.interface';
+import { IDomainEvent } from './idomain-events';
 
 jest.mock('@nestjs/event-emitter', () => ({
   EventEmitter2: jest.fn().mockImplementation(() => ({
@@ -11,7 +11,6 @@ jest.mock('@nestjs/event-emitter', () => ({
 }));
 
 class MockAggregate extends AggregateRoot<any> {
-
   constructor(id?: UniqueEntityId) {
     super({} as any, id);
   }

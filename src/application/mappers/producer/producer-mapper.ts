@@ -1,9 +1,9 @@
 import { Producer, ProducerDocumentType } from '@app/domain/producer/producer';
 import { ProducerAttributes } from '@app/infrastructure/database/models/producer-model';
-import { CNPJ } from '@app/shared/domain/CNPJ';
-import { CPF } from '@app/shared/domain/CPF';
-import { UniqueEntityId } from '@app/shared/domain/UniqueEntityId';
-import { Mapper } from '@app/shared/types/Mapper';
+import { CNPJ } from '@app/shared/domain/cnpj';
+import { CPF } from '@app/shared/domain/cpf';
+import { UniqueEntityId } from '@app/shared/domain/unique-entity-id';
+import { Mapper } from '@app/shared/types/mapper';
 import { FarmMapper } from '../farm/farm-mapper';
 
 export class ProducerMapper extends Mapper<Producer, ProducerAttributes>() {
