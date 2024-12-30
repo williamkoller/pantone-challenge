@@ -38,5 +38,6 @@ import { UpdateFarmUseCase } from '../../../application/usecases/farm/UpdateFarm
       useClass: UpdateFarmUseCase,
     },
   ],
+  exports: [FarmRepository],
 })
 export class FarmModule {}
