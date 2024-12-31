@@ -13,6 +13,7 @@ import { ProducerModule } from './presentation/modules/producer/producer.module'
 import { FarmModule } from './presentation/modules/farm/farm.module';
 import { CropModule } from './presentation/modules/crop/crop.module';
 import { FarmCropModule } from './presentation/modules/farm-crop/farm-crop.module';
+import { DashboardModule } from './presentation/modules/dashboard/dashboard.module';
 
 @Module({
   imports: [
@@ -23,6 +24,7 @@ import { FarmCropModule } from './presentation/modules/farm-crop/farm-crop.modul
     FarmModule,
     CropModule,
     FarmCropModule,
+    DashboardModule,
   ],
   controllers: [],
   providers: [DomainEvents],

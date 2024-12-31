@@ -1,9 +1,9 @@
 import { Injectable } from '@nestjs/common';
-import { FarmCropRepository } from '@app/application/interfaces/farm-crop/farm-crop-repository';
+import { FarmCropRepository } from '../../../../application/interfaces/farm-crop/farm-crop-repository';
+import { FarmCropModel } from '../../models/farm-crop-model';
 import { InjectModel } from '@nestjs/sequelize';
-import { FarmCropModel } from '@app/infrastructure/database/models/farm-crop-model';
-import { FarmCrop } from '@app/domain/farm-crop/farm-crop';
-import { FarmCropMapper } from '@app/application/mappers/farm-crop/farm-crop-mapper';
+import { FarmCrop } from '../../../../domain/farm-crop/farm-crop';
+import { FarmCropMapper } from '../../../../application/mappers/farm-crop/farm-crop-mapper';
 
 @Injectable()
 export class FarmCropRepositoryImplementation implements FarmCropRepository {
@@ -25,6 +25,10 @@ export class FarmCropRepositoryImplementation implements FarmCropRepository {
   ): Promise<FarmCrop | null> {
     const result = await this.farmCropModel.findOne({
       where: { farmId, seasonYear },
+      include: [
+        { association: this.farmCropModel.associations.crop },
+        { association: this.farmCropModel.associations.farm },
+      ],
     });
 
     if (!result) return null;
@@ -35,6 +39,10 @@ export class FarmCropRepositoryImplementation implements FarmCropRepository {
   async findByFarmId(farmId: string): Promise<FarmCrop[]> {
     const result = await this.farmCropModel.findAll({
       where: { farmId },
+      include: [
+        { association: this.farmCropModel.associations.crop },
+        { association: this.farmCropModel.associations.farm },
+      ],
     });
 
     return result.map(FarmCropMapper.toDomain);
@@ -43,8 +51,24 @@ export class FarmCropRepositoryImplementation implements FarmCropRepository {
   async findByCropId(cropId: string): Promise<FarmCrop[]> {
     const result = await this.farmCropModel.findAll({
       where: { cropId },
+      include: [
+        { association: this.farmCropModel.associations.crop },
+        { association: this.farmCropModel.associations.farm },
+      ],
     });
 
+    return result.map(FarmCropMapper.toDomain);
+  }
+
+  async findAll(): Promise<FarmCrop[]> {
+    const result = await this.farmCropModel.findAll({
+      include: [
+        { association: this.farmCropModel.associations.crop },
+        { association: this.farmCropModel.associations.farm },
+      ],
+    });
+
+    console.log('aquiii', JSON.stringify(result));
     return result.map(FarmCropMapper.toDomain);
   }
 }

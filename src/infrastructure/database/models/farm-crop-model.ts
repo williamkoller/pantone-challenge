@@ -1,6 +1,7 @@
 import { Association, Optional } from 'sequelize';
 import {
   AllowNull,
+  BelongsTo,
   Column,
   DataType,
   ForeignKey,
@@ -9,13 +10,15 @@ import {
   Table,
   Unique,
 } from 'sequelize-typescript';
-import { FarmModel } from './farm-model';
-import { CropModel } from './crop-model';
+import { FarmAttributes, FarmModel } from './farm-model';
+import { CropAttributes, CropModel } from './crop-model';
 
 export interface FarmCropAttributes {
   id: string;
   farmId: string;
+  farm?: FarmAttributes;
   cropId: string;
+  crop?: CropAttributes;
   seasonYear: number;
   plantedArea: number;
   createdAt?: Date | null;
@@ -25,26 +28,28 @@ export interface FarmCropAttributes {
 interface FarmCropCreationAttributes
   extends Optional<FarmCropAttributes, 'id'> {}
 
-@Table({ tableName: 'farms_crops', timestamps: true, underscored: true })
+@Table({ tableName: 'farm_crops', timestamps: true, underscored: true })
 export class FarmCropModel extends Model<
   FarmCropAttributes,
   FarmCropCreationAttributes
 > {
-  @Unique
-  @AllowNull(false)
   @PrimaryKey
   @Column(DataType.UUID)
   id: string;
 
-  @AllowNull(false)
   @ForeignKey(() => FarmModel)
   @Column(DataType.UUID)
   farmId: string;
 
-  @AllowNull(false)
   @ForeignKey(() => CropModel)
   @Column(DataType.UUID)
   cropId: string;
+
+  @BelongsTo(() => FarmModel)
+  farm: FarmModel;
+
+  @BelongsTo(() => CropModel)
+  crop: CropModel;
 
   @AllowNull(false)
   @Column(DataType.INTEGER)

@@ -47,6 +47,7 @@ export class FarmController {
       arableArea: body.arableArea,
       vegetationArea: body.vegetationArea,
       totalArea: body.totalArea,
+      landUse: body.landUse,
     });
   }
 

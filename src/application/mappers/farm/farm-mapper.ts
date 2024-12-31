@@ -14,6 +14,7 @@ export class FarmMapper extends Mapper<Farm, FarmAttributes>() {
       state: domain.state,
       totalArea: domain.totalArea,
       vegetationArea: domain.vegetationArea,
+      landUse: domain.landUse,
     };
   }
 
@@ -29,6 +30,7 @@ export class FarmMapper extends Mapper<Farm, FarmAttributes>() {
         vegetationArea: raw.vegetationArea,
         createdAt: raw.createdAt,
         updatedAt: raw.updatedAt,
+        landUse: raw.landUse,
       },
       new UniqueEntityId(raw.id),
     );
@@ -44,6 +46,7 @@ export class FarmMapper extends Mapper<Farm, FarmAttributes>() {
       arableArea: Number(domain.arableArea),
       vegetationArea: Number(domain.vegetationArea),
       totalArea: Number(domain.totalArea),
+      landUse: domain.landUse,
       createdAt: domain.createdAt,
       updatedAt: domain.updatedAt,
     };
@@ -58,6 +61,7 @@ export class FarmMapper extends Mapper<Farm, FarmAttributes>() {
       state: domain.state,
       totalArea: domain.totalArea,
       vegetationArea: domain.vegetationArea,
+      landUse: domain.landUse,
       createdAt: domain.createdAt,
       updatedAt: domain.updatedAt,
     };

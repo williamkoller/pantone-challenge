@@ -1,7 +1,7 @@
 import { DataTypes, Migration } from './umzugClient';
 
 export const up: Migration = async ({ context: queryInterface }) => {
-  await queryInterface.createTable('farms_crops', {
+  await queryInterface.createTable('farm_crops', {
     id: {
       type: DataTypes.UUID,
       primaryKey: true,
@@ -47,10 +47,8 @@ export const up: Migration = async ({ context: queryInterface }) => {
       allowNull: true,
     },
   });
-
-  await queryInterface.addIndex('farms_crops', ['farm_id', 'crop_id']);
 };
 
 export const down: Migration = async ({ context: queryInterface }) => {
-  await queryInterface.dropTable('farms_crops');
+  await queryInterface.dropTable('farm_crops');
 };

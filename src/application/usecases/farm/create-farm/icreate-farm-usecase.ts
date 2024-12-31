@@ -8,6 +8,7 @@ export type Input = {
   arableArea: number;
   vegetationArea: number;
   totalArea: number;
+  landUse: string;
 };
 
 export type Output = ReturnType<typeof FarmMapper.toDTO>;

@@ -10,6 +10,8 @@ import { Response } from 'express';
 import { initSequelizeCLS } from 'sequelize-transactional-decorator';
 import { umzug } from '../migrations/umzugClient';
 import { EventsDispatcherInterceptor } from './shared/http/interceptors/events-dispatcher.interceptor';
+import { join } from 'path';
+import * as hbs from 'hbs';
 
 async function bootstrap() {
   initSequelizeCLS();
@@ -21,6 +23,16 @@ async function bootstrap() {
     origin: '*',
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'],
     credentials: true,
+  });
+
+  const viewsDir = join(__dirname, '..', 'views');
+  console.log(`Views directory set to: ${viewsDir}`);
+
+  app.setBaseViewsDir(viewsDir);
+  app.setViewEngine('hbs');
+
+  hbs.registerHelper('json', function (context) {
+    return JSON.stringify(context);
   });
 
   app.setGlobalPrefix('api');

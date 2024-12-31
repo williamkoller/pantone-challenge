@@ -7,6 +7,8 @@ import { ICreateCropUseCase } from '@app/application/usecases/crop/create-crop/i
 import { CreateCropUseCase } from '@app/application/usecases/crop/create-crop/create-crop-usecase';
 import { CropController } from '@app/presentation/controllers/crop/crop.controller';
 import { FarmModule } from '../farm/farm.module';
+import { IGetCropsUseCase } from '@app/application/usecases/crop/get-crops/iget-crops-usecase';
+import { GetCropsUseCase } from '@app/application/usecases/crop/get-crops/get-crops-usecase';
 
 @Module({
   imports: [SequelizeModule.forFeature([CropModel]), FarmModule],
@@ -18,6 +20,10 @@ import { FarmModule } from '../farm/farm.module';
     {
       provide: ICreateCropUseCase,
       useClass: CreateCropUseCase,
+    },
+    {
+      provide: IGetCropsUseCase,
+      useClass: GetCropsUseCase,
     },
   ],
   controllers: [CropController],

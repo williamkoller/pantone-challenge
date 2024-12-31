@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Farm Dashboard</title>
+  <link rel="stylesheet" href="/styles.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <h1>Farm Dashboard</h1>
+  <div class="dashboard">
+    <div class="card">
+      <h2>Total Farms</h2>
+      <p>{{data.totalFarms}}</p>
+    </div>
+    <div class="card">
+      <h2>Total Hectares</h2>
+      <p>{{data.totalHectares}}</p>
+    </div>
+    <div class="card">
+      <h2>Farms By State</h2>
+      <canvas id="farmsByStateChart"></canvas>
+    </div>
+    <div class="card">
+      <h2>Farms By Crop</h2>
+      <canvas id="farmsByCropChart"></canvas>
+    </div>
+    <div class="card">
+      <h2>Farms By Land Use</h2>
+      <canvas id="farmsByLandUseChart"></canvas>
+    </div>
+  </div>
+
+  <script>
+    // Log data to console for debugging
+    console.log('Data:', {{{json data}}});
+
+    // Data for Farms By State Chart
+    const farmsByStateData = {{{json data.farmsByState}}};
+    const states = farmsByStateData.map(state => state.state);
+    const stateCounts = farmsByStateData.map(state => state.count);
+
+    console.log('Farms By State Data:', states, stateCounts);
+
+    if (states.length > 0 && stateCounts.length > 0) {
+      new Chart(document.getElementById('farmsByStateChart'), {
+        type: 'pie',
+        data: {
+          labels: states,
+          datasets: [{
+            label: 'Farms By State',
+            data: stateCounts,
+            backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0', '#9966FF']
+          }]
+        }
+      });
+    }
+
+    // Data for Farms By Crop Chart
+    const farmsByCropData = {{{json data.farmsByCrop}}};
+    const crops = Object.keys(farmsByCropData);
+    const cropCounts = Object.values(farmsByCropData);
+
+    console.log('Farms By Crop Data:', crops, cropCounts);
+
+    if (crops.length > 0 && cropCounts.length > 0) {
+      new Chart(document.getElementById('farmsByCropChart'), {
+        type: 'pie',
+        data: {
+          labels: crops,
+          datasets: [{
+            label: 'Farms By Crop',
+            data: cropCounts,
+            backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0', '#9966FF']
+          }]
+        }
+      });
+    }
+
+    // Data for Farms By Land Use Chart
+    const farmsByLandUseData = {{{json data.farmsByLandUse}}};
+    const landUses = farmsByLandUseData.map(landUse => landUse.landUse);
+    const arableAreas = farmsByLandUseData.map(landUse => landUse.totalArableArea);
+    const vegetationAreas = farmsByLandUseData.map(landUse => landUse.totalVegetationArea);
+
+    console.log('Farms By Land Use Data:', landUses, arableAreas, vegetationAreas);
+
+    if (landUses.length > 0 && arableAreas.length > 0 && vegetationAreas.length > 0) {
+      new Chart(document.getElementById('farmsByLandUseChart'), {
+        type: 'pie',
+        data: {
+          labels: landUses,
+          datasets: [{
+            label: 'Arable Area',
+            data: arableAreas,
+            backgroundColor: '#FF6384'
+          }, {
+            label: 'Vegetation Area',
+            data: vegetationAreas,
+            backgroundColor: '#36A2EB'
+          }]
+        }
+      });
+    }
+  </script>
+</body>
+</html>

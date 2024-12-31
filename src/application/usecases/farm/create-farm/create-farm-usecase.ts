@@ -38,12 +38,6 @@ export class CreateFarmUseCase implements ICreateFarmUseCase {
       const vegetationAreaInHectares = Farm.toHectares(input.vegetationArea);
       const totalAreaInHectares = Farm.toHectares(input.totalArea);
 
-      console.log({
-        arableAreaInHectares,
-        vegetationAreaInHectares,
-        totalAreaInHectares,
-      });
-
       const farm = Farm.create({
         producerId: producer.id.toString(),
         name: input.name,
@@ -51,6 +45,7 @@ export class CreateFarmUseCase implements ICreateFarmUseCase {
         arableArea: arableAreaInHectares,
         vegetationArea: vegetationAreaInHectares,
         totalArea: totalAreaInHectares,
+        landUse: input.landUse,
       });
 
       const farmSaved = await this.farmRepository.save(farm);

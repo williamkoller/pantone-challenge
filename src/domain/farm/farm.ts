@@ -14,6 +14,7 @@ export type FarmProps = {
   totalArea: number;
   arableArea: number;
   vegetationArea: number;
+  landUse: string;
   createdAt?: Date | null;
   updatedAt?: Date | null;
 };
@@ -61,6 +62,10 @@ export class Farm extends AggregateRoot<FarmProps> {
 
   get producer(): Producer | null {
     return this.props.producer || null;
+  }
+
+  get landUse(): string {
+    return this.props.landUse;
   }
 
   public static create(props: FarmProps, id?: UniqueEntityId): Farm {

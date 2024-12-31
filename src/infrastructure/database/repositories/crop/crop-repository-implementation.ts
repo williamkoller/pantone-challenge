@@ -1,9 +1,9 @@
 import { Injectable } from '@nestjs/common';
-import { CropRepository } from '../../../../application/interfaces/crop/crop-repository';
+import { CropRepository } from '@app/application/interfaces/crop/crop-repository';
 import { InjectModel } from '@nestjs/sequelize';
-import { Crop } from '../../../../domain/crop/crop';
+import { Crop } from '@app/domain/crop/crop';
 import { CropModel } from '../../models/crop-model';
-import { CropMapper } from '../../../../application/mappers/crop/crop-mapper';
+import { CropMapper } from '@app/application/mappers/crop/crop-mapper';
 
 @Injectable()
 export class CropRepositoryImplementation implements CropRepository {
@@ -42,7 +42,9 @@ export class CropRepositoryImplementation implements CropRepository {
   }
 
   async findAll(): Promise<Crop[]> {
-    const crops = await this.cropModel.findAll();
+    const crops = await this.cropModel.findAll({
+      include: [{ all: true }],
+    });
 
     return crops.map(CropMapper.toDomain);
   }

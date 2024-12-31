@@ -42,6 +42,11 @@ export class CreateFarmBodyDTO {
   @IsNotEmpty()
   @IsNumber()
   totalArea: number;
+
+  @ApiProperty({ example: 'Agricultura' })
+  @IsNotEmpty()
+  @IsString()
+  landUse: string;
 }
 
 export class CreateFarmParamsDTO {

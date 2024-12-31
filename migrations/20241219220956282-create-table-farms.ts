@@ -39,6 +39,10 @@ export const up: Migration = async ({ context: queryInterface }) => {
       type: DataTypes.DECIMAL,
       allowNull: true,
     },
+    land_use: {
+      type: DataTypes.STRING,
+      allowNull: true,
+    },
     created_at: {
       type: DataTypes.DATE,
       allowNull: false,

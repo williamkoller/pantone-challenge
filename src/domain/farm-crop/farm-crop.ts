@@ -2,10 +2,14 @@ import { AggregateRoot } from '@app/shared/domain/aggregate-root';
 import { DomainValidationException } from '@app/shared/domain/domain-validation-exception';
 import { UniqueEntityId } from '@app/shared/domain/unique-entity-id';
 import { Guard, IGuardArgument } from '@app/shared/guards/guard';
+import { Farm } from '../farm/farm';
+import { Crop } from '../crop/crop';
 
 export type FarmCropProps = {
   farmId: string;
+  farm?: Farm | null;
   cropId: string;
+  crop?: Crop | null;
   seasonYear: number;
   plantedArea: number;
   createdAt?: Date | null;
@@ -21,8 +25,16 @@ export class FarmCrop extends AggregateRoot<FarmCropProps> {
     return this.props.farmId;
   }
 
+  get farm(): Farm | null {
+    return this.props.farm || null;
+  }
+
   get cropId(): string {
     return this.props.cropId;
+  }
+
+  get crop(): Crop | null {
+    return this.props.crop || null;
   }
 
   get seasonYear(): number {

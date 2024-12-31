@@ -2,9 +2,11 @@ import { AggregateRoot } from '@app/shared/domain/aggregate-root';
 import { DomainValidationException } from '@app/shared/domain/domain-validation-exception';
 import { UniqueEntityId } from '@app/shared/domain/unique-entity-id';
 import { Guard, IGuardArgument } from '@app/shared/guards/guard';
+import { Farm } from '../farm/farm';
 
 export type CropProps = {
   farmId: string;
+  farm?: Farm;
   cropType: string;
   year: number;
   createdAt?: Date | null;
@@ -34,6 +36,10 @@ export class Crop extends AggregateRoot<CropProps> {
 
   get updatedAt(): Date | null {
     return this.props.updatedAt;
+  }
+
+  get farm(): Farm | undefined {
+    return this.props.farm!;
   }
 
   public static create(props: CropProps, id?: UniqueEntityId): Crop {

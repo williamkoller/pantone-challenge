@@ -8,6 +8,7 @@ export interface FarmCropRepository {
   ): Promise<FarmCrop | null>;
   findByFarmId(farmId: string): Promise<FarmCrop[]>;
   findByCropId(cropId: string): Promise<FarmCrop[]>;
+  findAll(): Promise<FarmCrop[]>;
 }
 
 export const FarmCropRepository = Symbol('FarmCropRepository');
