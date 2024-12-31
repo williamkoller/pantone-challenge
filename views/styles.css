@@ -20,13 +20,11 @@ body {
   margin: 20px;
   padding: 20px;
   width: 100%;
-  max-width: 300px; /* Limita a largura máxima do cartão */
+  max-width: 400px; /* Limita a largura máxima do cartão */
   text-align: center;
 }
 
 .card canvas {
   width: 100% !important;
-  height: auto !important;
-  max-width: 250px; /* Limita a largura máxima do gráfico */
-  max-height: 250px; /* Limita a altura máxima do gráfico */
+  height: 100% !important;
 }
