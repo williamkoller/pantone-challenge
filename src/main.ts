@@ -2,7 +2,7 @@ import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import { ConfigurationImplementation } from '@app/shared/config/configuration';
 import { ConfigService } from '@nestjs/config';
-import { Logger, ValidationPipe } from '@nestjs/common';
+import { Logger, RequestMethod, ValidationPipe } from '@nestjs/common';
 import { Swagger } from './shared/docs/swagger';
 import { NestExpressApplication } from '@nestjs/platform-express';
 import { HttpAllExceptionsFilter } from './shared/http/filters/http-all-exceptions.filter';
@@ -26,7 +26,6 @@ async function bootstrap() {
   });
 
   const viewsDir = join(__dirname, '..', 'views');
-  console.log(`Views directory set to: ${viewsDir}`);
 
   app.setBaseViewsDir(viewsDir);
   app.setViewEngine('hbs');
@@ -35,8 +34,9 @@ async function bootstrap() {
     return JSON.stringify(context);
   });
 
-  app.setGlobalPrefix('api');
-
+  app.setGlobalPrefix('api', {
+    exclude: [{ path: 'dashboard', method: RequestMethod.ALL }],
+  });
   app.useGlobalPipes(
     new ValidationPipe({
       transform: true,

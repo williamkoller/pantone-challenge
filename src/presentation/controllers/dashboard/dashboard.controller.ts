@@ -1,6 +1,6 @@
 import { Controller, Get, Inject, Render } from '@nestjs/common';
 import { ApiTags } from '@nestjs/swagger';
-import { IDashboardUseCase } from '../../../application/usecases/dashboard/idashboard-usecase';
+import { IDashboardUseCase } from '@app/application/usecases/dashboard/idashboard-usecase';
 
 @ApiTags('dashboard')
 @Controller('dashboard')

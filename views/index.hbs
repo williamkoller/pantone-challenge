@@ -4,8 +4,61 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Farm Dashboard</title>
-  <link rel="stylesheet" href="/styles.css">
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/apexcharts/dist/apexcharts.css">
+  <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f4;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+    }
+    h1 {
+      text-align: center;
+      margin: 20px 0;
+    }
+    .dashboard {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+      max-width: 1200px;
+      width: 100%;
+      padding: 20px;
+    }
+    .card {
+      background: #fff;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      padding: 20px;
+      width: calc(33.333% - 40px); /* 3 cards per row with some gap */
+      max-width: 380px; /* Ensure cards don’t get too big */
+      box-sizing: border-box;
+      text-align: center;
+      flex: 1 1 calc(33.333% - 40px);
+    }
+    .chart {
+      width: 100%;
+      max-width: 380px;
+      margin: 0 auto;
+    }
+    @media (max-width: 768px) {
+      .card {
+        width: calc(50% - 40px); /* 2 cards per row on smaller screens */
+      }
+    }
+    @media (max-width: 480px) {
+      .card {
+        width: calc(100% - 40px); /* 1 card per row on very small screens */
+      }
+    }
+  </style>
 </head>
 <body>
   <h1>Farm Dashboard</h1>
@@ -20,15 +73,19 @@
     </div>
     <div class="card">
       <h2>Farms By State</h2>
-      <canvas id="farmsByStateChart" style="aspect-ratio: 16/9; width: 100%; height: 50%; padding: 20px; border: 1px solid #ddd; border-radius: 10px"></canvas>
+      <div id="farmsByStateChart" class="chart"></div>
     </div>
     <div class="card">
       <h2>Farms By Crop</h2>
-      <canvas id="farmsByCropChart" style="aspect-ratio: 16/9; width: 100%; height: 50%; padding: 20px; border: 1px solid #ddd; border-radius: 10px"></canvas>
+      <div id="farmsByCropChart" class="chart"></div>
     </div>
     <div class="card">
-      <h2>Farms By Land Use</h2>
-      <canvas id="farmsByLandUseChart" style="aspect-ratio: 16/9; width: 100%; height: 50%; padding: 20px; border: 1px solid #ddd; border-radius: 10px"></canvas>
+      <h2>Farms By Land Use (Arable Area)</h2>
+      <div id="farmsByLandUseArableChart" class="chart"></div>
+    </div>
+    <div class="card">
+      <h2>Farms By Land Use (Vegetation Area)</h2>
+      <div id="farmsByLandUseVegetationChart" class="chart"></div>
     </div>
   </div>
 
@@ -36,53 +93,44 @@
     // Log data to console for debugging
     console.log('Data:', {{{json data}}});
 
+    // Function to create pie charts
+    function createPieChart(elementId, series, labels, title) {
+      var options = {
+        series: series,
+        chart: {
+          type: 'pie',
+          width: '100%',
+          height: 300,
+        },
+        labels: labels,
+        title: {
+          text: title,
+          align: 'center'
+        },
+        responsive: [{
+          breakpoint: 480,
+          options: {
+            chart: {
+              width: 200
+            },
+            legend: {
+              position: 'bottom'
+            }
+          }
+        }]
+      };
+
+      var chart = new ApexCharts(document.querySelector(elementId), options);
+      chart.render();
+    }
+
     // Data for Farms By State Chart
     const farmsByStateData = {{{json data.farmsByState}}};
     const states = farmsByStateData.map(state => state.state);
     const stateCounts = farmsByStateData.map(state => state.count);
 
-    console.log('Farms By State Data:', states, stateCounts);
-
     if (states.length > 0 && stateCounts.length > 0) {
-      new Chart(document.getElementById('farmsByStateChart').getContext('2d'), {
-        type: 'pie',
-        data: {
-          labels: states,
-          datasets: [{
-            label: 'Farms By State',
-            data: stateCounts,
-            backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0', '#9966FF']
-          }]
-        },
-        options: {
-          plugins: {
-            tooltip: {
-              callbacks: {
-                label: context => {
-                  return ' ' + context.parsed.toLocaleString('pt-BR', {
-                    minimumFractionDigits: 2,
-                    maximumFractionDigits: 2
-                  });
-                }
-              }
-            },
-            legend: {
-              position: 'left',
-              labels: {
-                font: { size: 18 }
-              },
-            },
-            title: {
-              display: true,
-              text: 'Farms By State',
-              font: { size: 24 },
-              padding: { bottom: 30 }
-            }
-          },
-          responsive: false,
-          maintainAspectRatio: true
-        }
-      });
+      createPieChart("#farmsByStateChart", stateCounts, states, 'Farms By State');
     }
 
     // Data for Farms By Crop Chart
@@ -90,48 +138,8 @@
     const crops = Object.keys(farmsByCropData);
     const cropCounts = Object.values(farmsByCropData);
 
-    console.log('Farms By Crop Data:', crops, cropCounts);
-
     if (crops.length > 0 && cropCounts.length > 0) {
-      new Chart(document.getElementById('farmsByCropChart').getContext('2d'), {
-        type: 'pie',
-        data: {
-          labels: crops,
-          datasets: [{
-            label: 'Farms By Crop',
-            data: cropCounts,
-            backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0', '#9966FF']
-          }]
-        },
-        options: {
-          plugins: {
-            tooltip: {
-              callbacks: {
-                label: context => {
-                  return ' ' + context.parsed.toLocaleString('pt-BR', {
-                    minimumFractionDigits: 2,
-                    maximumFractionDigits: 2
-                  });
-                }
-              }
-            },
-            legend: {
-              position: 'left',
-              labels: {
-                font: { size: 18 }
-              },
-            },
-            title: {
-              display: true,
-              text: 'Farms By Crop',
-              font: { size: 24 },
-              padding: { bottom: 30 }
-            }
-          },
-          responsive: false,
-          maintainAspectRatio: true
-        }
-      });
+      createPieChart("#farmsByCropChart", cropCounts, crops, 'Farms By Crop');
     }
 
     // Data for Farms By Land Use Chart
@@ -140,52 +148,12 @@
     const arableAreas = farmsByLandUseData.map(landUse => landUse.totalArableArea);
     const vegetationAreas = farmsByLandUseData.map(landUse => landUse.totalVegetationArea);
 
-    console.log('Farms By Land Use Data:', landUses, arableAreas, vegetationAreas);
+    if (landUses.length > 0 && arableAreas.length > 0) {
+      createPieChart("#farmsByLandUseArableChart", arableAreas, landUses, 'Farms By Land Use (Arable Area)');
+    }
 
-    if (landUses.length > 0 && arableAreas.length > 0 && vegetationAreas.length > 0) {
-      new Chart(document.getElementById('farmsByLandUseChart').getContext('2d'), {
-        type: 'pie',
-        data: {
-          labels: landUses,
-          datasets: [{
-            label: 'Arable Area',
-            data: arableAreas,
-            backgroundColor: '#FF6384'
-          }, {
-            label: 'Vegetation Area',
-            data: vegetationAreas,
-            backgroundColor: '#36A2EB'
-          }]
-        },
-        options: {
-          plugins: {
-            tooltip: {
-              callbacks: {
-                label: context => {
-                  return ' ' + context.parsed.toLocaleString('pt-BR', {
-                    minimumFractionDigits: 2,
-                    maximumFractionDigits: 2
-                  });
-                }
-              }
-            },
-            legend: {
-              position: 'left',
-              labels: {
-                font: { size: 18 }
-              },
-            },
-            title: {
-              display: true,
-              text: 'Farms By Land Use',
-              font: { size: 24 },
-              padding: { bottom: 30 }
-            }
-          },
-          responsive: false,
-          maintainAspectRatio: true
-        }
-      });
+    if (landUses.length > 0 && vegetationAreas.length > 0) {
+      createPieChart("#farmsByLandUseVegetationChart", vegetationAreas, landUses, 'Farms By Land Use (Vegetation Area)');
     }
   </script>
 </body>
