@@ -1,4 +1,4 @@
-import { DomainValidationException } from '../../shared/domain/DomainValidationException';
+import { DomainValidationException } from '../../shared/domain/domain-validation-exception';
 import { FarmCrop, FarmCropProps } from './farm-crop';
 
 describe('FarmCrop', () => {

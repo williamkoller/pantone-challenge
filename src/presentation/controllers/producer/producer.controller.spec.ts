@@ -1,16 +1,16 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { ProducerController } from './producer.controller';
-import { ICreateProducerUseCase } from '../../../application/usecases/producer/create-producer/ICreateProducerUseCase';
-import { IGetProducersUseCase } from '../../../application/usecases/producer/get-producers/IGetProducersUseCase';
-import { CreateProducerBodyDTO } from '../../../application/usecases/producer/create-producer/CreateProducerDTO';
+import { ICreateProducerUseCase } from '@app/application/usecases/producer/create-producer/icreate-producer-usecase';
+import { IGetProducersUseCase } from '@app/application/usecases/producer/get-producers/iget-producers-usecase';
+import { CreateProducerBodyDTO } from '@app/application/usecases/producer/create-producer/create-producer-dto';
 import {
   UpdateProducerBodyDTO,
   UpdateProducerParamsDTO,
-} from '../../../application/usecases/producer/update-producer/UpdateProducerDTO';
-import { IUpdateProducerUseCase } from '../../../application/usecases/producer/update-producer/IUpdateProducerUseCase';
-import { DeleteProducerParamsDTO } from '../../../application/usecases/producer/delete-producer/DeleteProducerDTO';
-import { IDeleteProducerUseCase } from '../../../application/usecases/producer/delete-producer/IDeleteProducerUseCase';
-import { ProducerDocumentType } from '../../../domain/producer/Producer';
+} from '@app/application/usecases/producer/update-producer/update-producer-dto';
+import { IUpdateProducerUseCase } from '@app/application/usecases/producer/update-producer/iupdate-producer-usecase';
+import { DeleteProducerParamsDTO } from '@app/application/usecases/producer/delete-producer/delete-producer-dto';
+import { IDeleteProducerUseCase } from '@app/application/usecases/producer/delete-producer/idelete-producer-usecase';
+import { ProducerDocumentType } from '@app/domain/producer/producer';
 
 describe(ProducerController.name, () => {
   let producerController: ProducerController;

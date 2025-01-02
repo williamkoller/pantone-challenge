@@ -1,7 +1,7 @@
-import { FarmMapper } from './FarmMapper';
-import { Farm } from '../../domain/farm/Farm';
-import { UniqueEntityId } from '../../shared/domain/UniqueEntityId';
-import { FarmAttributes } from '../../infrastructure/database/models/FarmModel';
+import { FarmMapper } from './farm-mapper';
+import { Farm } from '@app/domain/farm/farm';
+import { UniqueEntityId } from '@app/shared/domain/unique-entity-id';
+import { FarmAttributes } from '@app/infrastructure/database/models/farm-model';
 
 describe('FarmMapper', () => {
   const uniqueId = new UniqueEntityId('123');
@@ -12,6 +12,7 @@ describe('FarmMapper', () => {
     state: 'Test State',
     totalArea: 500,
     vegetationArea: 200,
+    landUse: 'Some land use',
   };
 
   const farm = Farm.create(farmProps, uniqueId);
@@ -27,6 +28,7 @@ describe('FarmMapper', () => {
       state: farmProps.state,
       totalArea: farmProps.totalArea,
       vegetationArea: farmProps.vegetationArea,
+      landUse: farmProps.landUse,
     });
   });
 
@@ -39,6 +41,7 @@ describe('FarmMapper', () => {
       state: farmProps.state,
       totalArea: farmProps.totalArea,
       vegetationArea: farmProps.vegetationArea,
+      landUse: farmProps.landUse,
     };
 
     const mappedFarm = FarmMapper.toDomain(rawData);
@@ -50,6 +53,7 @@ describe('FarmMapper', () => {
     expect(mappedFarm.state).toBe(farmProps.state);
     expect(mappedFarm.totalArea).toBe(farmProps.totalArea);
     expect(mappedFarm.vegetationArea).toBe(farmProps.vegetationArea);
+    expect(mappedFarm.landUse).toBe(farmProps.landUse);
   });
 
   it('should map to DTO correctly', () => {
@@ -64,6 +68,7 @@ describe('FarmMapper', () => {
       state: farmProps.state,
       totalArea: farmProps.totalArea,
       vegetationArea: farmProps.vegetationArea,
+      landUse: farmProps.landUse,
       createdAt: farm.createdAt,
       updatedAt: farm.updatedAt,
     });

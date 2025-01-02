@@ -1,4 +1,4 @@
-import { CommonUtils } from '@app/shared/utils/CommonUtils';
+import { CommonValidation } from '@app/shared/validation/common-validation';
 import { CNPJ } from './cnpj';
 import { DomainValidationException } from './domain-validation-exception';
 
@@ -12,7 +12,7 @@ describe('CNPJ', () => {
 
   describe('create method', () => {
     it('should successfully create a valid CNPJ object', () => {
-      jest.spyOn(CommonUtils, `isValidCNPJ`).mockReturnValue(true);
+      jest.spyOn(CommonValidation, `isValidCNPJ`).mockReturnValue(true);
 
       const result = CNPJ.create('55215153000148');
       expect(result.number).toEqual('55215153000148');
@@ -20,7 +20,7 @@ describe('CNPJ', () => {
     });
 
     it('should fail to create a CNPJ object with an invalid number', () => {
-      jest.spyOn(CommonUtils, `isValidCNPJ`).mockReturnValue(false);
+      jest.spyOn(CommonValidation, `isValidCNPJ`).mockReturnValue(false);
 
       const result = CNPJ.create('00000000000000');
       expect(result.isValid).toBeFalsy();

@@ -1,4 +1,4 @@
-import { Identifier } from './Identifier';
+import { Identifier } from './identifier';
 
 describe('Identifier', () => {
   it('should correctly compare two identifiers with the same value', () => {

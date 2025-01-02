@@ -2,8 +2,8 @@ import { ProducerRepositoryImplementation } from './producer-repository-implemen
 import { ProducerModel } from '@app/infrastructure/database/models/producer-model';
 
 import { ProducerMapper } from '@app/application/mappers/producer/producer-mapper';
-import { CPF } from '@app/shared/domain/CPF';
-import { UniqueEntityId } from '@app/shared/domain/UniqueEntityId';
+import { CPF } from '@app/shared/domain/cpf';
+import { UniqueEntityId } from '@app/shared/domain/unique-entity-id';
 import {
   Producer,
   ProducerDocumentType,
@@ -11,9 +11,9 @@ import {
 } from '@app/domain/producer/producer';
 import { Farm } from '@app/domain/farm/farm';
 
-jest.mock('../../../database/models/ProducerModel');
-jest.mock('../../../database/models/FarmModel');
-jest.mock('@app/application/mappers/ProducerMapper');
+jest.mock('../../../database/models/producer-model');
+jest.mock('../../../database/models/farm-model');
+jest.mock('../../../../application/mappers/producer/producer-mapper');
 
 const farm = Farm.create(
   {
@@ -23,6 +23,15 @@ const farm = Farm.create(
     state: 'RS',
     totalArea: 200,
     vegetationArea: 50,
+    landUse: 'Some land use',
+    producer: Producer.create(
+      {
+        name: 'Producer 1',
+        document: CPF.create({ number: '99812472002' }),
+        documentType: ProducerDocumentType.CPF,
+      },
+      new UniqueEntityId('1'),
+    ),
   },
   new UniqueEntityId('1'),
 );

@@ -1,4 +1,4 @@
-import { UniqueEntityId } from './UniqueEntityId';
+import { UniqueEntityId } from './unique-entity-id';
 import { randomUUID } from 'node:crypto';
 
 jest.mock('node:crypto', () => ({

@@ -1,9 +1,9 @@
 import { CPF, CPFProps } from './cpf';
 import { DomainValidationException } from './domain-validation-exception';
-import { CommonUtils } from '../validation/CommonUtils';
+import { CommonValidation } from '../validation/common-validation';
 
-jest.mock('../utils/CommonUtils', () => ({
-  CommonUtils: {
+jest.mock('../validation/common-validation', () => ({
+  CommonValidation: {
     isValidCPF: jest.fn(),
   },
 }));
@@ -12,7 +12,7 @@ describe('CPF', () => {
   describe('create', () => {
     it('should create a CPF object with a valid CPF number', () => {
       const props: CPFProps = { number: '123.456.789-09' };
-      (CommonUtils.isValidCPF as jest.Mock).mockReturnValue(true);
+      (CommonValidation.isValidCPF as jest.Mock).mockReturnValue(true);
 
       const cpf = CPF.create(props);
 
@@ -23,7 +23,7 @@ describe('CPF', () => {
 
     it('should throw an error if CPF is invalid', () => {
       const props: CPFProps = { number: '123.456.789-00' };
-      (CommonUtils.isValidCPF as jest.Mock).mockReturnValue(false);
+      (CommonValidation.isValidCPF as jest.Mock).mockReturnValue(false);
 
       expect(() => CPF.create(props)).toThrow(DomainValidationException);
       expect(() => CPF.create(props)).toThrow('CPF 12345678900 is not valid.');
@@ -47,7 +47,7 @@ describe('CPF', () => {
   describe('formatted', () => {
     it('should return the CPF in formatted form', () => {
       const props: CPFProps = { number: '12345678909' };
-      (CommonUtils.isValidCPF as jest.Mock).mockReturnValue(true);
+      (CommonValidation.isValidCPF as jest.Mock).mockReturnValue(true);
       const cpf = CPF.create(props);
 
       expect(cpf.formatted).toBe('123.456.789-09');

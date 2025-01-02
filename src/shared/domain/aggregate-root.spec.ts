@@ -3,7 +3,7 @@ import { Logger } from '@nestjs/common';
 import { AggregateRoot } from './aggregate-root';
 import { DomainEvents } from './events/domain-events';
 import { IDomainEvent } from './events/idomain-events';
-import { UniqueEntityId } from './UniqueEntityId';
+import { UniqueEntityId } from './unique-entity-id';
 
 class MockDomainEvent implements IDomainEvent {
   constructor(public readonly name: string) {}

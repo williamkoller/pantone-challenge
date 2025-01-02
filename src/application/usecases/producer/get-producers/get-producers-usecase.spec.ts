@@ -1,6 +1,6 @@
 import { Test, TestingModule } from '@nestjs/testing';
-import { GetProducersUseCase } from './GetProducersUseCase';
-import { ProducerRepository } from '../../../interfaces/producer/ProducerRepository';
+import { GetProducersUseCase } from './get-producers-usecase';
+import { ProducerRepository } from '../../../interfaces/producer/producer-repository';
 
 describe(GetProducersUseCase.name, () => {
   let getProducersUseCase: GetProducersUseCase;

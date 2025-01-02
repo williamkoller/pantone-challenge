@@ -1,4 +1,4 @@
-import { DomainValidationException } from '../../shared/domain/DomainValidationException';
+import { DomainValidationException } from '../../shared/domain/domain-validation-exception';
 import { FarmAreaValidationService } from '../services/farm/farm-area-validation-service';
 import { Farm, FarmProps } from './farm';
 
@@ -13,6 +13,7 @@ describe('Farm', () => {
       totalArea: 1000,
       arableArea: 600,
       vegetationArea: 400,
+      landUse: 'Some land use',
     };
 
     const farm = Farm.create(validProps);
@@ -33,6 +34,7 @@ describe('Farm', () => {
       totalArea: 1000,
       arableArea: 600,
       vegetationArea: 400,
+      landUse: 'Some land use',
     };
 
     expect(() => Farm.create(invalidProps)).toThrow(DomainValidationException);
@@ -46,6 +48,7 @@ describe('Farm', () => {
       totalArea: 1000,
       arableArea: 600,
       vegetationArea: 400,
+      landUse: 'Some land use',
     };
 
     Farm.create(validProps);
@@ -67,6 +70,7 @@ describe('Farm', () => {
       totalArea: 1000,
       arableArea: 600,
       vegetationArea: 400,
+      landUse: 'Some land use',
     };
 
     const farm = Farm.create(validProps);

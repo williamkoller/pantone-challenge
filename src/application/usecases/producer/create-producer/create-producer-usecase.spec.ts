@@ -2,9 +2,9 @@ import { Test, TestingModule } from '@nestjs/testing';
 import { CreateProducerUseCase } from './create-producer-usecase';
 import { ProducerConflictException } from '@app/application/exceptions/producer/producer-conflict-exception';
 import { BadRequestException } from '@nestjs/common';
-import { CPF } from '@app/shared/domain/CPF';
+import { CPF } from '@app/shared/domain/cpf';
 import { ProducerMapper } from '@app/application/mappers/producer/producer-mapper';
-import { UniqueEntityId } from '@app/shared/domain/UniqueEntityId';
+import { UniqueEntityId } from '@app/shared/domain/unique-entity-id';
 import { ProducerRepository } from '@app/application/interfaces/producer/producer-repository';
 import { Producer, ProducerDocumentType } from '@app/domain/producer/producer';
 

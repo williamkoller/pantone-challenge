@@ -1,11 +1,11 @@
 import { BadRequestException } from '@nestjs/common';
 import { Test, TestingModule } from '@nestjs/testing';
-import { Producer, ProducerDocumentType } from '@app/domain/producer/Producer';
-import { CPF } from '@app/shared/domain/CPF';
+import { Producer, ProducerDocumentType } from '@app/domain/producer/producer';
+import { CPF } from '@app/shared/domain/cpf';
 import { ProducerNotFoundException } from '@app/application/exceptions/producer/producer-not-found-exception';
 import { ProducerRepository } from '@app/application/interfaces/producer/producer-repository';
 import { DeleteProducerUseCase } from './delete-producer-usecase';
-import { UniqueEntityId } from '@app/shared/domain/UniqueEntityId';
+import { UniqueEntityId } from '@app/shared/domain/unique-entity-id';
 
 jest.mock('sequelize-transactional-decorator', () => ({
   Transactional: () => () => ({}),

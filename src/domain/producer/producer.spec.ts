@@ -1,6 +1,6 @@
-import { CPF } from '../../shared/domain/CPF';
-import { DomainValidationException } from '../../shared/domain/DomainValidationException';
-import { UniqueEntityId } from '../../shared/domain/UniqueEntityId';
+import { CPF } from '../../shared/domain/cpf';
+import { DomainValidationException } from '../../shared/domain/domain-validation-exception';
+import { UniqueEntityId } from '../../shared/domain/unique-entity-id';
 import { Producer, ProducerProps, ProducerDocumentType } from './producer';
 
 describe('Producer', () => {

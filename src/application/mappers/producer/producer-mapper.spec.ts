@@ -1,9 +1,9 @@
-import { ProducerMapper } from './ProducerMapper';
-import { CPF } from '../../shared/domain/CPF';
-import { CNPJ } from '../../shared/domain/CNPJ';
-import { UniqueEntityId } from '../../shared/domain/UniqueEntityId';
-import { ProducerAttributes } from '../../infrastructure/database/models/ProducerModel';
-import { Producer, ProducerDocumentType } from '../../domain/producer/Producer';
+import { ProducerMapper } from './producer-mapper';
+import { CPF } from '@app/shared/domain/cpf';
+import { CNPJ } from '@app/shared/domain/cnpj';
+import { UniqueEntityId } from '@app/shared/domain/unique-entity-id';
+import { ProducerAttributes } from '@app/infrastructure/database/models/producer-model';
+import { Producer, ProducerDocumentType } from '@app/domain/producer/producer';
 
 describe('ProducerMapper', () => {
   const uniqueId = new UniqueEntityId('123');
