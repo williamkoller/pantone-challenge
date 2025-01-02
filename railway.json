@@ -2,7 +2,7 @@
   "$schema": "https://railway.com/railway.schema.json",
   "build": {
     "builder": "DOCKERFILE",
-    "buildCommand": "rm -rf dist && npm run build",
+    "buildCommand": "npm run build",
     "dockerfilePath": "Dockerfile"
   },
   "deploy": {
