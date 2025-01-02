@@ -1,6 +1,6 @@
 # Challenge Brain Agriculture
 
-<img src="https://railway.app/button.svg" asign="rigth" alt="Deploy with Railway">
+<img src="https://railway.app/button.svg" asign="right" alt="Deploy with Railway">
 
 [Brain Agriculture - Arquitetura](./architecture.md)
 
