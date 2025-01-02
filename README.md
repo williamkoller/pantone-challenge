@@ -139,6 +139,12 @@ npm run migration:down
 
 ### Observabilidade
 
+#### Logs
+
 <img src="./images/observabilidade.png" alt="Dashboard">
+
+#### Métricas
+
+<img src="./images/observabilidade-2.png" alt="Dashboard">
 
 #### Esse projeto foi feito com ❤️ por William Koller
