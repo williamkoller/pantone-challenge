@@ -137,4 +137,8 @@ npm run migration:down
 
 <img src="./images/dashboard.png" alt="Dashboard">
 
+### Observabilidade
+
+<img src="./images/observabilidade.png.png" alt="Dashboard">
+
 #### Esse projeto foi feito com ❤️ por William Koller
