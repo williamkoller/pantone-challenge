@@ -3,7 +3,7 @@ services:
   web-api:
     build:
       context: .
-      dockerfile: Dockerfile
+      dockerfile: Dockerfile.dev
     container_name: web-api
     depends_on:
       - postgres
