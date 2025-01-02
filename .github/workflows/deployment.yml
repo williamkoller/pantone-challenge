@@ -31,9 +31,6 @@ jobs:
       - name: Build the project
         run: npm run build
 
-      - name: Run migrations
-        run: npm run migration:up
-
       - name: Deploy to Railway
         env:
           RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
