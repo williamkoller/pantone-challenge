@@ -16,7 +16,7 @@
 
 [Endpoints/Rotas](./endpoints.md)
 
-[Collections para usar no Postman](./collections/BrainAgriculture.postman_collection.json)
+[Collections para usar no Postman](./collections/Challenge%20Brain%20Agriculture.postman_collection.json)
 
 ## Tecnologias usadas
 
