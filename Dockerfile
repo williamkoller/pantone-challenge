@@ -2,14 +2,14 @@ FROM node:22.12.0-alpine3.21
 
 WORKDIR /app
 
-RUN mkdir -p /app
+COPY package*.json ./
 
-COPY package.json /app
+RUN npm install
 
-RUN rm -rf node_modules \
-    && npm install
+COPY . .
 
-COPY . /app
+RUN npm run build
 
 EXPOSE 3000
 
+CMD ["node", "dist/main"]
