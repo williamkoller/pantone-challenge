@@ -13,7 +13,6 @@ export class GetFarmCropsUseCase implements IGetFarmCropsUseCase {
   async execute(): Promise<OutPut[]> {
     const farmCrops = await this.farmCropRepository.findAll();
 
-    console.log('aquiii');
     return farmCrops.map(FarmCropMapper.toDTO);
   }
 }

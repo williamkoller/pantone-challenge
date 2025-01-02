@@ -1,21 +1,39 @@
 # Challenge Brain Agriculture
 
-[Brain Agriculture - Architecture](./architecture.md)
+<img src="https://railway.app/button.svg" asign="rigth" alt="Deploy with Railway">
 
-[Structure of Project](./structure.md)
+[Brain Agriculture - Arquitetura](./architecture.md)
 
-[Endpoints](./endpoints.md)
+[Estrutura do projeto](./structure.md)
 
-## How to run the project
+[Endpoints/Rotas](./endpoints.md)
 
-### Requirements
+[Collections para usar no Postman](./collections/BrainAgriculture.postman_collection.json)
+
+## Tecnologias usadas
+
+- Node.js
+- Typescript
+- Nestjs
+- Sequelize
+- Postgres
+- Docker
+- Docker Compose
+- Github Actions
+- Railway
+- Jest
+- Swagger
+
+## Como rodar o projeto?!
+
+### Requisitos
 
 - Docker
 - Docker Compose
 - Nvm (Node Version Manager)
 - Node.js (v22.12.0)
 
-### Running the project
+### Passos
 
 1. Clone the repository
 
@@ -49,3 +67,40 @@ docker-compose down && docker-compose up --build
 http://localhost:3003/api/swagger
 ```
 
+## Obs
+
+- A migration roda sozinha quando starta o container da `web-api`
+
+### Para criar uma migation
+
+```bash
+npm run migration:create <nome-da-tabela>
+```
+
+### Para rodar as migrations
+
+```bash
+npm run migration:up
+```
+
+### Para reverter as migrations
+
+```bash
+npm run migration:down
+```
+
+## Esse projeto esta na Cloud - Railway
+
+- Criei dois Actions no Github para fazer o deploy da aplicação na Railway e para rodar a Pull Request.
+
+- Acesse o Swagger da aplicação na Railway [Brain Agriculture](https://challenge-brain-agriculture.up.railway.app/api/swagger) as credenciais estão aqui [Credenciais](./swagger-config.txt)
+
+- Railway <img src="./images/railway.png" alt="Deploy with Railway">
+
+- Criei um tela para exibir o Dashboard da aplicação [Dashboard](https://challenge-brain-agriculture.up.railway.app/dashboard)
+
+### Dashboard
+
+<img src="./images/dashboard.png" alt="Dashboard">
+
+#### Esse projeto foi feito com ❤️ por William Koller

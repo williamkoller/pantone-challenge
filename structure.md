@@ -60,9 +60,12 @@ A pasta de Testes (Test Layer) contém os testes da aplicação, sendo tanto tes
 
 # Por que essa arquitetura foi escolhida?
 
-A estrutura de camadas segue os princípios do Domain-Driven Design (DDD), que prioriza a criação de um modelo de domínio rico e uma arquitetura que separa as preocupações entre as diversas responsabilidades do sistema. A divisão em camadas (Aplicação, Domínio, Infraestrutura, Apresentação e Compartilhada) traz muitos benefícios:
+- A estrutura de camadas segue os princípios do Domain-Driven Design (DDD), que prioriza a criação de um modelo de domínio rico e uma arquitetura que separa as preocupações entre as diversas responsabilidades do sistema. A divisão em camadas (Aplicação, Domínio, Infraestrutura, Apresentação e Compartilhada) traz muitos benefícios:
 
-Manutenção Facilitada: Cada camada tem uma responsabilidade clara, tornando o código mais fácil de entender, testar e modificar.
-Escalabilidade: Facilita a adição de novas funcionalidades sem alterar o sistema inteiro, já que cada camada pode ser modificada independentemente.
-Testabilidade: A separação de responsabilidades torna o sistema mais fácil de testar, com testes unitários e de integração claramente definidos.
+  - Manutenção Facilitada: Cada camada tem uma responsabilidade clara, tornando o código mais fácil de entender, testar e modificar.
+
+  - Escalabilidade: Facilita a adição de novas funcionalidades sem alterar o sistema inteiro, já que cada camada pode ser modificada independentemente.
+
+  - Testabilidade: A separação de responsabilidades torna o sistema mais fácil de testar, com testes unitários e de integração claramente definidos.
+  
 Essa arquitetura também facilita a adaptação a diferentes tecnologias, já que cada camada pode ser substituída ou modificada sem impactar diretamente as outras.

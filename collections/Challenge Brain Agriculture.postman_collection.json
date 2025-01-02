@@ -1,0 +1,300 @@
+{
+	"info": {
+		"_postman_id": "cd5af00e-ba04-4bfc-9b40-68a781ebd4ff",
+		"name": "Challenge Brain Agriculture",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "10262380"
+	},
+	"item": [
+		{
+			"name": "Producer",
+			"item": [
+				{
+					"name": "/producers",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Tech Solutions Ltda\",\n  \"document\": \"47822326000168\",\n  \"documentType\": \"CNPJ\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URI}}/producers",
+							"host": [
+								"{{BASE_URI}}"
+							],
+							"path": [
+								"producers"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/producers",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URI}}/producers",
+							"host": [
+								"{{BASE_URI}}"
+							],
+							"path": [
+								"producers"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/producers/:id",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Giulia M Prdutor LTDA\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URI}}/producers/:producerId",
+							"host": [
+								"{{BASE_URI}}"
+							],
+							"path": [
+								"producers",
+								":producerId"
+							],
+							"variable": [
+								{
+									"key": "producerId",
+									"value": "73249cc7-3e98-4452-9b73-045f13821261"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/producers/:id",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URI}}/producers/:producerId",
+							"host": [
+								"{{BASE_URI}}"
+							],
+							"path": [
+								"producers",
+								":producerId"
+							],
+							"variable": [
+								{
+									"key": "producerId",
+									"value": "a717c485-cd82-4da0-ac6a-b3d7b2553867"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Farms",
+			"item": [
+				{
+					"name": "/farms/producer/:producerId",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Sítio Vida\",\n  \"state\": \"MG\",\n  \"arableArea\": 1000000,\n  \"vegetationArea\": 700000,\n  \"totalArea\":  2000000,\n  \"landUse\": \"Agriculture\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URI}}/farms/producer/:producerId",
+							"host": [
+								"{{BASE_URI}}"
+							],
+							"path": [
+								"farms",
+								"producer",
+								":producerId"
+							],
+							"variable": [
+								{
+									"key": "producerId",
+									"value": "e935326d-7409-4de9-96f1-a5363405fe9f"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/farms/:farmId",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Sítio Vida MG d994sa\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URI}}/farms/:farmId",
+							"host": [
+								"{{BASE_URI}}"
+							],
+							"path": [
+								"farms",
+								":farmId"
+							],
+							"variable": [
+								{
+									"key": "farmId",
+									"value": "9a9a26d1-3d64-475d-8634-ef6a210fe19a"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/farms",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URI}}/farms",
+							"host": [
+								"{{BASE_URI}}"
+							],
+							"path": [
+								"farms"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Crop",
+			"item": [
+				{
+					"name": "/crops",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"farmId\": \"a7a2bf02-c694-44e1-a15a-655326d3a8a4\",\n  \"year\": 2023,\n  \"cropType\": \"Café\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URI}}/crops",
+							"host": [
+								"{{BASE_URI}}"
+							],
+							"path": [
+								"crops"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/crops",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URI}}/crops",
+							"host": [
+								"{{BASE_URI}}"
+							],
+							"path": [
+								"crops"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Farm Crop",
+			"item": [
+				{
+					"name": "/farm-crops",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"farmId\": \"a7a2bf02-c694-44e1-a15a-655326d3a8a4\",\n  \"cropId\": \"6bad8bc9-fa51-4abc-9600-51189dd8e1d5\",\n  \"seasonYear\": 2023,\n  \"plantedArea\": 130.5\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URI}}/farm-crops",
+							"host": [
+								"{{BASE_URI}}"
+							],
+							"path": [
+								"farm-crops"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/farm-crops",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URI}}/farm-crops",
+							"host": [
+								"{{BASE_URI}}"
+							],
+							"path": [
+								"farm-crops"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

@@ -68,7 +68,6 @@ export class FarmCropRepositoryImplementation implements FarmCropRepository {
       ],
     });
 
-    console.log('aquiii', JSON.stringify(result));
     return result.map(FarmCropMapper.toDomain);
   }
 }
