@@ -97,7 +97,7 @@ docker exec -it postgres sh
 
 - A migration roda sozinha quando starta o container da `web-api`
 
-## Acesse o conatainer web-api e rode os comandos abaixo
+## Acesse o container web-api e rode os comandos abaixo
 
 ```bash
 docker exec -it web-api sh
