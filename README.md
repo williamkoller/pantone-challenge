@@ -6,6 +6,10 @@
   </a>
 </p>
 
+## Tempo que foi gasto no desenvolvido
+
+[![wakatime](https://wakatime.com/badge/user/f8b538ef-5e09-4369-8b13-b9baf54326e9/project/84f5e59e-a674-4ec4-991b-4bb2c1f17653.svg)](https://wakatime.com/badge/user/f8b538ef-5e09-4369-8b13-b9baf54326e9/project/84f5e59e-a674-4ec4-991b-4bb2c1f17653)
+
 [Brain Agriculture - Arquitetura](./architecture.md)
 
 [Estrutura do projeto](./structure.md)
