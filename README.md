@@ -125,7 +125,7 @@ npm run migration:down
 
 - Criei dois Actions no Github para fazer o deploy da aplicação na Railway e para a Pull Request.
 
-- Deploy está automatizado, toda vez que um PR é aberto e logo apoós mergeado o deploy é feito na Railway automaticamente.
+- Deploy está automatizado, toda vez que um PR é aberto e logo após mergeado o deploy é feito na Railway automaticamente.
 
 - Acesse o Swagger da aplicação na Railway [Brain Agriculture](https://challenge-brain-agriculture.up.railway.app/api/swagger) as credenciais estão aqui [Credenciais](./swagger-config.txt)
 
