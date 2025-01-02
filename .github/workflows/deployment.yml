@@ -1,4 +1,4 @@
-name: Deploymento to Railway
+name: Deployment to Railway
 
 on:
   push:
