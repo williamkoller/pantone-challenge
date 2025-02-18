@@ -1,10 +1,10 @@
 version: '3.8'
 services:
-  web-api:
+  pantone-api:
     build:
       context: .
       dockerfile: Dockerfile.dev
-    container_name: web-api
+    container_name: pantone-api
     depends_on:
       - postgres
     entrypoint: sh -c 'npm i && npm run start:dev'
@@ -16,7 +16,7 @@ services:
     ports:
       - ${PORT}:${PORT}
     networks:
-      - web-api-network
+      - pantone-api-network
 
   postgres:
     image: postgis/postgis:16-3.4-alpine
@@ -31,10 +31,10 @@ services:
       - postgres_data:/var/lib/postgresql/data
     restart: unless-stopped
     networks:
-      - web-api-network
+      - pantone-api-network
 
 networks:
-  web-api-network:
+  pantone-api-network:
     driver: bridge
 
 volumes:

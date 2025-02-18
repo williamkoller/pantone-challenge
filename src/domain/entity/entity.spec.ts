@@ -1,5 +1,5 @@
 import { Entity } from './entity';
-import { UniqueEntityId } from './unique-entity-id';
+import { UniqueEntityId } from '../unique-entity-id/unique-entity-id';
 
 class TestEntity extends Entity<{ name: string }> {
   constructor(props: { name: string }, id?: UniqueEntityId) {

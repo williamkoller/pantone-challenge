@@ -4,7 +4,7 @@ import {
   Injectable,
   NestInterceptor,
 } from '@nestjs/common';
-import { DomainEvents } from '@app/shared/domain/events/domain-events';
+import { DomainEvents } from '@app/domain/events/domain-events';
 import { Observable, tap } from 'rxjs';
 
 @Injectable()

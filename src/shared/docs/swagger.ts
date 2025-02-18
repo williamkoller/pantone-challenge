@@ -21,8 +21,8 @@ export class Swagger {
       }),
     );
     const document = new DocumentBuilder()
-      .setTitle('Challenge Brain Agriculture API')
-      .setDescription('Challenge Brain Agriculture API description')
+      .setTitle('Pantone Challenge API')
+      .setDescription('Pantone Challenge API description')
       .setVersion('0.0.1')
       .build();
 

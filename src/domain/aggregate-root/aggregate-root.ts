@@ -1,8 +1,8 @@
 import { Logger } from '@nestjs/common';
-import { Entity } from './entity';
-import { DomainEvents } from './events/domain-events';
-import { IDomainEvent } from './events/idomain-events';
-import { UniqueEntityId } from './unique-entity-id';
+import { Entity } from '../entity/entity';
+import { DomainEvents } from '../events/domain-events';
+import { IDomainEvent } from '../events/idomain-events';
+import { UniqueEntityId } from '../unique-entity-id/unique-entity-id';
 
 export abstract class AggregateRoot<T> extends Entity<T> {
   private _domainEvents: IDomainEvent[] = [];
