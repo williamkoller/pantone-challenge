@@ -4,19 +4,16 @@
   </a>
 </p>
 
-# Challenge Brain Agriculture
+# Pantone Challenge
 
 ## Tempo que foi gasto no desenvolvimento
 
-[![wakatime](https://wakatime.com/badge/user/f8b538ef-5e09-4369-8b13-b9baf54326e9/project/84f5e59e-a674-4ec4-991b-4bb2c1f17653.svg)](https://wakatime.com/badge/user/f8b538ef-5e09-4369-8b13-b9baf54326e9/project/84f5e59e-a674-4ec4-991b-4bb2c1f17653)
 
-[Brain Agriculture - Arquitetura](./architecture.md)
+[Arquitetura](./architecture.md)
 
 [Estrutura do projeto](./structure.md)
 
 [Endpoints/Rotas](./endpoints.md)
-
-[Collections para usar no Postman](./collections/Challenge%20Brain%20Agriculture.postman_collection.json)
 
 ## Tecnologias usadas
 
@@ -46,14 +43,14 @@
 1. Clone the repository
 
 ```bash
-git clone git@github.com:williamkoller/challenge-brain-agriculture.git
+git clone git@github.com:williamkoller/pantone-challenge.git
 ```
 
 2. Access the project folder
 
 ```bash
 
-cd challenge-brain-agriculture
+cd git@github.com:williamkoller/pantone-challenge.git
 ```
 
 3. Install the dependencies
@@ -120,31 +117,5 @@ npm run migration:up
 ```bash
 npm run migration:down
 ```
-
-## Esse projeto esta na Cloud - Railway
-
-- Criei dois Actions no Github para fazer o deploy da aplicação na Railway e para a Pull Request.
-
-- Deploy está automatizado, toda vez que um PR é aberto e logo após mergeado o deploy é feito na Railway automaticamente.
-
-- Acesse o Swagger da aplicação na Railway [Brain Agriculture](https://challenge-brain-agriculture.up.railway.app/api/swagger) as credenciais estão aqui [Credenciais](./swagger-config.txt)
-
-- Dashboard Railway <img src="./images/railway.png" alt="Deploy with Railway">
-
-- Criei um tela para exibir o Dashboard da aplicação [Dashboard](https://challenge-brain-agriculture.up.railway.app/dashboard)
-
-### Dashboard
-
-<img src="./images/dashboard.png" alt="Dashboard">
-
-### Observabilidade
-
-#### Logs
-
-<img src="./images/observabilidade.png" alt="Dashboard">
-
-#### Métricas
-
-<img src="./images/observabilidade-2.png" alt="Dashboard">
 
 #### Esse projeto foi feito com ❤️ por William Koller
