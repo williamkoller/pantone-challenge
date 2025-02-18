@@ -1,6 +1,6 @@
 import { DomainEvents } from './domain-events';
-import { AggregateRoot } from '../aggregate-root/aggregate-root';
-import { UniqueEntityId } from '../unique-entity-id/unique-entity-id';
+import { AggregateRoot } from '../../aggregate-root/aggregate-root';
+import { UniqueEntityId } from '../../unique-entity-id/unique-entity-id';
 import { EventEmitter2 } from '@nestjs/event-emitter';
 import { IDomainEvent } from './idomain-events';
 

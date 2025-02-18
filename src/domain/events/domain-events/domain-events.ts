@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { EventEmitter2 } from '@nestjs/event-emitter';
-import { AggregateRoot } from '../aggregate-root/aggregate-root';
-import { UniqueEntityId } from '../unique-entity-id/unique-entity-id';
+import { AggregateRoot } from '../../aggregate-root/aggregate-root';
+import { UniqueEntityId } from '../../unique-entity-id/unique-entity-id';
 import { IDomainEvent } from './idomain-events';
 
 @Injectable()

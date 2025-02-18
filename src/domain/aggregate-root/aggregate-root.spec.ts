@@ -1,9 +1,9 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { Logger } from '@nestjs/common';
 import { AggregateRoot } from './aggregate-root';
-import { DomainEvents } from './events/domain-events';
-import { IDomainEvent } from './events/idomain-events';
-import { UniqueEntityId } from './unique-entity-id';
+import { DomainEvents } from '../events/domain-events/domain-events';
+import { IDomainEvent } from '../events/domain-events/idomain-events';
+import { UniqueEntityId } from '../unique-entity-id/unique-entity-id';
 
 class MockDomainEvent implements IDomainEvent {
   constructor(public readonly name: string) {}

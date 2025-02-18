@@ -21,7 +21,7 @@ module.exports = {
   coverageDirectory: 'coverage',
   testEnvironment: 'node',
   transform: {
-    '.+\\.ts$': 'ts-jest',
+    '.+\\.ts$': '@swc/jest',
   },
   testRegex: '.*\\.spec\\.ts$',
   moduleFileExtensions: ['js', 'json', 'ts'],
