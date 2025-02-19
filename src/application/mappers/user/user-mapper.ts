@@ -28,11 +28,11 @@ export class UserMapper extends Mapper<User, UserAttributes>() {
 
   static toDTO(user: User) {
     return {
-      id: user.id.toString(),
-      name: user.name,
-      email: user.email,
-      password: user.password,
-      role: user.role,
+      id: user.id?.toString() || user.id,
+      name: user.props.name || user.name,
+      email: user.props.email || user.email,
+      password: user.props.password || user.password,
+      role: user.props.role || user.role,
     };
   }
 }

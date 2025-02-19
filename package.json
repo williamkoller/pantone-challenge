@@ -22,7 +22,10 @@
     "migration:create": "npx ts-node migrations/createMigration.ts",
     "migration:up": "npx ts-node migrations/migrationsUp.ts",
     "migration:down": "npx ts-node migrations/migrationsDown.ts",
-    "prepare": "npx husky"
+    "prepare": "npx husky",
+    "seeds:create": "npx ts-node seeds/createSeed.ts",
+    "seeds:up": "npx ts-node seeds/seedsUp.ts",
+    "seeds:down": "npx ts-node seeds/seedsDown.ts"
   },
   "dependencies": {
     "@nestjs/common": "^10.0.0",
@@ -49,6 +52,7 @@
   "devDependencies": {
     "@commitlint/cli": "^19.6.1",
     "@commitlint/config-conventional": "^19.6.0",
+    "@faker-js/faker": "^9.5.0",
     "@nestjs/cli": "^10.0.0",
     "@nestjs/schematics": "^10.0.0",
     "@nestjs/testing": "^10.0.0",

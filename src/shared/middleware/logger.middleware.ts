@@ -35,7 +35,7 @@ export class LoggerMiddleware implements NestMiddleware {
         path: req.path,
         query: req.query,
         body: this.filterSensitiveData(req.body),
-        responseBody,
+        // responseBody,
         statusCode: res.statusCode,
         statusMessage: res.statusMessage,
         responseTime: `${duration}ms`,

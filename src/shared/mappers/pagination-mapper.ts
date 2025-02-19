@@ -17,8 +17,9 @@ export class PaginationMapper {
     total: number;
     limit: number;
   }): PaginatedResult<T> {
-    const pages = total ? Math.ceil(total / limit) : 1;
+    const pages = limit > 0 ? Math.max(Math.ceil(total / limit), 1) : 1;
     return {
+      limit,
       page,
       pages,
       total,

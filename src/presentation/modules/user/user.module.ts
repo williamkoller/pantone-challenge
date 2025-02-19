@@ -6,8 +6,6 @@ import { CreateUserUseCase } from '../../../application/usecases/user/create-use
 import { UserDatabase } from '../../../infrastructure/database/repositories/user/user-database';
 import { IGetUserUseCase } from '../../../application/usecases/user/get-user/iget-user-usecase';
 import { GetUserUseCase } from '../../../application/usecases/user/get-user/get-user-usecase';
-import { IGetUsersUseCase } from '../../../application/usecases/user/get-users/iget-users-usecase';
-import { GetUsersUseCase } from '../../../application/usecases/user/get-users/get-users-usecase';
 import { UserController } from '../../controllers/user/user.controller';
 import { IDeleteUserUseCase } from '../../../application/usecases/user/delete-user/idelete-user-usecase';
 import { DeleteUserUseCase } from '../../../application/usecases/user/delete-user/delete-user-usecase';
@@ -16,6 +14,10 @@ import { UpdateUserUseCase } from '../../../application/usecases/user/update-use
 import { UserRepository } from '../../../data/db/user/user-repository';
 import { Hasher } from '../../../data/protocols/cryptography/hasher';
 import { BcryptAdapter } from '../../../infrastructure/criptography/bcrypt/bcrypt-adapter';
+import { IGetUsersUseCase } from '../../../application/usecases/user/get-users/iget-users-usecase';
+import { GetUsersUseCase } from '../../../application/usecases/user/get-users/get-users-usecase';
+import { IGetUsersStreamUseCase } from '../../../application/usecases/user/get-users-stream/iget-users-stream-usecase';
+import { GetUsersStreamUseCase } from '../../../application/usecases/user/get-users-stream/get-users-stream-usecase';
 
 @Module({
   imports: [SequelizeModule.forFeature([UserModel])],
@@ -36,6 +38,10 @@ import { BcryptAdapter } from '../../../infrastructure/criptography/bcrypt/bcryp
     {
       provide: IGetUsersUseCase,
       useClass: GetUsersUseCase,
+    },
+    {
+      provide: IGetUsersStreamUseCase,
+      useClass: GetUsersStreamUseCase,
     },
     {
       provide: IDeleteUserUseCase,

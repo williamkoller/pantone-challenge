@@ -3,4 +3,5 @@ export interface PaginatedResult<Result> {
   total: number;
   page: number;
   pages: number;
+  limit: number;
 }
