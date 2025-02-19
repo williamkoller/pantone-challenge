@@ -1,5 +1,9 @@
 import { Inject, Injectable } from '@nestjs/common';
-import { IGetUsersStreamUseCase, Output } from './iget-users-stream-usecase';
+import {
+  IGetUsersStreamUseCase,
+  Input,
+  Output,
+} from './iget-users-stream-usecase';
 import { UserMapper } from '../../../mappers/user/user-mapper';
 import { UserRepository } from '../../../../data/db/user/user-repository';
 import { User } from '../../../../domain/user/user';
@@ -13,8 +17,14 @@ export class GetUsersStreamUseCase implements IGetUsersStreamUseCase {
     private readonly userRepository: UserRepository,
   ) {}
 
-  async execute(): Promise<Readable> {
-    const usersStream = await this.userRepository.findAllStream();
+  async execute(input: Input): Promise<Readable> {
+    const limitDefault = Math.min(input.limit ?? 1000, 1000);
+    const offsetDefault = Math.max(input.offset ?? 1, 1);
+
+    const usersStream = await this.userRepository.findAllStream(
+      limitDefault,
+      (offsetDefault - 1) * limitDefault,
+    );
 
     const transformToString = new Transform({
       objectMode: true,
@@ -25,9 +35,6 @@ export class GetUsersStreamUseCase implements IGetUsersStreamUseCase {
 
     const writableStream = new Writable({
       write(chunk, encoding, next) {
-        const stringifyer = chunk.toString();
-        const rowData = JSON.parse(stringifyer);
-        console.log('PROCESSANDO', rowData);
         next();
       },
     });

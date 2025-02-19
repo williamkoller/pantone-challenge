@@ -28,6 +28,7 @@ import { IGetUsersUseCase } from '../../../application/usecases/user/get-users/i
 import { IGetUsersStreamUseCase } from '../../../application/usecases/user/get-users-stream/iget-users-stream-usecase';
 import { Response } from 'express';
 import { GetUsersRequestQueryDTO } from '../../../application/usecases/user/get-users/get-users-dto';
+import * as zlib from 'node:zlib';
 
 @ApiTags('users')
 @Controller('users')
@@ -66,14 +67,24 @@ export class UserController {
   }
 
   @Get('data/stream')
-  async getAllStream(@Res() res: Response) {
-    const usersStream = await this.getUsersStreamUseCase.execute();
+  async getAllStream(
+    @Res() res: Response,
+    @Query() query: GetUsersRequestQueryDTO,
+  ) {
+    const usersStream = await this.getUsersStreamUseCase.execute({
+      limit: query.limit,
+      offset: query.page,
+    });
 
     res.set({
       'Content-Type': 'application/json',
+      'Content-Encoding': 'gzip',
+      'Transfer-Encoding': 'chunked',
     });
 
-    usersStream.pipe(res);
+    const gzipStream = zlib.createGzip();
+
+    usersStream.pipe(gzipStream).pipe(res);
   }
 
   @Delete(':userId')
