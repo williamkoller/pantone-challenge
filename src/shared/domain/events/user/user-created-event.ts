@@ -1,5 +1,5 @@
 import { UniqueEntityId } from '../../unique-entity-id/unique-entity-id';
-import { User } from '../../user/user';
+import { User } from '../../../../domain/user/user';
 import { IDomainEvent } from '../domain-events/idomain-events';
 
 export class UserCreatedEvent implements IDomainEvent {

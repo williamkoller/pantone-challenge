@@ -1,9 +1,9 @@
 import { Injectable } from '@nestjs/common';
-import { UserRepository } from '../../../../domain/repositories/user/user-repository';
 import { InjectModel } from '@nestjs/sequelize';
 import { UserModel } from '../../models/user-model';
-import { User } from '../../../../domain/user/user';
 import { UserMapper } from '../../../../application/mappers/user/user-mapper';
+import { UserRepository } from '../../../../data/db/user/user-repository';
+import { User } from '../../../../domain/user/user';
 
 @Injectable()
 export class UserDatabase implements UserRepository {

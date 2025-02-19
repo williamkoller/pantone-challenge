@@ -7,7 +7,7 @@ import {
 import { GlobalModule } from './shared/global.module';
 import { LoggerMiddleware } from './shared/middleware/logger.middleware';
 import { HealthCheckModule } from './presentation/modules/health-check/health-check.module';
-import { DomainEvents } from '@app/domain/events/domain-events/domain-events';
+import { DomainEvents } from '@app/shared/domain/events/domain-events/domain-events';
 import { EventEmitterModule } from '@nestjs/event-emitter';
 import { UserModule } from './presentation/modules/user/user.module';
 

@@ -2,7 +2,7 @@ import { ApiProperty } from '@nestjs/swagger';
 import { UserRoleEnum } from '../../../../domain/user/user';
 import { IsEmail, IsEnum, IsNotEmpty, IsString } from 'class-validator';
 
-export class CreateUserBodyDTO {
+export class CreateUserRequestBodyDTO {
   @ApiProperty({ example: 'John Doe' })
   @IsNotEmpty()
   @IsString()

@@ -1,8 +1,8 @@
 import { Guard, IGuardArgument } from '../../shared/guards/guard';
-import { AggregateRoot } from '../aggregate-root/aggregate-root';
-import { DomainValidationException } from '../errors/domain-validation-exception';
-import { UserCreatedEvent } from '../events/user/user-created-event';
-import { UniqueEntityId } from '../unique-entity-id/unique-entity-id';
+import { AggregateRoot } from '../../shared/domain/aggregate-root/aggregate-root';
+import { DomainValidationException } from '../../shared/domain/errors/domain-validation-exception';
+import { UserCreatedEvent } from '../../shared/domain/events/user/user-created-event';
+import { UniqueEntityId } from '../../shared/domain/unique-entity-id/unique-entity-id';
 
 export enum UserRoleEnum {
   ADMIN = 'admin',
@@ -25,16 +25,32 @@ export class User extends AggregateRoot<UserProps> {
     return this.props.name;
   }
 
+  setName(name: string): void {
+    this.props.name = name;
+  }
+
   get email(): string {
     return this.props.email;
+  }
+
+  setEmail(email: string): void {
+    this.props.email = email;
   }
 
   get password(): string {
     return this.props.password;
   }
 
+  setPassword(password: string): void {
+    this.props.password = password;
+  }
+
   get role(): UserRoleEnum {
     return this.props.role;
+  }
+
+  setRole(role: UserRoleEnum): void {
+    this.props.role;
   }
 
   public static create(props: UserProps, id?: UniqueEntityId): User {

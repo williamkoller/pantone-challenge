@@ -1,4 +1,4 @@
-import { User } from '../../user/user';
+import { User } from '../../../domain/user/user';
 import { BaseRepository } from '../base-repository';
 
 export interface UserRepository extends BaseRepository<User> {

@@ -1,4 +1,4 @@
-import { DomainValidationException } from '../errors/domain-validation-exception';
+import { DomainValidationException } from '../../shared/domain/errors/domain-validation-exception';
 import { User, UserProps, UserRoleEnum } from './user';
 
 describe(User.name, () => {

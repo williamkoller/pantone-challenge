@@ -1,4 +1,4 @@
-import { UniqueEntityId } from '../../../domain/unique-entity-id/unique-entity-id';
+import { UniqueEntityId } from '../../../shared/domain/unique-entity-id/unique-entity-id';
 import { User } from '../../../domain/user/user';
 import { UserAttributes } from '../../../infrastructure/database/models/user-model';
 import { Mapper } from '../../../shared/types/mapper';

@@ -1,8 +1,8 @@
 import { Inject, Injectable } from '@nestjs/common';
-import { UserRepository } from '../../../../domain/repositories/user/user-repository';
 import { UserNotFoundException } from '../../../exceptions/user/user-not-found-exception';
 import { UserMapper } from '../../../mappers/user/user-mapper';
 import { IGetUserUseCase, Input, Output } from './iget-user-usecase';
+import { UserRepository } from '../../../../data/db/user/user-repository';
 
 @Injectable()
 export class GetUserUseCase implements IGetUserUseCase {
