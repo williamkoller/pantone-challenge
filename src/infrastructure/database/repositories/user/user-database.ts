@@ -76,7 +76,7 @@ export class UserDatabase implements UserRepository {
 
     const fetchNextPage = async () => {
       try {
-        const { rows, count } = await this.userModel.findAndCountAll({
+        const { rows } = await this.userModel.findAndCountAll({
           limit,
           offset,
         });

@@ -39,6 +39,7 @@ describe(PaginationMapper.name, () => {
         page: 1,
         pages: 1,
         total: 2,
+        limit: 2,
       };
 
       const result = PaginationMapper.toResult({

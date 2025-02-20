@@ -4,10 +4,10 @@ import { UserMapper } from '../../../mappers/user/user-mapper';
 
 export type Input = {
   userId: string;
-  name: string;
-  email: string;
-  password: string;
-  role: UserRoleEnum;
+  name?: string;
+  email?: string;
+  password?: string;
+  role?: UserRoleEnum;
 };
 
 export type Output = ReturnType<typeof UserMapper.toDTO>;

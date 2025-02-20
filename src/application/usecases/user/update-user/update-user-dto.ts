@@ -13,22 +13,22 @@ export class UpdateUserRequestBodyDTO {
   @ApiProperty({ example: 'John Doe' })
   @IsOptional()
   @IsString()
-  name: string;
+  name?: string;
 
   @ApiProperty({ example: 'john@mail.com' })
   @IsOptional()
   @IsEmail()
-  email: string;
+  email?: string;
 
   @ApiProperty({ example: 'password' })
   @IsOptional()
   @IsString()
-  password: string;
+  password?: string;
 
   @ApiProperty({ example: 'admin' })
   @IsOptional()
   @IsEnum(UserRoleEnum)
-  role: UserRoleEnum;
+  role?: UserRoleEnum;
 }
 
 export class UpdateUserRequestParamsDTO {
