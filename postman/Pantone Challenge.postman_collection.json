@@ -164,35 +164,6 @@
 						}
 					},
 					"response": []
-				},
-				{
-					"name": "/users/data/stream",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{base_url}}/users/data/stream?limit=100&page=1",
-							"host": [
-								"{{base_url}}"
-							],
-							"path": [
-								"users",
-								"data",
-								"stream"
-							],
-							"query": [
-								{
-									"key": "limit",
-									"value": "100"
-								},
-								{
-									"key": "page",
-									"value": "1"
-								}
-							]
-						}
-					},
-					"response": []
 				}
 			]
 		}
