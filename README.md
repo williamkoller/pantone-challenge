@@ -1,6 +1,6 @@
 [![Deployment to Railway](https://github.com/williamkoller/pantone-challenge/actions/workflows/deployment.yml/badge.svg)](https://github.com/williamkoller/pantone-challenge/actions/workflows/deployment.yml)
 
-<p align="right">
+<p align="left">
   <a href="https://railway.app">
     <img src="https://railway.app/button.svg" alt="Deploy with Railway">
   </a>
