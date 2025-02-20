@@ -12,22 +12,18 @@ export class GetUsersUseCase implements IGetUsersUseCase {
   ) {}
 
   async execute(input: Input): Promise<Output> {
-    const limitDefault = Math.min(input.limit ?? 1000, 1000);
-    const offsetDefault = Math.max(input.offset ?? 1, 1);
+    const limit = Math.min(input.limit || 1000, 1000);
+    const offset = Math.max((input.offset || 1) - 1, 0) * limit;
+    const { users, total } = await this.userRepository.findAll(limit, offset);
 
-    const { users, total } = await this.userRepository.findAll(
-      limitDefault,
-      (offsetDefault - 1) * limitDefault,
-    );
-
-    const totalPages = Math.ceil(total / limitDefault);
-    const page = offsetDefault > totalPages ? totalPages : offsetDefault;
-
-    return PaginationMapper.toResult<ReturnType<typeof UserMapper.toDTO>[]>({
-      limit: limitDefault,
-      page,
+    return PaginationMapper.toResult({
+      limit,
+      page: Math.min(
+        Math.ceil((offset + limit) / limit),
+        Math.ceil(total / limit),
+      ),
       total,
       data: users.map(UserMapper.toDTO),
-    }) as unknown as any;
+    }) as unknown as Output;
   }
 }

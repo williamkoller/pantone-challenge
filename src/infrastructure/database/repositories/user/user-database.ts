@@ -1,11 +1,9 @@
-import { Injectable } from '@nestjs/common';
-import { InjectModel } from '@nestjs/sequelize';
-import { UserModel } from '../../models/user-model';
-import { UserMapper } from '../../../../application/mappers/user/user-mapper';
-import { UserRepository } from '../../../../data/db/user/user-repository';
-import { User } from '../../../../domain/user/user';
-import { Readable } from 'stream';
-import { UniqueEntityId } from '../../../../shared/domain/unique-entity-id/unique-entity-id';
+import { Injectable } from '@nestjs/common'
+import { InjectModel } from '@nestjs/sequelize'
+import { UserMapper } from '../../../../application/mappers/user/user-mapper'
+import { UserRepository } from '../../../../data/db/user/user-repository'
+import { User } from '../../../../domain/user/user'
+import { UserModel } from '../../models/user-model'
 
 @Injectable()
 export class UserDatabase implements UserRepository {
@@ -64,43 +62,5 @@ export class UserDatabase implements UserRepository {
       users,
       total: count,
     };
-  }
-
-  async findAllStream(limit: number, offset: number): Promise<Readable> {
-    const stream = new Readable({
-      objectMode: true,
-      read() {},
-    });
-
-    const usersArray: User[] = [];
-
-    const fetchNextPage = async () => {
-      try {
-        const { rows } = await this.userModel.findAndCountAll({
-          limit,
-          offset,
-        });
-
-        if (rows.length === 0) {
-          stream.push(usersArray);
-          stream.push(null);
-          return;
-        }
-
-        rows.forEach((user) => {
-          const userDomain = UserMapper.toDomain(user);
-          usersArray.push(UserMapper.toDTO(userDomain) as unknown as any);
-        });
-
-        offset += limit;
-        fetchNextPage();
-      } catch (error) {
-        stream.emit('error', error);
-      }
-    };
-
-    fetchNextPage();
-
-    return stream;
   }
 }

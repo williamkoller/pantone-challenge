@@ -8,7 +8,6 @@ export interface UserRepository extends BaseRepository<User> {
     limit: number,
     offset: number,
   ): Promise<{ users: User[]; total: number }>;
-  findAllStream(limit: number, offset: number): Promise<Readable>;
 }
 
 export const UserRepository = Symbol('UserRepository');

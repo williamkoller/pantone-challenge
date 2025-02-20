@@ -8,27 +8,21 @@ import {
   Post,
   Put,
   Query,
-  Res,
-  StreamableFile,
-  UseGuards,
 } from '@nestjs/common';
 import { ApiTags } from '@nestjs/swagger';
+import { CreateUserRequestBodyDTO } from '../../../application/usecases/user/create-user/create-user-dto';
 import { ICreateUserUseCase } from '../../../application/usecases/user/create-user/icreate-user-usecase';
-import { IGetUserUseCase } from '../../../application/usecases/user/get-user/iget-user-usecase';
-import { GetUserRequestParamsDTO } from '../../../application/usecases/user/get-user/get-user-dto';
-import { IDeleteUserUseCase } from '../../../application/usecases/user/delete-user/idelete-user-usecase';
 import { DeleteUserRequestParamsDTO } from '../../../application/usecases/user/delete-user/delete-user-dto';
+import { IDeleteUserUseCase } from '../../../application/usecases/user/delete-user/idelete-user-usecase';
+import { GetUserRequestParamsDTO } from '../../../application/usecases/user/get-user/get-user-dto';
+import { IGetUserUseCase } from '../../../application/usecases/user/get-user/iget-user-usecase';
+import { GetUsersRequestQueryDTO } from '../../../application/usecases/user/get-users/get-users-dto';
+import { IGetUsersUseCase } from '../../../application/usecases/user/get-users/iget-users-usecase';
 import { IUpdateUserUseCase } from '../../../application/usecases/user/update-user/iupdate-user-usecase';
 import {
   UpdateUserRequestBodyDTO,
   UpdateUserRequestParamsDTO,
 } from '../../../application/usecases/user/update-user/update-user-dto';
-import { CreateUserRequestBodyDTO } from '../../../application/usecases/user/create-user/create-user-dto';
-import { IGetUsersUseCase } from '../../../application/usecases/user/get-users/iget-users-usecase';
-import { IGetUsersStreamUseCase } from '../../../application/usecases/user/get-users-stream/iget-users-stream-usecase';
-import { Response } from 'express';
-import { GetUsersRequestQueryDTO } from '../../../application/usecases/user/get-users/get-users-dto';
-import * as zlib from 'node:zlib';
 
 @ApiTags('users')
 @Controller('users')
@@ -40,8 +34,6 @@ export class UserController {
     private readonly getUserUseCase: IGetUserUseCase,
     @Inject(IGetUsersUseCase)
     private readonly getUsersUseCase: IGetUsersUseCase,
-    @Inject(IGetUsersStreamUseCase)
-    private readonly getUsersStreamUseCase: IGetUsersStreamUseCase,
     @Inject(IDeleteUserUseCase)
     private readonly deleteUserUseCase: IDeleteUserUseCase,
     @Inject(IUpdateUserUseCase)
@@ -64,27 +56,6 @@ export class UserController {
       limit: query.limit,
       offset: query.page,
     });
-  }
-
-  @Get('data/stream')
-  async getAllStream(
-    @Res() res: Response,
-    @Query() query: GetUsersRequestQueryDTO,
-  ) {
-    const usersStream = await this.getUsersStreamUseCase.execute({
-      limit: query.limit,
-      offset: query.page,
-    });
-
-    res.set({
-      'Content-Type': 'application/json',
-      'Content-Encoding': 'gzip',
-      'Transfer-Encoding': 'chunked',
-    });
-
-    const gzipStream = zlib.createGzip();
-
-    usersStream.pipe(gzipStream).pipe(res);
   }
 
   @Delete(':userId')

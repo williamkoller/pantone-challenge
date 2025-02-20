@@ -4,7 +4,7 @@ import { faker } from '@faker-js/faker';
 const map = new Map();
 const uniqueEmails = new Set();
 
-for (let i = 1; i <= 100000; i++) {
+for (let i = 1; i <= 1e2; i++) {
   let email = '';
 
   do {
