@@ -1,4 +1,4 @@
-# Architecture 
+# Architecture
 
 ```text
 ├── src
@@ -33,9 +33,6 @@
 │   │           │   ├── get-users-usecase.spec.ts
 │   │           │   ├── get-users-usecase.ts
 │   │           │   └── iget-users-usecase.ts
-│   │           ├── get-users-stream
-│   │           │   ├── get-users-stream-usecase.ts
-│   │           │   └── iget-users-stream-usecase.ts
 │   │           └── update-user
 │   │               ├── iupdate-user-usecase.ts
 │   │               ├── update-user-dto.ts
