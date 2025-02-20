@@ -1,3 +1,5 @@
+[![Deployment to Railway](https://github.com/williamkoller/pantone-challenge/actions/workflows/deployment.yml/badge.svg)](https://github.com/williamkoller/pantone-challenge/actions/workflows/deployment.yml)
+
 <p align="right">
   <a href="https://railway.app">
     <img src="https://railway.app/button.svg" alt="Deploy with Railway">
@@ -7,6 +9,8 @@
 # Pantone Challenge
 
 ## Tempo que foi gasto no desenvolvimento
+
+[![wakatime](https://wakatime.com/badge/user/f8b538ef-5e09-4369-8b13-b9baf54326e9/project/870856eb-a2f9-471d-a72d-e5b16d3e0cec.svg)](https://wakatime.com/badge/user/f8b538ef-5e09-4369-8b13-b9baf54326e9/project/870856eb-a2f9-471d-a72d-e5b16d3e0cec)
 
 [Arquitetura](./architecture.md)
 
